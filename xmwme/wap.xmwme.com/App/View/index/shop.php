@@ -158,7 +158,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="/user/index/">
+                        <a href="/index/my/">
                             <span class="icon-w">
                                 <i class="icon icon-4"></i>
                             </span>
