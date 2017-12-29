@@ -205,7 +205,7 @@
             <div class="inner">
                 <ul>
                     <li class="">
-                        <a href="/account/index/">
+                        <a href="/index/index/">
                             <span class="icon-w">
                                 <i class="icon icon-1"></i>
                             </span>
@@ -213,7 +213,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="/product/index/">
+                        <a href="/index/game/">
                             <span class="icon-w">
                                 <i class="icon icon-2"></i>
                             </span>
@@ -221,7 +221,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="/goods/index/">
+                        <a href="/index/shop/">
                             <span class="icon-w">
                                 <i class="icon icon-3"></i>
                             </span>
@@ -229,7 +229,7 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a href="/user/index/">
+                        <a href="/index/my/">
                             <span class="icon-w">
                                 <i class="icon icon-4"></i>
                             </span>
