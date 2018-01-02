@@ -31,41 +31,30 @@
         <div class="container-fluid">
             <div class="banner swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="/staticpage/special/?key=activity1226_2"><img src="http://img.bbqb.cn/banner/201712/banner151418066811921.jpg"></a></div>
-                    <div class="swiper-slide"><a href="/lian/index/"><img src="http://img.bbqb.cn/banner/201711/banner151174905248885.jpg"></a></div>
-                    <div class="swiper-slide"><a href="/sign/index/"><img src="http://img.bbqb.cn/banner/201709/banner150517913365646.jpg"></a></div>
+                    <div class="swiper-slide"><a href="/lian/index/"><img src="<?php echo Resource; ?>images/banner/banner151174905248885.jpg"></a></div>
                 </div>
             </div>
             <div class="panel">
                 <!--第一组-->
                 <ul>
-                    <li><a href="/staticpage/vip_upgrade/"><img src="http://img.bbqb.cn/banner/201707/banner150045330170342.jpg"><p>会员体系</p></a></li>
-                    <li><a href="/share/invite/"><img src="http://img.bbqb.cn/banner/201707/banner150045334128994.jpg"><p>邀请好友</p></a></li>
-                    <li><a href="/staticpage/insurance/"><img src="http://img.bbqb.cn/banner/201707/banner150045338951886.jpg"><p>安全保障</p></a></li>
-                </ul>
-                <!--第二组-->
-                <ul>
-                </ul>
-                <!--第三组-->
-                <ul>
+                    <li><a href="/index/about/"><img src="<?php echo Resource; ?>images/banner/banner150045330170342.jpg"><p>关于我们</p></a></li>
+                    <li><a href="/share/invite/"><img src="<?php echo Resource; ?>images/banner/banner150045334128994.jpg"><p>邀请好友</p></a></li>
+                    <li><a href="/index/tell/"><img src="<?php echo Resource; ?>images/banner/banner150045338951886.jpg"><p>常见问题</p></a></li>
                 </ul>
             </div>
             <div class="product">
                 <i class="tag"></i>
                 <div class="text">
                     <a href="/fixed/fcapital_income/?type=1">
-                        <p class="p1">百日宝<span><i></i>到期退出或续投</span></p>
-
-                        <p class="p2">历史年化收益率</p>
-                        <p class="p3">8.00<span>%</span></p>
+                        <p class="p1">萌萌连连看</p>
                         <ul>
-                            <li>持有满90天转让</li>
-                            <li>1000元起投</li>
-                            <li>每日限额开放</li>
+                            <li>考考你的眼力</li>
+                            <li>快快挑战吧</li>
+                            <li>每日限玩一次</li>
                         </ul>
                     </a>
                     <div class="btn-w">
-                        <a href="/buy/index/?ptype=1" class="ui-btn btn-submit">马上投资</a>
+                        <a href="/buy/index/?ptype=1" class="ui-btn btn-submit">马上开始</a>
                     </div>
                 </div>
             </div>
@@ -74,54 +63,16 @@
                 <div class="rt">
                     <a href="/account/capital_log/?type=withdraw">
                         <div class="meta">
-                            <p>我的变现</p>
+                            <p>萌豆最新动态</p>
                             <time>2017-11-28 15:47:01</time> 
                         </div>
-                        <div class="text">已成功变现5105元</div>
+                        <div class="text">已成功通过连连看获取1个</div>
                     </a>
-                    <!--到期退出-->
-
                 </div>
             </div>
         </div>
-        <div class="navbar">
-            <div class="inner">
-                <ul>
-                    <li class="active">
-                        <a href="/index/index/">
-                            <span class="icon-w">
-                                <i class="icon icon-1"></i>
-                            </span>
-                            首页
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="/index/game/">
-                            <span class="icon-w">
-                                <i class="icon icon-2"></i>
-                            </span>
-                            投资
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="/index/shop/">
-                            <span class="icon-w">
-                                <i class="icon icon-3"></i>
-                            </span>
-                            商城
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="/index/my/">
-                            <span class="icon-w">
-                                <i class="icon icon-4"></i>
-                            </span>
-                            我的
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
+       <?php require(View.'/layout/footer.html'); ?>
 
         <script src="/Resource/js/zepto.min.js"></script>
         <script src="/Resource/js/plugins.js"></script>

@@ -201,44 +201,7 @@
                 </ul>
             </div>
         </div>
-        <div class="navbar">
-            <div class="inner">
-                <ul>
-                    <li class="">
-                        <a href="/index/index/">
-                            <span class="icon-w">
-                                <i class="icon icon-1"></i>
-                            </span>
-                            首页
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="/index/game/">
-                            <span class="icon-w">
-                                <i class="icon icon-2"></i>
-                            </span>
-                            投资
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="/index/shop/">
-                            <span class="icon-w">
-                                <i class="icon icon-3"></i>
-                            </span>
-                            商城
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="/index/my/">
-                            <span class="icon-w">
-                                <i class="icon icon-4"></i>
-                            </span>
-                            我的
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <?php require(View.'/layout/footer.html'); ?>
 
         <script src="/Resource/js/zepto.min.js"></script>
         <script src="/Resource/js/plugins.js"></script>
