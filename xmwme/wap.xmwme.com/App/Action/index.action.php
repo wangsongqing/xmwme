@@ -33,6 +33,20 @@ class IndexAction extends actionMiddleware
     public function my(){
         $this->display('index/my.php');
     }
+    
+    /**
+     * 关于我们
+     */
+    public function about(){
+        $this->display('index/about.php');
+    }
+    
+    /**
+     * 联系我们
+     */
+    public function tell(){
+        $this->display('index/tell.php');
+    }
 
 }
 ?>
