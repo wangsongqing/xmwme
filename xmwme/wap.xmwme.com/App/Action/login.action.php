@@ -11,6 +11,16 @@ class LoginAction extends actionMiddleware
         extract($this->input);
         $this->display("login/login.html");
     }
+    
+    public function password(){
+        extract($this->input);
+        $this->display("login/password.php");
+    }
+    
+    public function regeze(){
+        extract($this->input);
+        $this->display("login/regeze.php");
+    }
 
     public function ajaxLogin()
     {
