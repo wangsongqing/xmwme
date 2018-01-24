@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.5.53 : Database - xm_core
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -185,3 +186,18 @@ CREATE TABLE `xm_user_info` (
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+DROP TABLE IF EXISTS `xm_banner`;
+CREATE TABLE `xm_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `activity_id` int(10) NOT NULL DEFAULT '0' COMMENT '关联活动id',
+  `banner_name` varchar(50) DEFAULT NULL COMMENT 'banner名称',
+  `url` varchar(100) NOT NULL DEFAULT '' COMMENT '点击连接地址',
+  `img_url` varchar(100) NOT NULL DEFAULT '' COMMENT '图片地址',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态 0停用 1启用',
+  `created` int(10) NOT NULL COMMENT '创建时间',
+  `updated` int(10) NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='首页banner表';
+
