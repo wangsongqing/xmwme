@@ -49,7 +49,7 @@ abstract class Model extends Object
 	 * @return string
 	 +----------------------------------------------------------
 	 */
-	public function getTable($key, $slice = 0, $readonly = 0)
+	public function getTable($key, $slice = 0)
 	{
 		$this->createDbObject();
 		$tbl = $this->com('dt')->tbl;
