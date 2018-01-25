@@ -25,33 +25,49 @@
           d()
       })();</script>
     </head><body>
-        <form class="common-form" autocomplete="off" id="psw_form_2" method="post" onSubmit="return loginJs.sumbmitLogin();">
+        <form class="common-form" autocomplete="off" id="psw_form_2" method="post" onSubmit="return login_submit();">
             <div class="item">
                 <ul>
                     <li class="input-box">
                         <div class="inner">
                             <div class="label">登录密码</div>
                             <div class="rcon">
-                                <input type="hidden"  name="telephone" value="18201197923" id="telephone" />
+                                <input type="hidden"  name="telephone" value="<?=isset($phone)&&!empty($phone)?$phone:''?>" id="telephone" />
                                 <input type="password" name="password" class="ui-input" placeholder="请输入登录密码" maxlength="16">
                             </div>
                         </div>
                     </li>
                 </ul>
+                 <div id='error_show' class="tips-text" style='display: none;'>密码输入有误，请重新输入</div>
             </div>
             <div class="r-text"><a href="/login/forget/">忘记登录密码&nbsp;&gt;</a></div>
             <div class="g-btns">
                 <ul>
-                    <li><button type='submit' class="ui-btn btn-submit">登&nbsp;录</button></li>
+                    <li><button id='login_password' type='submit' class="ui-btn btn-submit">登&nbsp;录</button></li>
                 </ul>
             </div>
         </form>
-        <script src="/Resource/js/zepto.min.js"></script>
-        <script src="/Resource/js/plugins.js"></script>
-        <script src="/Resource/js/layer/layer.m.js?d=1608151650"></script>
-        <script src="/Resource/js/base.js?d=1711221436"></script>
-        <script src="/Resource/js/user/login.js?t=20170217"></script>
-        <script src="/Resource/js/rsa/rsa.js"></script>
+        <script src="/Resource/js/jquery-2.1.4.min.js"></script>
         <script src="/Resource/js/rsa/edai_encryption.js"></script>
     </body>
 </html>
+<script>
+$("#login_password").click(function(){
+    login_submit();
+    return false;
+});
+function login_submit(){
+    var phone = $("input[name=telephone]").val();
+    var pwd = $("input[name=password]").val();
+    _bool = true;
+    $.post('/login/ajaxLogin/',{password:pwd,phone:phone},function(data){
+       if(data.code==1){
+           location.href = '/index/';
+       }else{
+            $("#error_show").html(data.msg);
+            $("#error_show").css('display','block');
+       }
+    },'json');
+    return _bool;
+}
+</script>

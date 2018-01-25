@@ -25,30 +25,38 @@
                 d()
             })();</script>
     </head><body>
-        <form class="common-form" autocomplete="off" id="psw_form_3" method='post' action="/" onsubmit='return loginRegisterJs.loginForm();'>
+        <form class="common-form" autocomplete="off" id="psw_form_3" method='post' action="<?=Root?>login/index/">
             <div class="item">
                 <ul>
                     <li class="input-box">
                         <div class="inner">
                             <div class="label">手机号</div>
                             <div class="rcon">
-                                <input type="tel" name="phone" class="ui-input" placeholder="请输入注册的手机号" maxlength="11" value="18201197923">
+                                <input type="tel" name="phone" class="ui-input" placeholder="请输入注册的手机号" maxlength="11" value="">
                             </div>
                         </div>
                     </li>
                 </ul>
-                <div class="tips-text">手机号格式有误，请重新输入</div>
+                <div class="tips-text" style='display: none;'>手机号格式有误，请重新输入</div>
             </div>
             <div class="g-btns">
                 <ul>
-                    <li><button type="submit" class="ui-btn btn-submit" data-check="off">下一步</button></li>
+                    <li><button id='submit_login' type="submit" class="ui-btn btn-submit" data-check="off">下一步</button></li>
                 </ul>
             </div>
         </form>
-        <script src="/Resource/js/zepto.min.js"></script>
-        <script src="/Resource/js/plugins.js"></script>
-        <script src="/Resource/js/layer/layer.m.js?d=1608151650"></script>
-        <script src="/Resource/js/base.js?d=1711221436"></script>
-        <script src="/Resource/js/user/login_register.js?v=1515554866"></script>
+        <script src="/Resource/js/jquery-2.1.4.min.js"></script>
     </body>
 </html>
+<script>
+$("#submit_login").click(function() {
+    var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    var phone = $("input[name=phone]").val();
+    if (!myreg.test(phone)) {
+        $(".tips-text").css('display','block');
+        return false;
+    }
+    $("form").submit();
+    return false;
+});
+</script>

@@ -1,7 +1,8 @@
+<?php $action = getModule();?>
 <div class="navbar">
     <div class="inner">
         <ul>
-            <li class="active">
+            <li class="<?php if(isset($action)&&$action=='index'){echo 'active';} ?>">
                 <a href="/index/index/">
                     <span class="icon-w">
                         <i class="icon icon-1"></i>
@@ -9,24 +10,24 @@
                     首页
                 </a>
             </li>
-            <li class="">
-                <a href="/index/game/">
+            <li class="<?php if(isset($action)&&$action=='game'){echo 'active';} ?>">
+                <a href="/game/index/">
                     <span class="icon-w">
                         <i class="icon icon-2"></i>
                     </span>
                     游戏
                 </a>
             </li>
-            <li class="">
-                <a href="/index/shop/">
+            <li class="<?php if(isset($action)&&$action=='shop'){echo 'active';} ?>">
+                <a href="/shop/index/">
                     <span class="icon-w">
                         <i class="icon icon-3"></i>
                     </span>
                     商城
                 </a>
             </li>
-            <li class="">
-                <a href="/index/my/">
+            <li class="<?php if(isset($action)&&$action=='my'){echo 'active';} ?>">
+                <a href="/my/index/">
                     <span class="icon-w">
                         <i class="icon icon-4"></i>
                     </span>
