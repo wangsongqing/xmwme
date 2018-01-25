@@ -77,8 +77,10 @@ class actionMiddleware extends Action {
         $action = getAction();
         //把不需要登录就可以访问的方法写到这里 不需要登录就可以访问的方法key：model,value:actions
         $this->nologin = array(
-            'index' => array('index','game','shop','my','about','tell'),
-            'login' => array('index','password','regeze'),
+            'index' => array('index','my','about','tell'),
+            'login' => array('index','password','regeze','ajaxlogin'),
+            'game'  => array('index'),
+            'shop'  => array('index'),
         );
         //获取用户登录信息
         if (loginCheck()) {
