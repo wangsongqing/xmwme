@@ -4,19 +4,19 @@
  * 菜单数据操作
  +---------------------------------------------------------------------------------------------------------------
  */
-class manage_userModel extends modelMiddleware{
+class user_infoModel extends modelMiddleware{
 
 /**
      * 数据表key
      */
-    public $tableKey = 'manage_user';
+    public $tableKey = 'user_info';
     public  $cached  = false;
 
     /**
      * 数据表主键Id名称
      *
      */
-    public $pK = 'admin_id';
+    public $pK = 'user_id';
 
     /**
      * @param $account 用户名
@@ -28,7 +28,7 @@ class manage_userModel extends modelMiddleware{
     public function login($account,$password,$field='*')
     {
         $table = $this->getTable($this->tableKey);
-        $where = 'where ( admin_name="' .$account . '" AND password=MD5(CONCAT(MD5("'.$password.'"),salt))) ';
+        $where = 'where ( telephone="' .$account . '" AND password=MD5(CONCAT(MD5("'.$password.'"),salt))) ';
         $sql   = "select $field from $table $where limit 1";
         return $this->getRow($sql);
     }
@@ -39,7 +39,7 @@ class manage_userModel extends modelMiddleware{
     public function setLoginStatus($user)
     {
         setAuth($user, 0);
-        setVar('manage_'.$user['admin_name'], $user['password'], 360000);
+        setVar('manage_'.$user['user_id'], $user['password'], 360000);
     }
     
     /**
@@ -93,7 +93,7 @@ class manage_userModel extends modelMiddleware{
 	    //为数据查询key
 	    $this->revisionKey = array(
 		"{all:all}",
-		"{admin_id:$admin_id}",
+		"{telephone:$telephone}",
 	    );
 	}
 	 $this->revision();
