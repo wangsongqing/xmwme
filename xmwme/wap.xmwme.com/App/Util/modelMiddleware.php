@@ -170,6 +170,26 @@ class modelMiddleware extends Model {
         $table = $this->getTable($this->tableKey, $slice);
         $result = $this->startTrans();
     }
+    
+    /**
+	 * 提交事务
+	 * @access public
+	 * @return boolean
+	 */
+	public function commitTransTable() {
+	    $table = $this->getTable($this->tableKey, $slice);
+	    return $this->commit();
+	}
+	
+	/**
+	 * 事务回滚
+	 * @access public
+	 * @return boolean
+	 */
+	public function rollbackTransTable() {
+	    $table = $this->getTable($this->tableKey, $slice);
+	    return $this->rollback();
+	}
 
     /**
      * 插入记录

@@ -779,4 +779,17 @@ function get_update_sql($table,$update_data,$rules,$add_self=array()){
          return  false;
        }
    }
+   
+/**隐藏电话中间数字
+ * @param $phone
+ */
+function hiddenPhoneMiddle($phone)
+{
+    if ($phone && is_numeric($phone) && !strpos($phone, '@')) {
+        if ($phone && strlen($phone) > 10) {
+            $phone = substr_replace($phone,'******',3,6);
+        }
+    }
+    return $phone;
+}
 ?>
