@@ -161,6 +161,7 @@ CREATE TABLE `xm_user_info` (
   `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nick` varchar(64) DEFAULT '' COMMENT '昵称',
   `telephone` char(11) DEFAULT '0' COMMENT '电话',
+  `form_code` int(10) DEFAULT '0' COMMENT '邀请码',
   `from_user_id` int(11) unsigned DEFAULT '0' COMMENT '邀请人id',
   `to_user_count` int(5) unsigned DEFAULT '0' COMMENT '邀请成功注册的人数',
   `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '注册类型：0自然注册 1邀请注册',
@@ -177,8 +178,9 @@ CREATE TABLE `xm_user_info` (
   KEY `updated` (`updated`) USING BTREE,
   KEY `from_user_id` (`from_user_id`) USING BTREE,
   KEY `type` (`type`),
-  KEY `last_login_time` (`last_login_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `last_login_time` (`last_login_time`),
+  KEY `form_code` (`form_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户详情表';
 
 /*Data for the table `xm_user_info` */
 
