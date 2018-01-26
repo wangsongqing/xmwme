@@ -407,7 +407,6 @@ class RunDbPdo implements IDataSource
 	        $this->error("开启事务失败！");
 	        return false;
 	    }
-	    writeLog('-----------------------------------------------startTrans','mysqlTrans.log');
 	    $this->query('SET AUTOCOMMIT=0');                                    
 	    $this->query('START TRANSACTION');                                    //开启事务
         return ;
@@ -444,7 +443,6 @@ class RunDbPdo implements IDataSource
 	    $result = $this->query('COMMIT');                                         //提交事务
         if(!$result){return false; }
         $this->query('SET AUTOCOMMIT=1');
-        writeLog('-----------------------------------------------commit','mysqlTrans.log');
 	    return true;
 	}
 	
@@ -462,7 +460,6 @@ class RunDbPdo implements IDataSource
         $result = $this->query('ROLLBACK');                                         //回滚
         if(!$result) return false; 
         $this->query('SET AUTOCOMMIT=1');
-        writeLog('-----------------------------------------------rollback','mysqlTrans.log');
 	    return true;
 	}
 	

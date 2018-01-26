@@ -146,7 +146,6 @@ class RunMysql implements IDataSource
 		//echo '----';var_dump($this->connectId);echo '<br>';
 		if($this->connectId == null || !isset($this->connectId)) $this->connect();
 		$this->queryId = mysql_query($sql,$this->connectId);
-		writeLog($this->connectId.' '.$sql.'<br>','mysqlTrans.log');
 		if(!$this->queryId) $this->error("SQL语法错误:".$sql);
 		
 		return $this->queryId;
@@ -417,7 +416,6 @@ class RunMysql implements IDataSource
 	        $this->error("开启事务失败！");
 	        return false;
 	    }
-	    writeLog('-----------------------------------------------startTrans','mysqlTrans.log');
 	    $this->query('SET AUTOCOMMIT=0');                                    
 	    $this->query('START TRANSACTION');                                    //开启事务
         return ;
@@ -454,7 +452,6 @@ class RunMysql implements IDataSource
 	    $result = $this->query('COMMIT');                                         //提交事务
         if(!$result){return false; }
         $this->query('SET AUTOCOMMIT=1');
-        writeLog('-----------------------------------------------commit','mysqlTrans.log');
 	    return true;
 	}
 	
@@ -471,7 +468,6 @@ class RunMysql implements IDataSource
         $result = $this->query('ROLLBACK');                                         //回滚
         if(!$result) return false; 
         $this->query('SET AUTOCOMMIT=1');
-        writeLog('-----------------------------------------------rollback','mysqlTrans.log');
 	    return true;
 	}
 	
