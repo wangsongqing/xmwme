@@ -20,3 +20,8 @@ $tbl['user_info'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
+$tbl['credit'] = array(
+    'name'       => $prefix.'credit',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
