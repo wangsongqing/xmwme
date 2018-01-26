@@ -43,11 +43,75 @@ class user_infoModel extends modelMiddleware{
     }
     
     /**
+     * 增加注册用户
+     * @author jimmy
+     * @param int $telephone
+     * @param string $password
+     * @param int $invite_code
+     */
+    public function register($telephone, $password, $invite_code){
+        $err_arr = array();
+        try{
+            $start_trans = self::_model()->startTransTable();
+            if(!empty($invite_code)){
+                $rule['exact']['form_code'] = $invite_code;
+                $form_user = self::_model()->findOne($rule);
+                if(empty($form_user)){
+                    throw new Exception('邀请码有误');
+                }
+            }
+        
+            $salt = saltRound();//生成随机salt
+            $password = md5(md5($password).$salt);
+            $data = array(
+                'telephone' => $telephone,
+                'form_code' => substr($telephone, 3),
+                'from_user_id' => isset($form_user['user_id'])?$form_user['user_id']:0,
+                'type' => isset($form_user)&&!empty($form_user)?1:0,
+                'last_login_time' => time(),
+                'regiest_ip' => getIp(),
+                'locked' => 0,
+                'password' => $password,
+                'salt' => $salt,
+                'created' => time(),
+                'updated' => time()
+            );
+            $last_insert_id = self::_model()->add($data);
+            if(!$last_insert_id){
+                throw Exception('注册失败');
+            }
+            //初始化积分表
+            $credit_data = array('user_id' => $last_insert_id,'credit' => 0,'use_credit' => 0,'all_credit' => 0,'created' => time(),'updated' => time(),);
+            $last_credit_id = M('credit')->add($credit_data);
+            if(!$last_credit_id){
+                throw Exception('初始化积分表失败');
+            }
+            //给邀请人增加累计邀请数
+            if(isset($form_user) && !empty($form_user)){
+                $_sql = "UPDATE xm_user_info SET to_user_count=to_user_count+1 WHERE user_id='".$form_user['user_id']."'";
+                $re_up = self::_model()->execate($_sql);
+                if(!$re_up){
+                    throw Exception('给邀请人增加累计邀请数');
+                }
+            }
+            $arr = array('user_id' => $last_insert_id,'nick' => '','loginIp' => $data['regiest_ip'],'telephone' => $data['telephone'],'password' => $data['password'],'useragent' => $_SERVER['HTTP_USER_AGENT'],'loginTime' => time());
+            $this->setLoginStatus($arr);//注册成功后设置登录状态
+            $commit_trans = self::_model()->commit();
+            $err_arr = array('err'=>'1','msg'=>'注册成功');
+        } catch (Exception $e){
+            $msg = $e->getMessage();
+            $err_arr = array('err'=>'-1','msg'=>$msg);
+            $rollback_trans = self::_model()->rollback();
+        }
+        return $err_arr;
+    }
+    
+    /**
      * 尽可能的在model里面做一切相关的数据处理
      * @return object
      */
     public static function _model(){
-	$model = M('manage_user');
+	$model = M('user_info');
 	return $model;
     }
     
@@ -56,7 +120,7 @@ class user_infoModel extends modelMiddleware{
      * @return array
      */
     public function selectOne(){
-	$model = M('manage_log');
+	$model = M('user_info');
 	$data = $model->findOne(1);
 	return $data;
     }
@@ -82,9 +146,9 @@ class user_infoModel extends modelMiddleware{
      * @access public
      * @return void
      */
-    public function manage_user_revision($admin_id)
+    public function user_info_revision($user_id)
     {
-        $sql    = sprintf("select * from %s where `admin_id` = '$admin_id'", $this->getTable('manage_user',0,0) );
+        $sql    = sprintf("select * from %s where `user_id` = '$user_id'", $this->getTable('user_id',0,0) );
         $member = $this->getRow($sql);
 	if (empty($member)){
 	    $this->revisionKey = array("{all:all}");
@@ -93,6 +157,7 @@ class user_infoModel extends modelMiddleware{
 	    //为数据查询key
 	    $this->revisionKey = array(
 		"{all:all}",
+                "{user_id:$user_id}",
 		"{telephone:$telephone}",
 	    );
 	}
