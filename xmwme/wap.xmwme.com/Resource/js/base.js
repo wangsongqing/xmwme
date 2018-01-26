@@ -663,7 +663,7 @@ BB.form = {
     }
     $.ajax({
       type: "GET",
-      url: "/index/sendmsg/",
+      url: "/login/sendmsg/",
       dataType: 'json',
       data: 'type=' + type + '&telephone=' + telephone + '&verify=' + verify + '&mark=' + mark + '&t=' + Math.random(),
       success: function (data) {
@@ -676,12 +676,12 @@ BB.form = {
         } else if (data.err == '1') {
           that.isSend = false;
           that.tips.show(obj, data.msg);
-          $('.img-code').attr('src', '/verify/index/' + '?rand=' + Math.random());
+          $('.img-code').attr('src', '/login/verify/' + '?rand=' + Math.random());
           obj.removeAttr('disabled').removeClass("disabled").text("重新获取");
         } else if (data.err == '2') {
           that.isSend = false;
           BB.popup.alert(data.msg);
-          $('.img-code').attr('src', '/verify/index/' + '?rand=' + Math.random());
+          $('.img-code').attr('src', '/login/verify/' + '?rand=' + Math.random());
           obj.removeAttr('disabled').removeClass("disabled").text("重新获取");
         }
       }
@@ -689,7 +689,7 @@ BB.form = {
   },
   changeVerify: function (elem) {
     var obj = typeof elem == 'undefined' ? $(".img-code") : $(elem);
-    obj.attr('src', '/verify/index/' + '?rand=' + Math.random());
+    obj.attr('src', '/login/verify/' + '?rand=' + Math.random());
   },
   countdown: function (time, obj, callback) { //短信验证码倒计时
     obj.attr('disabled', true).addClass("disabled");
