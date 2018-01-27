@@ -76,7 +76,7 @@ class LoginAction extends actionMiddleware {
     }
 
     public function ajaxLogin() {
-        //$this->input = $this->getEncryLogin($this->input); //解密提交过来的数据,因为前端用js加密的，为了安全考虑
+        $this->input = $this->getEncryLogin($this->input); //解密提交过来的数据,因为前端用js加密的，为了安全考虑
         extract($this->input);
         //验证密码
         $re = check_password(isset($password) ? $password : '');
