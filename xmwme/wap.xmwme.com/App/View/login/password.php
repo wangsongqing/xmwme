@@ -63,7 +63,7 @@ function login_submit(){
     _bool = true;
     $.post('/login/ajaxLogin/',{password:pwd,phone:phone},function(data){
        if(data.code==1){
-           location.href = '/index/';
+           location.href = '/my/index/';
        }else{
             $("#error_show").html(data.msg);
             $("#error_show").css('display','block');
