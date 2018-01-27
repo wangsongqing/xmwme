@@ -25,7 +25,7 @@
           d()
       })();</script>
     </head><body>
-        <form class="common-form" autocomplete="off" id="psw_form_2" method="post" onSubmit="return login_submit();">
+        <form class="common-form" autocomplete="off" id="psw_form_2" method="post">
             <div class="item">
                 <ul>
                     <li class="input-box">
@@ -48,7 +48,7 @@
             </div>
         </form>
         <script src="/Resource/js/jquery-2.1.4.min.js"></script>
-        <script src="/Resource/js/rsa/edai_encryption.js"></script>
+        <script src="/Resource/js/rsa/xmwme_encryption.js"></script>
     </body>
 </html>
 <script>
@@ -57,8 +57,8 @@ $("#login_password").click(function(){
     return false;
 });
 function login_submit(){
-    var phone = $("input[name=telephone]").val();
-    var pwd = $("input[name=password]").val();
+    var phone = encryptionJs.xmwme_encryption($("input[name=telephone]").val());
+    var pwd = encryptionJs.xmwme_encryption($("input[name=password]").val());
     _bool = true;
     $.post('/login/ajaxLogin/',{password:pwd,phone:phone},function(data){
        if(data.code==1){
