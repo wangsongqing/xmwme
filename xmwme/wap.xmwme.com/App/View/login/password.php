@@ -25,7 +25,7 @@
           d()
       })();</script>
     </head><body>
-        <form class="common-form" autocomplete="off" id="psw_form_2" method="post">
+        <form class="common-form" autocomplete="off" id="psw_form_2" method="post" onsubmit="return false;">
             <div class="item">
                 <ul>
                     <li class="input-box">
@@ -48,6 +48,7 @@
             </div>
         </form>
         <script src="/Resource/js/jquery-2.1.4.min.js"></script>
+        <script src="/Resource/js/rsa/rsa.js"></script>
         <script src="/Resource/js/rsa/xmwme_encryption.js"></script>
     </body>
 </html>
