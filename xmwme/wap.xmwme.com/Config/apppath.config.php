@@ -1,5 +1,4 @@
 <?php
-define('PROJECT_NAME','wap.xmwme.com');                        //项目名称
 define('Debug', 0);                                    //调试信息(0、1、2)
 define('IsRewrite', true);                             //是否url重写
 define('IsCached', true);                              //是否缓存对象资源
