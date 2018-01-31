@@ -203,3 +203,40 @@ CREATE TABLE `xm_banner` (
   KEY `status` (`status`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='首页banner表';
 
+
+DROP TABLE IF EXISTS `xm_manage_user`;
+CREATE TABLE `xm_manage_user` (
+  `admin_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理员ID',
+  `admin_name` varchar(30) NOT NULL DEFAULT '' COMMENT '管理员帐号',
+  `realname` varchar(30) NOT NULL DEFAULT '' COMMENT '管理员真实姓名',
+  `salt` varchar(6) DEFAULT NULL COMMENT '随机字段',
+  `type` tinyint(1) unsigned NOT NULL COMMENT '后台类型  1管理后台',
+  `mobile` varchar(11) DEFAULT NULL COMMENT '绑定电话',
+  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属用户组ID',
+  `group_name` varchar(24) NOT NULL DEFAULT '' COMMENT '所属用户组名',
+  `operate_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作人ID',
+  `operate_name` varchar(24) NOT NULL DEFAULT '' COMMENT '操作人用户名',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作时间',
+  `status` int(1) NOT NULL DEFAULT '1' COMMENT '账户状态，0停用，1正常，-1锁定',
+  `operation_time` int(10) DEFAULT '0' COMMENT '最后操作时间',
+  `lock_reason` varchar(50) DEFAULT NULL COMMENT '锁定原因',
+  `lock_time` int(10) unsigned DEFAULT NULL COMMENT '锁定时间',
+  `unlock_time` int(10) unsigned DEFAULT NULL COMMENT '解锁时间',
+  PRIMARY KEY (`admin_id`),
+  KEY `uId` (`admin_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
+
+
+DROP TABLE IF EXISTS `xm_manage_log`;
+CREATE TABLE `xm_manage_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `admin_id` int(10) unsigned NOT NULL,
+  `admin_name` varchar(50) NOT NULL DEFAULT '',
+  `ip` varchar(20) NOT NULL DEFAULT '',
+  `created` int(11) unsigned NOT NULL,
+  `phone` varchar(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8
+
+
