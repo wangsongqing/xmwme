@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @author Jimmy Wang <jimmywsq@163.com>
  * banner管理
@@ -13,7 +12,7 @@ class BannerAction extends actionMiddleware {
         $model = M('banner');
         $rule = array();
         if ($isSearch) {
-            isset($beginTime) && isset($endTime) && $rule['other'] = 'created>=' . strtotime($beginTime) . ' AND created<' . strtotime($endTime);
+            isset($banner_name) &&  $rule['exact']['banner_name'] = $banner_name;
         }
         $data = $model->findAll($rule, '*', 0, 0);
         $this->display('banner/banner.index.php', array('result' => $data));
@@ -62,6 +61,56 @@ class BannerAction extends actionMiddleware {
         //获取活动
         $this->display('banner/banner.add.php');
     }
+    
+    public function edit(){
+        extract($this->input);
+        $id = isset($id)?$id:'';
+        if (empty($id)) {$this->redirect('参数错误!', Root . "banner/edit/");}   
+        $model = M('banner');
+        if($isPost){
+            if (empty($activity_id)) {$this->redirect('请选择活动!', Root . "banner/add/");}
+            if (empty($status)) {$this->redirect('请活动状态!', Root . "banner/add/");}
+            if (empty($banner_name)) {$this->redirect('请填写banner名称!', Root . "banner/add/");}
+            if (empty($url)) {$this->redirect('请填写跳转url!', Root . "banner/add/");}            
+            $_data = array(
+                'activity_id' => $activity_id,
+                'banner_name' => $banner_name,
+                'url' => $url,
+                'status' => $status,
+                'created' => time(),
+                'updated' => time(),
+            );
+            if(!empty($filename)){
+                $img_url = $this->upload();//上传图片
+                $_data['img_url'] = $img_url;
+            }
+            $rule['exact']['id'] = $id;
+            $re = $model->edit($_data,$rule);
+            if($re){
+                $model->banner_revision($id);//刷新缓存
+                $this->redirect('编辑成功!', Root . "banner/index/");
+            }else{
+                $this->redirect('编辑失败!', Root . "banner/index/");
+            }
+        }
+        $data = $model->find($id);
+        $this->display('banner/banner.edit.php',array('data'=>$data));
+    }
+    
+    public function delete(){
+        extract($this->input);
+        $id = isset($id)?$id:'';
+        if($id){
+            $rule['exact']['id'] = $id;
+            $model = M('banner')->del($rule);
+            if($model){
+                $model->banner_revision($id);//刷新缓存
+                $this->redirect('删除成功!', Root . "banner/index/");
+            }else{
+                $this->redirect('删除失败!', Root . "banner/index/");
+            }
+        }
+    }
 
     /**
      * 上传操作
@@ -79,7 +128,7 @@ class BannerAction extends actionMiddleware {
         }
         if(!empty($fname)){
             $img_url = Resource . "uplodes" .'/'.$fi;
-            return  $img_url;
+            return  WebUrl.$img_url;
         }
         return '';
     }

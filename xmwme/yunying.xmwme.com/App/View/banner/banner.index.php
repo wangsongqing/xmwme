@@ -13,7 +13,7 @@
                 <ul class="clearfix tbox-sbox-list">
                     <li>
                         <label>banner名称：</label>
-                        <input type="text" autocomplete="off" name="admin_name" class="tbox30 tbox30-6" />
+                        <input type="text" autocomplete="off" name="banner_name" class="tbox30 tbox30-6" />
                     </li>
                     <li>
                         <input class="btn-2" type="submit" value="搜&nbsp;索">
@@ -40,6 +40,7 @@
                             <th>ID</th>
                             <th>banner名称</th>
                             <th>活动id</th>
+                            <th>跳转url</th>
                             <th>图片</th>
                             <th>状态</th>
                             <th>创建时间</th>
@@ -52,7 +53,8 @@
                                 <td><?= $value['id'] ?></td>
                                 <td><?= isset($value['banner_name']) ? $value['banner_name'] : '' ?></td>
                                 <td><?= isset($value['activity_id']) ? $value['activity_id'] : '' ?></td>
-                                <td><img width="40" src="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"/></td>
+                                <td><?= isset($value['url']) ? $value['url'] : '' ?></td>
+                                <td><a href="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"><img width="40" src="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"/><a/></td>
                                 <td><?= isset($value['status']) && $value['status'] == 1 ? '启用' : '停用' ?></td>
                                 <td><?= isset($value['created']) ? date('Y-m-d H:i:s', $value['created']) : '' ?></td>
                                 <td>
