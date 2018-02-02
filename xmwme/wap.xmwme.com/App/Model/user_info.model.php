@@ -1,7 +1,7 @@
 <?php
  /**
  +---------------------------------------------------------------------------------------------------------------
- * 菜单数据操作
+ * 用户Model
  +---------------------------------------------------------------------------------------------------------------
  */
 class user_infoModel extends modelMiddleware{
@@ -115,15 +115,6 @@ class user_infoModel extends modelMiddleware{
 	return $model;
     }
     
-    /**
-     * 在本model里面引用别的model的试列
-     * @return array
-     */
-    public function selectOne(){
-	$model = M('user_info');
-	$data = $model->findOne(1);
-	return $data;
-    }
 
     /**
      * 数据验证
