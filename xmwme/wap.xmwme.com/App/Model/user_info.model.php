@@ -39,7 +39,7 @@ class user_infoModel extends modelMiddleware{
     public function setLoginStatus($user)
     {
         setAuth($user, 0);
-        setVar('manage_'.$user['user_id'], $user['password'], 360000);
+        setVar('xmwmwhome_'.$user['user_id'], $user['password'], 360000);
     }
     
     /**
