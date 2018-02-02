@@ -139,7 +139,7 @@ class user_infoModel extends modelMiddleware{
      */
     public function user_info_revision($user_id)
     {
-        $sql    = sprintf("select * from %s where `user_id` = '$user_id'", $this->getTable('user_info',0,0) );
+        $sql    = sprintf("select * from %s where `user_id` = '$user_id'", $this->getTable('user_info',0) );
         $member = $this->getRow($sql);
 	if (empty($member)){
 	    $this->revisionKey = array("{all:all}");
