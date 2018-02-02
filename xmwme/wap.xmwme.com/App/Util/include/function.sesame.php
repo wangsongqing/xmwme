@@ -195,7 +195,7 @@ function getAuth($key)
     //当前登录IP与，CookieIP是否一致
     $loginIp  = getIp();
 
-    $auth = getCookie('manageAuth');
+    $auth = getCookie('xmwmeHomeAuth');
     $auth = explode("\t", $auth);
 
     list($user['user_id'],$user['telephone'],$user['password'],$user['loginIp'], $user['loginTime']) = empty($auth) || count($auth) < 5 ? array( '', '', '', '','',) : $auth;
@@ -213,7 +213,7 @@ function getAuth($key)
 //设置认证数据 adminAuth
 function setAuth($user, $time=0)
 {
-    addCookie('manageAuth', "{$user['user_id']}\t{$user['telephone']}\t{$user['password']}\t{$user['loginIp']}\t{$user['loginTime']}", $time);
+    addCookie('xmwmeHomeAuth', "{$user['user_id']}\t{$user['telephone']}\t{$user['password']}\t{$user['loginIp']}\t{$user['loginTime']}", $time);
 }
 
 //通过key 更新认证数据
@@ -235,7 +235,7 @@ function loginCheck()
     $username = isset($user['user_id']) ? $user['user_id']   : '';
     $password = isset($user['password']) ? $user['password'] : '';
     if (empty($username) || empty($password)) return false;
-    return $password == getVar('manage_'.$username) ? true : false;
+    return $password == getVar('xmwmwhome_'.$username) ? true : false;
 }
 
 //简化信息提示输出
