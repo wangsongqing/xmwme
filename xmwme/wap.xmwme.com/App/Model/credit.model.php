@@ -1,7 +1,7 @@
 <?php
  /**
  +---------------------------------------------------------------------------------------------------------------
- * 菜单数据操作
+ * 用户积分表Model
  +---------------------------------------------------------------------------------------------------------------
  */
 class creditModel extends modelMiddleware{
@@ -16,25 +16,15 @@ class creditModel extends modelMiddleware{
      * 数据表主键Id名称
      *
      */
-    public $pK = 'user_id';
+    public $pK = 'user_id';//主键
     
     /**
      * 尽可能的在model里面做一切相关的数据处理
      * @return object
      */
     public static function _model(){
-	$model = M('user_info');
-	return $model;
-    }
-    
-    /**
-     * 在本model里面引用别的model的试列
-     * @return array
-     */
-    public function selectOne(){
 	$model = M('credit');
-	$data = $model->findOne(1);
-	return $data;
+	return $model;
     }
     
     /**
@@ -45,7 +35,7 @@ class creditModel extends modelMiddleware{
      */
     public function credit_revision($admin_id)
     {
-        $sql    = sprintf("select * from %s where `user_id` = '$admin_id'", $this->getTable('credit',0,0) );
+        $sql    = sprintf("select * from %s where `user_id` = '$admin_id'", $this->getTable('credit',0) );
         $member = $this->getRow($sql);
 	if (empty($member)){
 	    $this->revisionKey = array("{all:all}");
