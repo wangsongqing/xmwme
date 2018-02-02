@@ -12,6 +12,7 @@ class actionMiddleware extends Action {
     //菜单列表
     public $menuArr = array(
         '用户管理' => array('index','log'),
+        '数据管理' => array('banner'),
     );
 
     /**
