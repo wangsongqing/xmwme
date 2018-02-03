@@ -65,13 +65,13 @@ class BannerAction extends actionMiddleware {
     public function edit(){
         extract($this->input);
         $id = isset($id)?$id:'';
-        if (empty($id)) {$this->redirect('参数错误!', Root . "banner/edit/");}   
+        if (empty($id)) {$this->redirect('参数错误!', Root . "banner/index/");}   
         $model = M('banner');
         if($isPost){
-            if (empty($activity_id)) {$this->redirect('请选择活动!', Root . "banner/add/");}
-            if (empty($status)) {$this->redirect('请活动状态!', Root . "banner/add/");}
-            if (empty($banner_name)) {$this->redirect('请填写banner名称!', Root . "banner/add/");}
-            if (empty($url)) {$this->redirect('请填写跳转url!', Root . "banner/add/");}            
+            if (empty($activity_id)) {$this->redirect('请选择活动!', Root . "banner/edit/?id={$id}");}
+            if (empty($status)) {$this->redirect('请活动状态!', Root . "banner/edit/?id={$id}");}
+            if (empty($banner_name)) {$this->redirect('请填写banner名称!', Root . "banner/edit/?id={$id}");}
+            if (empty($url)) {$this->redirect('请填写跳转url!', Root . "banner/edit/?id={$id}");}            
             $_data = array(
                 'activity_id' => $activity_id,
                 'banner_name' => $banner_name,
@@ -80,7 +80,7 @@ class BannerAction extends actionMiddleware {
                 'created' => time(),
                 'updated' => time(),
             );
-            if(!empty($filename)){
+            if (!empty($filename['tmp_name'])) {
                 $img_url = $this->upload();//上传图片
                 $_data['img_url'] = $img_url;
             }
