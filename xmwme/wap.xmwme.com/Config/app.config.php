@@ -3,10 +3,8 @@ $item   = explode(".", $_SERVER['HTTP_HOST']);
 $length = count($item);
 $domain = $item[$length-2].'.'.$item[$length-1];
 
-define('Hook', true);                                                                 //开启hook自定义配置         
-define('EditorImagePath', '../../../../Resource/attached/');                          //编辑器图片上传路径
-define('WebUrl', 'http://'.$_SERVER['SERVER_NAME'].'/'); 
-define('EditorImageUrl', WebUrl.'Resource/attached/');                                //图片显示地址
+define('Hook', true);                                                                 //开启hook自定义配置
+define('WebUrl', 'http://'.$_SERVER['SERVER_NAME'].'/');
 define('UploadImgPath', WebUrl.'Resource/');
 define('AuthKey', md5('a72686uCLwATXU2O'.$_SERVER['HTTP_USER_AGENT']));               //密钥
 define('CookiePath', '/');                                                            //cookie存放路径
