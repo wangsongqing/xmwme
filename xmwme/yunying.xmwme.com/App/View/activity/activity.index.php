@@ -51,7 +51,7 @@
                         <?php foreach ($data['record'] as $value) { ?>
                             <tr>
                                 <td><?= $value['id'] ?></td>
-                                <td><?= isset($value['key']) ? $value['key'] : '' ?></td>
+                                <td><?= isset($value['akey']) ? $value['akey'] : '' ?></td>
                                 <td><?= isset($value['activity_name']) ? $value['activity_name'] : '' ?></td>
                                 <td><?= isset($value['start_time']) ? date('Y-m-d',$value['start_time']) : '' ?></td>
                                 <td><?= isset($value['end_time']) ? date('Y-m-d',$value['end_time']) : '' ?></td>

@@ -12,7 +12,7 @@
                 <ul>
                     <li>
                         <h6>活动唯一key：</h6>
-                        <p><input class="tbox30" readonly="readonly" type="text" value="<?=isset($data['key'])?$data['key']:''?>" name="key" id="key"></p>
+                        <p><input class="tbox30" readonly="readonly" type="text" value="<?=isset($data['akey'])?$data['akey']:''?>" name="key" id="key"></p>
                     </li>
                     <li>
                         <h6>活动：</h6>

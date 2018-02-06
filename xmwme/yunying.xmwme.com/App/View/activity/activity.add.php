@@ -11,7 +11,7 @@
                 <ul>
                     <li>
                         <h6>活动唯一key：</h6>
-                        <p><input class="tbox30" type="text" name="key" id="key"></p>
+                        <p><input class="tbox30" type="text" name="akey" id="akey"></p>
                     </li>
                     <li>
                         <h6>活动名称：</h6>
