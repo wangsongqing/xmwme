@@ -26,3 +26,29 @@ $tbl['credit'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
+$tbl['credit_log'] = array(
+    'name'       => $prefix.'credit_log',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
+$tbl['banner'] = array(
+    'name'       => $prefix.'banner',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
+/*xm_activity 库 start*/
+$tbl['activity'] = array(
+    'name'       => $prefix.'activity',
+    'dbId'       => 'xm_activity',
+    'configFile' => $configDir.'xm_activity.php',
+);
+$tbl['activity_log'] = array(
+    'name'       => $prefix.'activity_log',
+    'dbId'       => 'xm_activity',
+    'configFile' => $configDir.'xm_activity.php',
+);
+$tbl['lian'] = array(
+    'name'       => $prefix.'lian',
+    'dbId'       => 'xm_activity',
+    'configFile' => $configDir.'xm_activity.php',
+);
