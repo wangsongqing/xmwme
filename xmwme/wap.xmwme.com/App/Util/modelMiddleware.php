@@ -168,7 +168,7 @@ class modelMiddleware extends Model {
      */
     public function startTransTable($slice = 0) {
         $table = $this->getTable($this->tableKey, $slice);
-        $result = $this->startTrans();
+        return $this->startTrans();
     }
     
     /**
@@ -176,7 +176,7 @@ class modelMiddleware extends Model {
 	 * @access public
 	 * @return boolean
 	 */
-	public function commitTransTable() {
+	public function commitTransTable($slice = 0) {
 	    $table = $this->getTable($this->tableKey, $slice);
 	    return $this->commit();
 	}
@@ -186,7 +186,7 @@ class modelMiddleware extends Model {
 	 * @access public
 	 * @return boolean
 	 */
-	public function rollbackTransTable() {
+	public function rollbackTransTable($slice = 0) {
 	    $table = $this->getTable($this->tableKey, $slice);
 	    return $this->rollback();
 	}
