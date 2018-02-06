@@ -1,5 +1,4 @@
 <?php
-
 /**
  * modelMiddleware  数据库公共方法处理中间件
  * @author       	Jimmy Wang 
@@ -26,9 +25,9 @@ class modelMiddleware extends Model {
      * @access public
      * @return array
      */
-    public function find($id, $iscached = 1, $slice = 0, $isReadOnly = 0, $isLock = 0) {
+    public function find($id, $iscached = 1, $slice = 0, $isLock = 0) {
         $this->cached = $iscached;
-        $table = $this->setServerReadWrite($slice, $isReadOnly);
+        $table = $this->setServerReadWrite($slice);
         //主键名
         $pk = $this->pK;
         if ($isLock == 1) {
@@ -49,10 +48,10 @@ class modelMiddleware extends Model {
      * @return array
       +-------------------------------------
      */
-    public function findOne($rule, $field = '*', $isReadOnly = 0, $iscached = 0) {
+    public function findOne($rule, $field = '*', $iscached = 1) {
         $this->cached = $iscached;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->setServerReadWrite($slice, $isReadOnly);
+        $table = $this->setServerReadWrite($slice);
         $where = where($rule);
         $sql = "select $field from $table $where limit 1";
         if (!empty($rule['exact'])) {
@@ -70,10 +69,10 @@ class modelMiddleware extends Model {
      * @access public
      * @return array
      */
-    public function findTop($rule, $field = '*', $isReadOnly = 0, $iscached = 0) {
+    public function findTop($rule, $field = '*', $iscached = 1) {
         $this->cached = $iscached;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->setServerReadWrite($slice, $isReadOnly);
+        $table = $this->setServerReadWrite($slice);
 
         $where = where($rule);
         $limit = isset($rule['limit']) ? $rule['limit'] : 5;
@@ -94,10 +93,10 @@ class modelMiddleware extends Model {
      * @access public
      * @return array
      */
-    public function findAll($rule = array(), $field = '*', $isReadOnly = 0, $iscached = 0) {
+    public function findAll($rule = array(), $field = '*', $iscached = 0) {
         $this->cached = $iscached;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->setServerReadWrite($slice, $isReadOnly);
+        $table = $this->setServerReadWrite($slice);
         $where = where($rule);
         $limit = isset($rule['limit']) ? $rule['limit'] : 20;
         $sql = "select $field from $table $where";
@@ -118,8 +117,8 @@ class modelMiddleware extends Model {
      * @access public
      * @return $table
      */
-    private function setServerReadWrite($slice, $isReadOnly) {
-        $table = $this->getTable($this->tableKey, $slice, $isReadOnly);
+    private function setServerReadWrite($slice) {
+        $table = $this->getTable($this->tableKey, $slice);
         return $table;
     }
 
@@ -130,7 +129,7 @@ class modelMiddleware extends Model {
      * @return boolean
      */
     public function add($arr, $slice = 0) {
-        $table = $this->getTable($this->tableKey, $slice, 0);
+        $table = $this->getTable($this->tableKey, $slice);
         $result = $this->insert($table, $arr);
         $lastInsId = $this->getLastInsId();                                           //插入成功，返回记录
         return $result ? $lastInsId : false;                                          //确认插入成功后返回成功，否则提交失败
@@ -143,7 +142,7 @@ class modelMiddleware extends Model {
      */
     function edit($arr, $rule) { //return false;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->getTable($this->tableKey, $slice, 0);
+        $table = $this->getTable($this->tableKey, $slice);
         $condition = where($rule, 1);
         $result = $this->update($table, $arr, $condition);
         return $result ? $result : false;
@@ -156,7 +155,7 @@ class modelMiddleware extends Model {
      */
     public function del($rule) {
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->getTable($this->tableKey, $slice, 0);
+        $table = $this->getTable($this->tableKey, $slice);
         $condition = where($rule, 1);
         $result = $this->delete($table, $condition);
         return $result ? true : false;
@@ -168,9 +167,29 @@ class modelMiddleware extends Model {
      * @param  int $slice 链接数据库ID
      */
     public function startTransTable($slice = 0) {
-        $table = $this->getTable($this->tableKey, $slice, 0);
-        $result = $this->startTrans();
+        $table = $this->getTable($this->tableKey, $slice);
+        return $this->startTrans();
     }
+    
+    /**
+	 * 提交事务
+	 * @access public
+	 * @return boolean
+	 */
+	public function commitTransTable($slice = 0) {
+	    $table = $this->getTable($this->tableKey, $slice);
+	    return $this->commit();
+	}
+	
+	/**
+	 * 事务回滚
+	 * @access public
+	 * @return boolean
+	 */
+	public function rollbackTransTable($slice = 0) {
+	    $table = $this->getTable($this->tableKey, $slice);
+	    return $this->rollback();
+	}
 
     /**
      * 插入记录
@@ -216,7 +235,7 @@ class modelMiddleware extends Model {
     public function getCount($rule, $fields = "*") {
         $this->cached = 0;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->getTable($this->tableKey, $slice, 0);
+        $table = $this->getTable($this->tableKey, $slice);
         $where = where($rule);
         $sql = "select count($fields) as total from $table $where";
         $row = $this->getRow($sql);
@@ -232,7 +251,7 @@ class modelMiddleware extends Model {
     public function getTopTrans($rule, $field = '*') {
         $this->cached = 0;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
-        $table = $this->getTable($this->tableKey, $slice, 0);
+        $table = $this->getTable($this->tableKey, $slice);
         $where = where($rule);
         $limit = isset($rule['limit']) ? $rule['limit'] : 10000;
         $sql = "select $field from $table $where limit $limit for update";
