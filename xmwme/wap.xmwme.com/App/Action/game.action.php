@@ -7,7 +7,11 @@
 class GameAction extends actionMiddleware
 {   
     public function index(){
-        $this->display('game/game.index.php');
+        $model = M('activity');
+        $rule['exact']['status'] = 1;
+        $rule['limit'] = 4;
+        $data = $model->findTop($rule);
+        $this->display('game/game.index.php',array('data'=>$data));
     }
 }
 

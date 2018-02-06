@@ -11,8 +11,14 @@ class IndexAction extends actionMiddleware
      * 首页
      */
     public function index()
-    {
-	$this->display('index/index.php');
+    {   
+        $model = M('banner');
+        $rule['exact']['status'] = 1;
+        $rule['limit'] = 4;
+        $data = $model->findTop($rule);
+	$this->display('index/index.php',array(
+            'data'=>$data,
+        ));
     }
     
     /**
