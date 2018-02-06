@@ -49,5 +49,43 @@ class creditModel extends modelMiddleware{
 	}
 	 $this->revision();
     }
+
+    /**
+     * 用户积分记录 获得积分处理
+     * @param type $num_credit
+     * @param type $user_id
+     * @return type
+     * @throws type
+     */
+    public function change_user_credit($num_credit,$user_id,$activity_id){
+        $flag = 0;
+        $msg = '';
+        try{
+            $startTrans = self::_model()->startTransTable();
+            if(!$startTrans) throw new Exception('开启事务失败！');
+            $time = time();
+            $_sql = "UPDATE `xm_credit` SET credit=credit+{$num_credit},all_credit=all_credit+{$num_credit} WHERE user_id={$user_id}";
+            $re = self::_model()->execate($_sql);
+            if(!$re){throw Exception('更新积分表失败！');}
+            $change_credit_data = array(
+                'user_id'=>$user_id,
+                'credit'=>$num_credit,
+                'type'=>1,
+                'created'=>$time,
+                'updated'=>$time,
+                'activity_id'=>$activity_id,
+            );
+            $credit_log_insert = M('credit_log')->add($change_credit_data);
+            if(!$credit_log_insert) throw new Exception('积分日志表记录失败！');
+            $commit = self::_model()->commitTransTable();
+            if(!$commit) throw Exception('提交失败！');
+            $flag = 1;
+        }  catch (Exception $e) {
+            $rollback = self::_model()->rollbackTransTable();
+            if(!$rollback) throw new Exception('提交失败！');
+            $msg = $e->getMessage();
+        }
+        return $flag;
+    }
  }
 ?>
