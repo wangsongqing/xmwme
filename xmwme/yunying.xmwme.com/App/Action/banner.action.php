@@ -69,7 +69,6 @@ class BannerAction extends actionMiddleware {
         $model = M('banner');
         if($isPost){
             if (empty($activity_id)) {$this->redirect('请选择活动!', Root . "banner/edit/?id={$id}");}
-            if (empty($status)) {$this->redirect('请活动状态!', Root . "banner/edit/?id={$id}");}
             if (empty($banner_name)) {$this->redirect('请填写banner名称!', Root . "banner/edit/?id={$id}");}
             if (empty($url)) {$this->redirect('请填写跳转url!', Root . "banner/edit/?id={$id}");}            
             $_data = array(
