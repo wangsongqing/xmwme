@@ -30,9 +30,11 @@
         <link href="<?php echo Resource;?>css/swiper.min.css" type="text/css" rel="stylesheet" />
         <div class="container-fluid">
             <div class="banner swiper-container">
+                <?php foreach($data as $value){ ?>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="/lian/index/"><img src="<?php echo Resource; ?>images/banner/banner151174905248885.jpg"></a></div>
+                    <div class="swiper-slide"><a href="<?=$value['url']?>"><img src="<?=$value['img_url']?>"></a></div>
                 </div>
+                <?php } ?>
             </div>
             <div class="panel">
                 <!--第一组-->

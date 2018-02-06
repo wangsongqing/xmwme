@@ -30,34 +30,22 @@
         <div class="game-w">
             <div class="game-list">
                 <ul>
+                    <?php foreach($data as $value){ ?>
                     <li>
                         <div class="inner">
-                            <a><img src="http://img.bbqb.cn/goods/201701/93e587abe403242dd3a86ecb02743d46.jpg"></a>
+                            <a><img src="<?=$value['img_url']?>"></a>
                             <dl>
                                 <dt>
-                                <h2>打地鼠</h2>
-                                积分兑换打地鼠游戏机会								</dt>
+                                <h2><?=$value['activity_name']?></h2>
+                                玩连连看游戏攒积分了								
+                                </dt>
                                 <dd>
-                                    <span class="l"></span>所需宝贝豆：<span class="c-red">30</span>
-                                    <a href="javascript:exchange(1)" class="ui-btn btn-submit">立即兑换</a>
+                                    <a href="<?=$value['url']?>" class="ui-btn btn-submit">立即开始</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
-                    <li>
-                        <div class="inner">
-                            <a><img src="http://img.bbqb.cn/goods/201701/8d09c294028fe0c5099a6ba0ddd2073e.jpg"></a>
-                            <dl>
-                                <dt>
-                                <h2>接鸡蛋</h2>
-                                游戏结束后扣除积分								</dt>
-                                <dd>
-                                    <span class="l"></span>所需宝贝豆：<span class="c-red">30</span>
-                                    <a href="javascript:exchange(2)" class="ui-btn btn-submit">立即兑换</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
