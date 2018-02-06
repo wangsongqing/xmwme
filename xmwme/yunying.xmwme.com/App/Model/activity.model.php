@@ -38,6 +38,10 @@ class ActivityModel extends modelMiddleware {
             $this->revisionKey = array(
                 "{all:all}",
                 "{id:$id}",
+                "{status:1}",
+                "{status:0}",
+                "{akey:$akey}{status:1}",
+                "{akey:$akey}{status:0}",
             );
         }
         $this->revision();
