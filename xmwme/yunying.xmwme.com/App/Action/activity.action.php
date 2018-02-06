@@ -30,7 +30,7 @@ class ActivityAction extends actionMiddleware {
             if (empty($url))
                 $this->redirect('活动链接不能为空!', Root . "activity/add/");
             $_data = array(
-                'key'=>$key,
+                'akey'=>$akey,
                 'activity_name' => $activity_name,
                 'start_time' => strtotime($start_time),
                 'end_time' => strtotime($end_time),
