@@ -15,9 +15,22 @@ class IndexAction extends actionMiddleware
         $model = M('banner');
         $rule['exact']['status'] = 1;
         $rule['limit'] = 4;
-        $data = $model->findTop($rule);
+        $data = $model->findTop($rule);//banner操作
+        
+        //积分动态
+        $credit_model = M('credit_log');
+        $_rule['exact']['user_id'] = $this->login_user['user_id'];
+        $_rule['order']['id'] = 'desc';
+        $credit_data = $credit_model->findOne($_rule);
+        if(isset($credit_data['activity_id'])){
+            $activity = M('activity')->find($credit_data['activity_id']);
+            if(!empty($activity)){
+                $credit_data['activity_name'] = $activity['activity_name'];
+            }
+        }
 	$this->display('index/index.php',array(
             'data'=>$data,
+            'credit_data'=>$credit_data
         ));
     }
     
