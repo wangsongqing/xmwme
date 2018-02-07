@@ -78,12 +78,13 @@ class creditModel extends modelMiddleware{
             $credit_log_insert = M('credit_log')->add($change_credit_data);
             if(!$credit_log_insert) throw new Exception('积分日志表记录失败！');
             $commit = self::_model()->commitTransTable();
-            if(!$commit) throw Exception('提交失败！');
+            if(!$commit) throw Exception('事务提交失败！');
             $flag = 1;
         }  catch (Exception $e) {
             $rollback = self::_model()->rollbackTransTable();
-            if(!$rollback) throw new Exception('提交失败！');
+            if(!$rollback) throw new Exception('事务回滚失败！');
             $msg = $e->getMessage();
+             writeLog('用户:'.$user_id.'，连连看积分数据写入数据失败，表:credit', 'lian.log');
         }
         return $flag;
     }
