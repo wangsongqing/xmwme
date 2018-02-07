@@ -95,7 +95,7 @@ class LianModel extends modelMiddleware {
             if(!$startTrans) throw new Exception('开启事务失败！');
             $activity_info = M('activity')->getActivity('lian');
             $score = $num * 5;
-            $credit = floor($score * 0.01);
+            $credit = ceil($score * 0.01);
             $_data = array(
                 'user_id'=>$user_info['user_id'],
                 'telephone'=>$user_info['telephone'],
