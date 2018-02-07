@@ -61,9 +61,10 @@
                 </div>
             </div>
             <div class="dynamics">
+                <?php if($login_user_id!=0){ ?>
                 <i class="icon icon-speaker"></i>
                 <div class="rt">
-                    <a href="/account/capital_log/?type=withdraw">
+                    <a href="/my/index/">
                         <div class="meta">
                             <p>积分最新动态</p>
                             <time><?=isset($credit_data['created'])?date('Y-m-d H:i:s',$credit_data['created']):''?></time> 
@@ -73,8 +74,13 @@
                         <?php }else{ ?>
                         <span>已经消耗5积分，购买馒头</span>
                         <?php } ?>
-                    </a>
+                    </a>                    
                 </div>
+                <?php }else{ ?>
+                <div class="meta">
+                        <p>你还没有登录哦！！</p>
+                    </div>      
+                <?php } ?>
             </div>
         </div>
         
