@@ -9,7 +9,7 @@ class modelMiddleware extends Model {
 
     public $cached = false; //是否开启缓存
     public $expire = 3600; //缓存时间(单位: 秒)	
-    public $tableKey = 'admin'; //数据表key -- 默认指定用户表，可随意指定
+    public $tableKey = ''; //数据表key -- 默认指定用户表，可随意指定
     public $pK = 'id'; //数据表主键Id名称
     public $cachePreKey = '';
 
