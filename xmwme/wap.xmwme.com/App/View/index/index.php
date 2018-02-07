@@ -48,7 +48,7 @@
                 <i class="tag"></i>
                 <div class="text">
                     <a href="/fixed/fcapital_income/?type=1">
-                        <p class="p1">萌萌连连看</p>
+                        <p class="p1">连连看</p>
                         <ul>
                             <li>考考你的眼力</li>
                             <li>快快挑战吧</li>
@@ -56,7 +56,7 @@
                         </ul>
                     </a>
                     <div class="btn-w">
-                        <a href="/buy/index/?ptype=1" class="ui-btn btn-submit">马上开始</a>
+                        <a href="/lian/index/" class="ui-btn btn-submit">马上开始</a>
                     </div>
                 </div>
             </div>
@@ -65,10 +65,14 @@
                 <div class="rt">
                     <a href="/account/capital_log/?type=withdraw">
                         <div class="meta">
-                            <p>萌豆最新动态</p>
-                            <time>2017-11-28 15:47:01</time> 
+                            <p>积分最新动态</p>
+                            <time><?=isset($credit_data['created'])?date('Y-m-d H:i:s',$credit_data['created']):''?></time> 
                         </div>
-                        <div class="text">已成功通过连连看获取1个</div>
+                        <?php if($credit_data['type']==1){ ?>
+                        <div class="text">已成功通过<?=isset($credit_data['activity_name'])?$credit_data['activity_name']:''?>获取<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</div>
+                        <?php }else{ ?>
+                        <span>已经消耗5积分，购买馒头</span>
+                        <?php } ?>
                     </a>
                 </div>
             </div>
