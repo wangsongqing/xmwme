@@ -19,7 +19,8 @@ class IndexAction extends actionMiddleware
         
         //积分动态
         $credit_model = M('credit_log');
-        $_rule['exact']['user_id'] = $this->login_user['user_id'];
+        $login_user_id = isset($this->login_user['user_id'])?$this->login_user['user_id']:0;
+        $_rule['exact']['user_id'] = $login_user_id;
         $_rule['order']['id'] = 'desc';
         $credit_data = $credit_model->findOne($_rule);
         if(isset($credit_data['activity_id'])){
@@ -30,7 +31,8 @@ class IndexAction extends actionMiddleware
         }
 	$this->display('index/index.php',array(
             'data'=>$data,
-            'credit_data'=>$credit_data
+            'credit_data'=>$credit_data,
+            'login_user_id'=>$login_user_id
         ));
     }
     
