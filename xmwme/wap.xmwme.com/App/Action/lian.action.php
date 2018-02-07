@@ -88,10 +88,10 @@ class LianAction extends actionMiddleware {
      * 连连我的成绩
      */
      public function myscore(){
-        $user_id  = '1065777';
+        $user_id  = $this->login_user['user_id'];
 	$_rule['exact']['user_id'] = $user_id;
 	$_rule['order']['id'] = 'desc';
-	$_rule['limit'] = 6;
+	$_rule['limit'] = 20;
         $activity_info = M('activity')->getActivity('lian');
 	$mylist = M('lian')->findAll($_rule);//我的成绩列表
         $allData = M('lian')->get_my_score($user_id,$activity_info['start_time'], $activity_info['end_time'],0);//我的成绩总分和总排名
