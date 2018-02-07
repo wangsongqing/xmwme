@@ -55,7 +55,7 @@ class LianAction extends actionMiddleware {
      */
     public function send() {
         extract($this->input);
-        $num = isset($num) ? $num : 20;
+        $num = isset($num) ? $num : 0;
         if ($num == 27) {$is_floop = 0;} else {$is_floop = 0;}
         $activity_info = M('activity')->getActivity('lian');
         if(empty($activity_info)){ die('活动已经结束！'); }
