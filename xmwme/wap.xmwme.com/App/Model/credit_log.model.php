@@ -23,17 +23,17 @@ class credit_logModel extends modelMiddleware{
      * @return object
      */
     public static function _model(){
-	$model = M('credit_id');
+	$model = M('credit_log');
 	return $model;
     }
     
     /**
      * 刷新mem缓存
-     * @param  $admin_id
+     * @param  $id
      * @access public
      * @return void
      */
-    public function credit_id_revision($id)
+    public function credit_log_revision($id)
     {
         $sql    = sprintf("select * from %s where `id` = '$id'", $this->getTable('credit_log',0) );
         $member = $this->getRow($sql);
@@ -45,6 +45,7 @@ class credit_logModel extends modelMiddleware{
 	    $this->revisionKey = array(
 		"{all:all}",
 		"{id:$id}",
+                "{user_id:$user_id}"
 	    );
 	}
 	 $this->revision();
