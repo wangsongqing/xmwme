@@ -29,13 +29,13 @@ class creditModel extends modelMiddleware{
     
     /**
      * 刷新mem缓存
-     * @param  $admin_id
+     * @param  $user_id
      * @access public
      * @return void
      */
-    public function credit_revision($admin_id)
+    public function credit_revision($user_id)
     {
-        $sql    = sprintf("select * from %s where `user_id` = '$admin_id'", $this->getTable('credit',0) );
+        $sql    = sprintf("select * from %s where `user_id` = '$user_id'", $this->getTable('credit',0) );
         $member = $this->getRow($sql);
 	if (empty($member)){
 	    $this->revisionKey = array("{all:all}");
@@ -77,6 +77,7 @@ class creditModel extends modelMiddleware{
             );
             $credit_log_insert = M('credit_log')->add($change_credit_data);
             if(!$credit_log_insert) throw new Exception('积分日志表记录失败！');
+            M('credit_log')->credit_log_revision($credit_log_insert);//刷新缓存
             $commit = self::_model()->commitTransTable();
             if(!$commit) throw Exception('事务提交失败！');
             $flag = 1;
@@ -84,7 +85,7 @@ class creditModel extends modelMiddleware{
             $rollback = self::_model()->rollbackTransTable();
             if(!$rollback) throw new Exception('事务回滚失败！');
             $msg = $e->getMessage();
-             writeLog('用户:'.$user_id.'，连连看积分数据写入数据失败，表:credit', 'lian.log');
+             writeLog('用户:'.$user_id.'，连连看积分数据写入数据失败，表:credit，错误信息:'.$msg, 'lian.log');
         }
         return $flag;
     }
