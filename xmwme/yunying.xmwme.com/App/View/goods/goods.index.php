@@ -55,7 +55,7 @@
                                 <td><?= isset($value['store']) ? $value['store'] : '' ?></td>
                                 <td><?= isset($value['status']) && $value['status'] == 1 ? '上架' : '下架' ?></td>
                                 <td><?= isset($value['credit']) ? $value['credit'] : '' ?></td>
-                                <td><a href="<?= isset($value['list_pic']) ? $value['list_pic'] : '' ?>"><img width="40" src="<?= isset($value['list_pic']) ? $value['list_pic'] : '' ?>"/><a/></td>
+                                <td><a target="_blank" href="<?= isset($value['list_pic']) ? $value['list_pic'] : '' ?>"><img width="40" src="<?= isset($value['list_pic']) ? $value['list_pic'] : '' ?>"/><a/></td>
                                 <td><?= isset($value['created']) ? date('Y-m-d H:i:s', $value['created']) : '' ?></td>
                                 <td>
                                     <a href="<?php echo Root; ?>goods/edit/?id=<?= $value['id'] ?>">编辑</a>
