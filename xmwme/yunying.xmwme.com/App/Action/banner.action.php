@@ -76,7 +76,6 @@ class BannerAction extends actionMiddleware {
                 'banner_name' => $banner_name,
                 'url' => $url,
                 'status' => $status,
-                'created' => time(),
                 'updated' => time(),
             );
             if (!empty($filename['tmp_name'])) {
