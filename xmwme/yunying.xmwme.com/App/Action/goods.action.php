@@ -76,10 +76,19 @@ class GoodsAction extends actionMiddleware
         extract($this->input);
         $id = isset($id)?$id:'';
         if($id){
+            $model = M('goods');
+            $data = $model->find($id);
             $rule['exact']['id'] = $id;
-            $model = M('goods')->del($rule);
-            if($model){
+            $re = $model->del($rule);
+            if($re){
                 $model->goods_revision($id);//刷新缓存
+                if(!empty($data)){//删除的时候删除相关图片，防止图片占用过多的存储
+                    $img_name = pathinfo($data['list_pic']);
+                    $img_path = './Resource/uplodes/'.$img_name['basename'];
+                    if(file_exists($img_path)){
+                        unlink($img_path);
+                    }
+                }
                 $this->redirect('删除成功!', Root . "goods/index/");
             }else{
                 $this->redirect('删除失败!', Root . "goods/index/");
