@@ -54,7 +54,7 @@
                                 <td><?= isset($value['banner_name']) ? $value['banner_name'] : '' ?></td>
                                 <td><?= isset($value['activity_id']) ? $value['activity_id'] : '' ?></td>
                                 <td><?= isset($value['url']) ? $value['url'] : '' ?></td>
-                                <td><a href="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"><img width="40" src="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"/><a/></td>
+                                <td><a target="_blank" href="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"><img width="40" src="<?= isset($value['img_url']) ? $value['img_url'] : '' ?>"/><a/></td>
                                 <td><?= isset($value['status']) && $value['status'] == 1 ? '启用' : '停用' ?></td>
                                 <td><?= isset($value['created']) ? date('Y-m-d H:i:s', $value['created']) : '' ?></td>
                                 <td>
