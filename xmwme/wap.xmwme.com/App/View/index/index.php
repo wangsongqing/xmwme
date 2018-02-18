@@ -72,7 +72,7 @@
                         <?php if($credit_data['type']==1){ ?>
                         <div class="text">已成功通过<?=isset($credit_data['activity_name'])?$credit_data['activity_name']:''?>获取<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</div>
                         <?php }else{ ?>
-                        <span>已经消耗5积分，购买馒头</span>
+                        <span>成功兑换<?=isset($credit_data['goods_name'])?$credit_data['goods_name']:''?>,消耗<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</span>
                         <?php } ?>
                     </a>                    
                 </div>
