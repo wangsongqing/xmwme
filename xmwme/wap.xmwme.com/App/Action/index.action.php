@@ -23,10 +23,16 @@ class IndexAction extends actionMiddleware
         $_rule['exact']['user_id'] = $login_user_id;
         $_rule['order']['id'] = 'desc';
         $credit_data = $credit_model->findOne($_rule);
-        if(isset($credit_data['activity_id'])){
+        if(isset($credit_data['activity_id']) && $credit_data['activity_id']!=0){
             $activity = M('activity')->find($credit_data['activity_id']);
             if(!empty($activity)){
                 $credit_data['activity_name'] = $activity['activity_name'];
+            }
+        }
+        if(isset($credit_data['goods_id']) && $credit_data['goods_id']!=0){
+            $goods = M('goods')->find($credit_data['goods_id']);
+            if(!empty($goods)){
+                $credit_data['goods_name'] = $goods['goods_name'];
             }
         }
 	$this->display('index/index.php',array(
