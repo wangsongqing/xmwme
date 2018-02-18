@@ -37,6 +37,16 @@ $tbl['goods'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
+$tbl['orders'] = array(
+    'name'       => $prefix.'orders',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
+$tbl['user_info'] = array(
+    'name'       => $prefix.'user_info',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
 /*xm_activity 库 start*/
 $tbl['activity'] = array(
     'name'       => $prefix.'activity',
