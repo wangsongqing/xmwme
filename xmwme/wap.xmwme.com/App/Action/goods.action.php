@@ -15,7 +15,7 @@ class GoodsAction extends actionMiddleware {
         '-1004'=>'积分处理失败',
         '-1005'=>'减库存处理失败',
         '-1006'=>'积分变动日志记录失败',
-        '-1006'=>'订单生成失败'
+        '-1007'=>'订单生成失败'
     );
     public function index() {
         $is_login = isset($this->login_user['user_id']) ? $this->login_user['user_id'] : 0;
