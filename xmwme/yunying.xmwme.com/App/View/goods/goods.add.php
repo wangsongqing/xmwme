@@ -28,6 +28,15 @@
                         </p>
                     </li>
                     <li>
+                        <h6>商品类型：</h6>
+                        <p>
+                            <select name="goods_type" id="goods_type" class="sbox32" >
+                                <option value="1">虚拟</option>
+                                <option value="2">实物</option>
+                            </select>
+                        </p>
+                    </li>
+                    <li>
                         <h6>所需积分：</h6>
                         <p><input class="tbox30" type="text" value="" name="credit" id="credit"></p>
                     </li>

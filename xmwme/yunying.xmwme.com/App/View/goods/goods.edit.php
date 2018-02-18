@@ -27,6 +27,15 @@
                             </select>
                         </p>
                     </li>
+                     <li>
+                        <h6>商品类型：</h6>
+                        <p>
+                            <select name="goods_type" id="goods_type" class="sbox32" >
+                                <option value="1" <?=isset($data['goods_type'])&&$data['goods_type']==1?'selected':''?>>虚拟</option>
+                                <option value="2" <?=isset($data['goods_type'])&&$data['goods_type']==2?'selected':''?>>实物</option>
+                            </select>
+                        </p>
+                    </li>
                     <li>
                         <h6>所需积分：</h6>
                         <p><input class="tbox30" type="text" value="<?=isset($data['credit'])?$data['credit']:''?>" name="credit" id="credit"></p>

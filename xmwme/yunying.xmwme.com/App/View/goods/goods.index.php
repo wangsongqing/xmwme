@@ -41,6 +41,7 @@
                             <th>商品名称</th>
                             <th>库存</th>
                             <th>状态</th>
+                            <th>商品类型</th>
                             <th>兑换积分</th>
                             <th>详情图片</th>
                             <th>创建时间</th>
@@ -54,6 +55,7 @@
                                 <td><?= isset($value['goods_name']) ? $value['goods_name'] : '' ?></td>
                                 <td><?= isset($value['store']) ? $value['store'] : '' ?></td>
                                 <td><?= isset($value['status']) && $value['status'] == 1 ? '上架' : '下架' ?></td>
+                                <td><?= isset($value['goods_type']) && $value['goods_type'] == 1 ? '虚拟' : '实物' ?></td>
                                 <td><?= isset($value['credit']) ? $value['credit'] : '' ?></td>
                                 <td><a target="_blank" href="<?= isset($value['list_pic']) ? $value['list_pic'] : '' ?>"><img width="40" src="<?= isset($value['list_pic']) ? $value['list_pic'] : '' ?>"/><a/></td>
                                 <td><?= isset($value['created']) ? date('Y-m-d H:i:s', $value['created']) : '' ?></td>
