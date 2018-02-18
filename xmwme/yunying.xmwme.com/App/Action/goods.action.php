@@ -24,6 +24,7 @@ class GoodsAction extends actionMiddleware
                 'status'=>$status,
                 'credit'=>$credit,
                 'content'=>$content,
+                'goods_type'=>$goods_type,
                 'created'=>time(),
                 'updated'=>time(),
             );
@@ -51,6 +52,7 @@ class GoodsAction extends actionMiddleware
                 'status'=>isset($status)?$status:0,
                 'credit'=>isset($credit)?$credit:0,
                 'content'=>isset($content)?$content:'',
+                'goods_type'=>isset($goods_type)?$goods_type:1,
                 'updated'=>time(),
             );
             if (!empty($filename['tmp_name'])) {
