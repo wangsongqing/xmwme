@@ -489,5 +489,15 @@ function initWechat(){
     return $wechat;
 }
 
+/**
+ * 生成订单
+ * @param int $user_id
+ * @return string
+ */
+function get_order_sn($user_id){
+    if($user_id <= 0) return false;
+    $order_str = date('ymdHis').rand(0,9).sprintf("%09d", $user_id);
+    return $order_str;
+}
     
 

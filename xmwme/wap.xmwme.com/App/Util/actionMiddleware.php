@@ -81,6 +81,7 @@ class actionMiddleware extends Action {
             'login' => array('index','password','regeze','ajaxlogin','verify','sendmsg','ajaxregister'),
             'game'  => array('index'),
             'shop'  => array('index'),
+            'goods' => array('index','detail')
         );
         //获取用户登录信息
         if (loginCheck()) {

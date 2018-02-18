@@ -1,15 +1,15 @@
 <?php
  /**
  +---------------------------------------------------------------------------------------------------------------
- * 用户积分表Model
+ * 订单表表Model
  +---------------------------------------------------------------------------------------------------------------
  */
-class credit_logModel extends modelMiddleware{
+class OrdersModel extends modelMiddleware{
 
 /**
      * 数据表key
      */
-    public $tableKey = 'credit_log';
+    public $tableKey = 'orders';
     public  $cached  = false;
 
     /**
@@ -23,39 +23,35 @@ class credit_logModel extends modelMiddleware{
      * @return object
      */
     public static function _model(){
-	$model = M('credit_log');
+	$model = M('orders');
 	return $model;
     }
     
     /**
-     * 做数据入库
+     * 生成订单并入库
      * @param type $user_id
-     * @param type $credit
-     * @param type $type
-     * @param type $activity_id
      * @param type $goods_id
      */
-    public function add_data($user_id,$credit=0,$type=1,$activity_id,$goods_id){
+    public function get_orders($user_id,$goods_id,$goods_type=1){
+        $oreder = get_order_sn($user_id);
         $_data = array(
             'user_id'=>$user_id,
-            'credit'=>$credit,
-            'type'=>$type,
-            'activity_id'=>$activity_id,
+            'orders_num'=>$oreder,
             'goods_id'=>$goods_id,
+            'goods_type'=>$goods_type,
             'created'=>time(),
             'updated'=>time(),
         );
-        $insert_id = self::_model()->add($_data);
-        return $insert_id;
+        return self::_model()->add($_data);
     }
-    
+
     /**
      * 刷新mem缓存
      * @param  $id
      * @access public
      * @return void
      */
-    public function credit_log_revision($id)
+    public function orders_revision($id)
     {
         $sql    = sprintf("select * from %s where `id` = '$id'", $this->getTable($this->tableKey,0) );
         $member = $this->getRow($sql);
@@ -67,10 +63,10 @@ class credit_logModel extends modelMiddleware{
 	    $this->revisionKey = array(
 		"{all:all}",
 		"{id:$id}",
-                "{user_id:$user_id}"
 	    );
 	}
 	 $this->revision();
     }
+    
  }
 ?>
