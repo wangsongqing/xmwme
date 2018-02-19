@@ -214,7 +214,7 @@
 
 <script src="/Resource/js/swiper.min.js"></script>
 <script src="/Resource/js/rsa/rsa.js"></script>
-<script src="/Resource/js/rsa/edai_encryption.js"></script>
+<script src="/Resource/js/rsa/xmwme_encryption.js"></script>
 <script src="/Resource/js/account/cg.js?1704171734"></script>
 <script type="text/javascript">
     var startX, startY, endX, endY, eLeft, eTop;
