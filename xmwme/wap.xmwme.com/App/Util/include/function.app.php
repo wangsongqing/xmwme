@@ -128,7 +128,7 @@ function run_encryption($str)
  * @param string $type
  * @return string
  */
-function edaiapp_RSA($str,$type='decode'){
+function xmwme_RSA($str,$type='decode'){
     $returnstr= "";
     if($type=='encode'){//公钥加密
         $pu_key = openssl_pkey_get_public(RSA_public_key);//这个函数可用来判断公钥是否是可用的
