@@ -38,7 +38,7 @@ class GoodsModel extends modelMiddleware{
         $code = '1';
         try{
             $model_goods = self::_model();
-            $model_goods->startTransTable();//开启事务
+            $model_goods->startTrans();//开启事务
             $goods = $model_goods->find($gid);
             $need_credit = $num * $goods['credit']; //获取此次需要的积分
             $credit_model = M('credit'); //获取用户可用积分
@@ -71,10 +71,10 @@ class GoodsModel extends modelMiddleware{
             //生成订单
             $oreder = M('orders')->get_orders($user_id,$gid,$goods['goods_type']);
             if(!$oreder) throw new Exception('订单生成失败','-1007');
-            $model_goods->commitTransTable();//事务提交  
+            $model_goods->commit();//事务提交  
             
         } catch (Exception $e) {
-            $model_goods->rollbackTransTable();//事务回滚
+            $model_goods->rollback();//事务回滚
             $code = $e->getCode();
             $msg = $e->getMessage();
         }

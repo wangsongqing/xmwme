@@ -61,7 +61,7 @@ class creditModel extends modelMiddleware{
         $flag = 0;
         $msg = '';
         try{
-            $startTrans = self::_model()->startTransTable();
+            $startTrans = self::_model()->startTrans();
             if(!$startTrans) throw new Exception('开启事务失败！');
             $time = time();
             $_sql = "UPDATE `xm_credit` SET credit=credit+{$num_credit},all_credit=all_credit+{$num_credit} WHERE user_id={$user_id}";
@@ -78,11 +78,11 @@ class creditModel extends modelMiddleware{
             $credit_log_insert = M('credit_log')->add($change_credit_data);
             if(!$credit_log_insert) throw new Exception('积分日志表记录失败！');
             M('credit_log')->credit_log_revision($credit_log_insert);//刷新缓存
-            $commit = self::_model()->commitTransTable();
+            $commit = self::_model()->commit();
             if(!$commit) throw Exception('事务提交失败！');
             $flag = 1;
         }  catch (Exception $e) {
-            $rollback = self::_model()->rollbackTransTable();
+            $rollback = self::_model()->rollback();
             if(!$rollback) throw new Exception('事务回滚失败！');
             $msg = $e->getMessage();
              writeLog('用户:'.$user_id.'，连连看积分数据写入数据失败，表:credit，错误信息:'.$msg, 'lian.log');

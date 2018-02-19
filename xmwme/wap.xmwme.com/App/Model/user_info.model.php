@@ -52,7 +52,7 @@ class user_infoModel extends modelMiddleware{
     public function register($telephone, $password, $invite_code){
         $err_arr = array();
         try{
-            $start_trans = self::_model()->startTransTable();
+            $start_trans = self::_model()->startTrans();
             if(!empty($invite_code)){
                 $rule['exact']['form_code'] = $invite_code;
                 $form_user = self::_model()->findOne($rule);

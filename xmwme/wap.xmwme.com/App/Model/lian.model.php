@@ -91,7 +91,7 @@ class LianModel extends modelMiddleware {
         $flag = 0;
         $msg = '';
         try {
-            $startTrans = self::_model()->startTransTable();
+            $startTrans = self::_model()->startTrans();
             if(!$startTrans) throw new Exception('开启事务失败！');
             $activity_info = M('activity')->getActivity('lian');
             $score = $num * 5;
@@ -109,11 +109,11 @@ class LianModel extends modelMiddleware {
             if(!$re_lian) throw new Exception('活动数据参入失败！');
             $re_activity_log = M('activity_log')->add_activity_log($user_info['user_id'],$activity_info['id']);
             if(!$re_activity_log) throw new Exception('活动日志数据插入失败！');
-            $commitTrans = self::_model()->commitTransTable();
+            $commitTrans = self::_model()->commit();
             if(!$commitTrans) throw new Exception('提交事务失败！');
             $flag = 1;
         } catch (Exception $e) {
-            $rollbackTrans = self::_model()->rollbackTransTable();
+            $rollbackTrans = self::_model()->rollback();
             if(!$rollbackTrans) throw new Exception('事务回滚失败！');
             $msg = $e->getMessage();
             writeLog('用户:'.$user_info['user_id'].'连连看数据写入数据失败', 'lian.log');
