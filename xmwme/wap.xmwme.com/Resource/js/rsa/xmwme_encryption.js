@@ -23,7 +23,7 @@ var encryptionJs = {
         var postArr = new Array();
         $.each(datas, function(i, v) {
             var vv = v.split("=");
-            postArr.push(vv[0] + '=' + (vv[1] ? encryptionJs.edai_encryption(vv[1]) : ''));
+            postArr.push(vv[0] + '=' + (vv[1] ? encryptionJs.xmwme_encryption(vv[1]) : ''));
         });
         postStr = postArr.join('&');
         return postStr;

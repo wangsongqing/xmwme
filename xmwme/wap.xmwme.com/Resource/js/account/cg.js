@@ -9,7 +9,7 @@ var cgJs = {
     		return false;
     	}
     	if(cgJs.aregister == true) return false;
-    	password = encryptionJs.edai_encryption($('#password').val());
+    	password = encryptionJs.xmwme_encryption($('#password').val());
     	agreement = $("input[name='agreement']").is(':checked');
     	BB.popup.loading.show();
     	cgJs.aregister = true;
