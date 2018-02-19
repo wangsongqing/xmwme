@@ -166,9 +166,9 @@ class modelMiddleware extends Model {
      * @access public
      * @param  int $slice 链接数据库ID
      */
-    public function startTransTable($slice = 0) {
+    public function startTrans($slice = 0) {
         $table = $this->getTable($this->tableKey, $slice);
-        return $this->startTrans();
+        return parent::startTrans();
     }
     
     /**
@@ -176,9 +176,9 @@ class modelMiddleware extends Model {
 	 * @access public
 	 * @return boolean
 	 */
-	public function commitTransTable($slice = 0) {
+	public function commit($slice = 0) {
 	    $table = $this->getTable($this->tableKey, $slice);
-	    return $this->commit();
+	    return parent::commit();
 	}
 	
 	/**
@@ -186,9 +186,9 @@ class modelMiddleware extends Model {
 	 * @access public
 	 * @return boolean
 	 */
-	public function rollbackTransTable($slice = 0) {
+	public function rollback($slice = 0) {
 	    $table = $this->getTable($this->tableKey, $slice);
-	    return $this->rollback();
+	    return parent::rollback();
 	}
 
     /**
