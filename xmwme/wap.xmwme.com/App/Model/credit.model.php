@@ -67,6 +67,7 @@ class creditModel extends modelMiddleware{
             $_sql = "UPDATE `xm_credit` SET credit=credit+{$num_credit},all_credit=all_credit+{$num_credit} WHERE user_id={$user_id}";
             $re = self::_model()->execate($_sql);
             if(!$re){throw Exception('更新积分表失败！');}
+            self::_model()->credit_revision($user_id);
             $change_credit_data = array(
                 'user_id'=>$user_id,
                 'credit'=>$num_credit,
