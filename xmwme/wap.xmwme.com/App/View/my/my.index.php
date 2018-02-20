@@ -30,47 +30,9 @@
         <div class="widget-activity">
             <a href="/staticpage/special/?key=activity1226_2"><img src="http://img.bbqb.cn/banner/201712/banner151434083669746.jpg"></a>
         </div>
-        <div class="popup-cg">
-            <div class="inner">
-                <div class="pics"><img src="/Resource/images/deposit.png"></div>
-            </div>
-            <div class="btn-outer">
-                <a href="/account/deposit/" class="ui-btn btn-submit">开通存管账户</a>
-            </div>
-            <a href="javascript:;" class="close close-dialog"   dialog-type ="2"  dialog-id ="0">X</a>
-        </div>
-        <div class="popup-authorize">
-            <div class="inner">
-                <div class="hd"><h1>自动投标授权</h1><p>为了符合监管要求，宝宝钱包作为网贷智能投顾产品，需要您对自动投标，债权转让进行授权</p></div>
-                <div class="bd">
-                    <form  autocomplete="off" id="auth_form" onsubmit="return false">
-                        <div class="input-box">
-                            <i class="icon-psw"></i><input type="password" name="password" id="password"  placeholder="输入交易密码"  maxlength="16" class="ipt" >
-                        </div>
-                        <label><input type="checkbox" name="agreement" checked>同意<a href="/staticpage/sqxy/">《用户授权协议》</a></label>
-                        <div class="btn-outer">
-                            <button onclick="cgJs.validatePayPasswd()" class="ui-btn btn-submit disabled" disabled="disabled">同意授权</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <a href="javascript:;" class="close close-dialog"  dialog-type ="3" dialog-id ="0">X</a>
-        </div>
-        <div class="popup-vip-upgrade">
-            <div class="inner">
-                <div class="pics">
-                    <i class="vip vip-0"></i>
-                </div>
-                <div class="text">
-                    <p class="p1">很遗憾您被降级为<br><strong></strong></p>
-                    <p class="p2">您目前只能享受对应等级的会员特权</p>
-                </div>
-                <div class="btn-nuter">
-                    <a href="/vipuser/index/" class="ui-btn btn-submit">立即查看</a>
-                </div>
-            </div>
-            <a href="javascript:;" class="close close-dialog" dialog-type ="1" dialog-id ="0">X</a>
-        </div>
+       
+        
+        
         <div class="container-fluid">
             <header class="head">
                 <a href="/sign/" class="sign"><i id="sign_gif"></i><br>马上签到</a>
@@ -82,27 +44,27 @@
                     </div>
                 </div>
                 <div class="datas">
-                    总资产(元)
-                    <p>5345.35</p>
+                    可用积分(个)
+                    <p>1</p>
                 </div>
             </header>
             <div class="gains-data">
                 <ul>
-                    <li>昨日预期收益(元)
-                        <p>0.04</p>
+                    <li>累计获得积分(个)
+                        <p>1</p>
                     </li>
-                    <li>累计预期收益(元)
-                        <a href="/account/income_detail/"><p>70.24</p></a>
+                    <li>累计消费积分(个)
+                        <p>1</p>
                     </li>
                 </ul>
             </div>
             <div class="btns">
                 <ul>
                     <li>
-                        <a href="/withdraw/index/" class="btn btn-cash">转让变现</a>
+                        <a href="/game/index/" class="btn btn-cash">玩游戏了</a>
                     </li>
                     <li>
-                        <a href="/buy/index/" class="btn btn-buy">马上投资</a>
+                        <a href="/goods/index/" class="btn btn-buy">去消费了</a>
                     </li>
                 </ul>
             </div>
@@ -111,43 +73,19 @@
                     <li>
                         <a href="/account/asset/">
                             <i class="icon icon-1"></i>
-                            <p><span>零钱罐</span>
-                                <br>0.83</p>
+                            <p><span>我的订单</span></p>
                         </a>
                     </li>
                     <li>
                         <a href="/fixed/asset_fix/">
                             <i class="icon icon-2"></i>
-                            <p><span>宝贝计划</span>
-                                <br>5000.00</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/fixed/asset_newuser/">
-                            <i class="icon icon-3"></i>
-                            <p><span>新手宝</span>
-                                <br>0.00</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/account/account_red/">
-                            <i class="icon icon-4"></i>
-                            <p><span>我的红包</span>
-                                <br>12.49</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/user/my_reward/">
-                            <i class="icon icon-5"></i>
-                            <p><span>成长金</span>
-                                <br>330.00</p>
+                            <p><span>我的积分</span></p>
                         </a>
                     </li>
                     <li>
                         <a href="/ticket/index/">
                             <i class="icon icon-6"></i>
-                            <p><span>加息券</span>
-                                <br>0张</p>
+                            <p><span>积分详情</span></p>
                         </a>
                     </li>
                 </ul>
