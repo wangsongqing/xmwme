@@ -71,8 +71,10 @@
                         </div>
                         <?php if($credit_data['type']==1){ ?>
                         <div class="text">已成功通过<?=isset($credit_data['activity_name'])?$credit_data['activity_name']:''?>获取<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</div>
-                        <?php }else{ ?>
+                        <?php }else if($credit_data['type']==2){ ?>
                         <span>成功兑换<?=isset($credit_data['goods_name'])?$credit_data['goods_name']:''?>,消耗<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</span>
+                        <?php }else{ ?>
+                        <span>你好！你还没有积分动态！</span>
                         <?php } ?>
                     </a>                    
                 </div>

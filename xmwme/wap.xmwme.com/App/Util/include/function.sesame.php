@@ -189,6 +189,17 @@ function delVar($key)
 {
     return getCacheObj()->remove($key);
 }
+
+
+/**
+ * 清除所有缓存(删除所有缓存数据)
+ * @return type
+ */
+function clearMem(){
+    return getCacheObj()->clear();
+}
+
+
 //通过key 获取认证数据
 function getAuth($key)
 {
