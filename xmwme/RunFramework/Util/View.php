@@ -33,13 +33,18 @@ class View
 	}
 
 	//Desc:装载模板文件并返回解析后的html
-	public function fetch($file = null)
+	public function fetch($file = null,$arr = array())
 	{
 		if($file)
 		{
 			$file = $this->tplDir .'/'.$file;
 			if(!file_exists($file)) RunException::throwException("模板文件: $file 不存在!");
-			if(is_array($this->tplVar) && !empty($this->tplVar)) extract($this->tplVar);
+			if(isset($arr) && !empty($arr)) {
+                            foreach($arr as $key=>$val){
+				$this->tplVar[$key] = $val;
+			    }
+                            extract($this->tplVar);
+                        }
 			ob_start();
 			require_once($file);
 			$html = ob_get_contents();

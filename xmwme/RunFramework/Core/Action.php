@@ -28,7 +28,7 @@ abstract class Action extends Object
 	{	    
 		if (in_array($this->action, $this->caches) && !$this->input['isPost'])
 		{
-			$data  = $this->com('view')->fetch($file);
+			$data  = $this->com('view')->fetch($file,$arr);
 			$cache = $this->getCacheObject();
 			$key   = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 			$cache->set(md5($key), $data);
@@ -53,9 +53,9 @@ abstract class Action extends Object
 	 * @param  string  $file   文件名
 	 +----------------------------------------------------------
 	 */
-	public final function fetch($file = null)
+	public final function fetch($file = null,$arr = array())
 	{
-		return $this->com('view')->fetch($file);
+		return $this->com('view')->fetch($file,$arr);
 	}
 
 
