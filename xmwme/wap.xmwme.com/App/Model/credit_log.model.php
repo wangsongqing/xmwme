@@ -46,6 +46,9 @@ class credit_logModel extends modelMiddleware{
             'updated'=>time(),
         );
         $insert_id = self::_model()->add($_data);
+        if($insert_id>0){
+            self::_model()->credit_log_revision($insert_id);//刷新缓存
+        }
         return $insert_id;
     }
     
