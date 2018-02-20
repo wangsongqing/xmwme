@@ -64,7 +64,7 @@
                 <?php if($login_user_id!=0){ ?>
                 <i class="icon icon-speaker"></i>
                 <div class="rt">
-                    <a href="/my/index/">
+                    <a href="/credit/index/">
                         <div class="meta">
                             <p>积分最新动态</p>
                             <time><?=isset($credit_data['created'])?date('Y-m-d H:i:s',$credit_data['created']):''?></time> 

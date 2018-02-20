@@ -108,7 +108,18 @@ class modelMiddleware extends Model {
         }
 
         $rows = $this->getPageRows($sql, $limit, $key);
-        return $rows;
+        if ( empty($rows['record']) ) {
+            return $rows;
+        }
+        
+        $list = array();
+        foreach($rows['record'] as $row) {
+            $list[] = $this->find($row[$this->pK]);
+        }
+        return array(
+            'record'  => $list,
+            'pageBar' => $rows['pageBar'],
+        );
     }
 
     /**
