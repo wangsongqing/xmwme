@@ -28,8 +28,8 @@
         <div class="head" style="padding:0 0 1.25rem;">
             <div class="tabs">
                 <ul>
-                    <li class="on"><a href="/credit/index/">获取积分</a></li>
-                    <li><a href="/credit/exchange/">消费积分</a></li>
+                    <li><a href="/credit/index/">获取积分</a></li>
+                    <li class="on"><a href="/credit/exchange/">消费积分</a></li>
                 </ul>
             </div>
             <div class="text">
