@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.5.53 : Database - xm_core
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -189,6 +190,8 @@ CREATE TABLE `xm_orders` (
   `money` decimal(11,3) unsigned DEFAULT '0.000' COMMENT '需要补差价',
   `number` varchar(50) DEFAULT '' COMMENT '快递单号',
   `goods_type` tinyint(1) DEFAULT '1' COMMENT '商品类型 1虚拟 2实物',
+  `goods_num` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '商品个数',
+  `credit` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '消耗积分',
   `content` text COMMENT '备注',
   `created` int(10) unsigned NOT NULL COMMENT '创建时间',
   `updated` int(10) unsigned NOT NULL COMMENT '修改时间',
@@ -197,7 +200,7 @@ CREATE TABLE `xm_orders` (
   KEY `user_id` (`user_id`),
   KEY `goods_id` (`goods_id`),
   KEY `is_get` (`is_get`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 /*Table structure for table `xm_user_info` */
 
