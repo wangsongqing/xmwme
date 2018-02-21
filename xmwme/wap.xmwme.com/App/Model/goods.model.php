@@ -69,7 +69,7 @@ class GoodsModel extends modelMiddleware{
             $model_goods->goods_revision($gid);//刷新缓存
             
             //生成订单
-            $oreder = M('orders')->get_orders($user_id,$gid,$goods['goods_type']);
+            $oreder = M('orders')->get_orders($user_id,$gid,$goods['goods_type'],$num,$need_credit);
             if(!$oreder) throw new Exception('订单生成失败','-1007');
             $model_goods->commit();//事务提交  
             

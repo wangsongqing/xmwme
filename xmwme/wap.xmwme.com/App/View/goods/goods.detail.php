@@ -51,7 +51,7 @@
             </div>
             <?php }else{ ?>
             <div class="btns">
-                <a href="" class="ui-btn btn-submit disabled" disabled="disabled">请登录后操作</a>
+                <a href="<?=Root?>login/index/" class="ui-btn btn-submit" disabled="disabled">请登录后操作</a>
             </div>
             <?php } ?>
         </div>

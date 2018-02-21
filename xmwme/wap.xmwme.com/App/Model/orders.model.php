@@ -32,13 +32,15 @@ class OrdersModel extends modelMiddleware{
      * @param type $user_id
      * @param type $goods_id
      */
-    public function get_orders($user_id,$goods_id,$goods_type=1){
+    public function get_orders($user_id,$goods_id,$goods_type=1,$goods_num=0,$credit=0){
         $oreder = get_order_sn($user_id);
         $_data = array(
             'user_id'=>$user_id,
             'orders_num'=>$oreder,
             'goods_id'=>$goods_id,
             'goods_type'=>$goods_type,
+            'goods_num'=>$goods_num,
+            'credit'=>$credit,
             'created'=>time(),
             'updated'=>time(),
         );

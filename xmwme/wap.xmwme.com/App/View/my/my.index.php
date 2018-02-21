@@ -45,16 +45,16 @@
                 </div>
                 <div class="datas">
                     可用积分(个)
-                    <p>1</p>
+                    <p><?=isset($credit['credit'])?$credit['credit']:0?></p>
                 </div>
             </header>
             <div class="gains-data">
                 <ul>
                     <li>累计获得积分(个)
-                        <p>1</p>
+                        <p><?=isset($credit['all_credit'])?$credit['all_credit']:0?></p>
                     </li>
                     <li>累计消费积分(个)
-                        <p>1</p>
+                        <p><?=isset($credit['use_credit'])?$credit['use_credit']:0?></p>
                     </li>
                 </ul>
             </div>
@@ -71,21 +71,21 @@
             <div class="items-list">
                 <ul>
                     <li>
-                        <a href="/account/asset/">
+                        <a href="/my/myorders/">
                             <i class="icon icon-1"></i>
                             <p><span>我的订单</span></p>
                         </a>
                     </li>
                     <li>
-                        <a href="/fixed/asset_fix/">
+                        <a href="/credit/index/">
                             <i class="icon icon-2"></i>
                             <p><span>我的积分</span></p>
                         </a>
                     </li>
                     <li>
-                        <a href="/ticket/index/">
+                        <a href="/invite/index/">
                             <i class="icon icon-6"></i>
-                            <p><span>积分详情</span></p>
+                            <p><span>我的邀请</span></p>
                         </a>
                     </li>
                 </ul>
@@ -95,10 +95,10 @@
                     <li class="item">
                         <ol>
                             <li>
-                                <a href="/share/invite/">
+                                <a href="/invite/share/">
                                     <p>
                                         <span class="l"><span class="icon-outer"><i class="icon icon-friend"></i></span>邀请好友</span>
-                                        <span class="r"><span class="c-888">01197923</span><i class="icon icon-arrow"></i></span>
+                                        <span class="r"><span class="c-888"><?=isset($user_info['form_code'])?$user_info['form_code']:0?></span><i class="icon icon-arrow"></i></span>
                                     </p>
                                 </a>
                             </li>
@@ -109,7 +109,7 @@
                             <li>
                                 <a href="/benevolence/index/">
                                     <p>
-                                        <span class="l"><span class="icon-outer"><i class="icon icon-zj"></i></span>爱的足迹</span>
+                                        <span class="l"><span class="icon-outer"><i class="icon icon-zj"></i></span>收货地址</span>
                                         <span class="r"><i class="icon icon-arrow"></i></span>
                                     </p>
                                 </a>
@@ -117,7 +117,7 @@
                             <li>
                                 <a href="/user/my_debts/">
                                     <p>
-                                        <span class="l"><span class="icon-outer"><i class="icon icon-zq"></i></span>我的债权</span>
+                                        <span class="l"><span class="icon-outer"><i class="icon icon-zq"></i></span>修改密码</span>
                                         <span class="r"><i class="icon icon-arrow"></i></span>
                                     </p>
                                 </a>
@@ -129,8 +129,8 @@
                             <li>
                                 <a href="/vipuser/index/">
                                     <p>
-                                        <span class="l"><span class="icon-outer"><i class="icon icon-user"></i></span>会员中心</span>
-                                        <span class="r"><span class="c-888">新入学</span><i class="icon icon-arrow"></i></span>
+                                        <span class="l"><span class="icon-outer"><i class="icon icon-user"></i></span>我的详情</span>
+                                        <span class="r"><span class="c-888">萌萌哒</span><i class="icon icon-arrow"></i></span>
                                     </p>
                                 </a>
                             </li>
