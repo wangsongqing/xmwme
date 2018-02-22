@@ -1,5 +1,4 @@
 <?php
-
 /**
  * modelMiddleware  数据库公共方法处理中间件
  * @author       	Jimmy Wang 
@@ -49,7 +48,7 @@ class modelMiddleware extends Model {
      * @return array
       +-------------------------------------
      */
-    public function findOne($rule, $field = '*', $iscached = 0) {
+    public function findOne($rule, $field = '*', $iscached = 1) {
         $this->cached = $iscached;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
         $table = $this->setServerReadWrite($slice);
@@ -70,7 +69,7 @@ class modelMiddleware extends Model {
      * @access public
      * @return array
      */
-    public function findTop($rule, $field = '*', $iscached = 0) {
+    public function findTop($rule, $field = '*', $iscached = 1) {
         $this->cached = $iscached;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
         $table = $this->setServerReadWrite($slice);
@@ -131,10 +130,8 @@ class modelMiddleware extends Model {
      */
     public function add($arr, $slice = 0) {
         $table = $this->getTable($this->tableKey, $slice);
-
         $result = $this->insert($table, $arr);
         $lastInsId = $this->getLastInsId();                                           //插入成功，返回记录
-
         return $result ? $lastInsId : false;                                          //确认插入成功后返回成功，否则提交失败
     }
 
@@ -146,10 +143,8 @@ class modelMiddleware extends Model {
     function edit($arr, $rule) { //return false;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
         $table = $this->getTable($this->tableKey, $slice);
-
         $condition = where($rule, 1);
         $result = $this->update($table, $arr, $condition);
-
         return $result ? $result : false;
     }
 
@@ -171,10 +166,30 @@ class modelMiddleware extends Model {
      * @access public
      * @param  int $slice 链接数据库ID
      */
-    public function startTransTable($slice = 0) {
+    public function startTrans($slice = 0) {
         $table = $this->getTable($this->tableKey, $slice);
-        $result = $this->startTrans();
+        return parent::startTrans();
     }
+    
+    /**
+	 * 提交事务
+	 * @access public
+	 * @return boolean
+	 */
+	public function commit($slice = 0) {
+	    $table = $this->getTable($this->tableKey, $slice);
+	    return parent::commit();
+	}
+	
+	/**
+	 * 事务回滚
+	 * @access public
+	 * @return boolean
+	 */
+	public function rollback($slice = 0) {
+	    $table = $this->getTable($this->tableKey, $slice);
+	    return parent::rollback();
+	}
 
     /**
      * 插入记录
@@ -237,7 +252,6 @@ class modelMiddleware extends Model {
         $this->cached = 0;
         $slice = isset($rule["slice"]) ? $rule["slice"] : 0;
         $table = $this->getTable($this->tableKey, $slice);
-
         $where = where($rule);
         $limit = isset($rule['limit']) ? $rule['limit'] : 10000;
         $sql = "select $field from $table $where limit $limit for update";
