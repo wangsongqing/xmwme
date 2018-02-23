@@ -1,6 +1,8 @@
 <?php
 set_time_limit(0);                                     //设置程序运行超时间
 ob_start();                                            //打开磁盘缓冲
+$cur_dir = dirname(__FILE__); 
+chdir($cur_dir); //总结: 在require 时，如果是相对目录，在crontab 中运行php脚本，要进入到脚本所在目录才可以
 require_once('Config/apppath.config.php');             //初始化应用程序路径  
 header("Content-type: text/html; =utf-8");      //指定编码
 ini_set("date.timezone", "Asia/Shanghai");             //设置时间区域
