@@ -496,7 +496,7 @@ function initWechat(){
  */
 function get_order_sn($user_id){
     if($user_id <= 0) return false;
-    $order_str = date('ymdHis').rand(0,9).sprintf("%09d", $user_id);
+    $order_str = date('ymdHi').sprintf("%07d", $user_id);
     return $order_str;
 }
     

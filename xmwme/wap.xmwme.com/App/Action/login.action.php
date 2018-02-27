@@ -18,6 +18,9 @@ class LoginAction extends actionMiddleware {
                 $this->regiter($phone);exit;
             }
         }
+        if(isset($invite_code) && $invite_code!=''){
+            addCookie('invite_code_form', base64_decode($invite_code));
+        }
         $this->display("login/login.html");
     }
 
@@ -25,8 +28,10 @@ class LoginAction extends actionMiddleware {
      * 注册页面
      */
     public function regiter($phone) {
+        $form_key = getCookie('invite_code_form');
         $this->display('login/regiter.php',array(
-            'telephone' => $phone
+            'telephone' => $phone,
+            'invite_code'=>$form_key
         ));
     }
 
@@ -69,6 +74,7 @@ class LoginAction extends actionMiddleware {
             if($reg_info['err']==-1){
                 $this->praseJson('1',$reg_info['msg']);exit;
             }else if($reg_info['err']==1){
+                removeCookie('invite_code_form');
                 $this->praseJson('0',$reg_info['msg'],Root.'my/index');exit;
             }
             

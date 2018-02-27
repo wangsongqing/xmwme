@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/invite/index/">
+                        <a href="/my/share/">
                             <i class="icon icon-6"></i>
                             <p><span>我的邀请</span></p>
                         </a>
@@ -95,7 +95,7 @@
                     <li class="item">
                         <ol>
                             <li>
-                                <a href="/invite/share/">
+                                <a href="/my/share/">
                                     <p>
                                         <span class="l"><span class="icon-outer"><i class="icon icon-friend"></i></span>邀请好友</span>
                                         <span class="r"><span class="c-888"><?=isset($user_info['form_code'])?$user_info['form_code']:0?></span><i class="icon icon-arrow"></i></span>

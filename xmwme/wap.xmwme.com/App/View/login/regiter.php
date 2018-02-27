@@ -67,7 +67,11 @@
                     <div class="inner">
                         <div class="label">邀请码</div>
                         <div class="rcon">
-                            <input type="tel" name="invite_code" id="invite_code" class="ui-input" placeholder="请输入好友邀请码（选填）" maxlength="9">
+                            <?php if(isset($invite_code) && !empty($invite_code)){ ?>
+                                <input type="tel" name="invite_code" readonly="readonly" value="<?=isset($invite_code)?$invite_code:''?>" id="invite_code" class="ui-input" placeholder="请输入好友邀请码（选填）" maxlength="9">
+                            <?php }else{ ?>
+                                <input type="tel" name="invite_code" value="<?=isset($invite_code)?$invite_code:''?>" id="invite_code" class="ui-input" placeholder="请输入好友邀请码（选填）" maxlength="9">
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
