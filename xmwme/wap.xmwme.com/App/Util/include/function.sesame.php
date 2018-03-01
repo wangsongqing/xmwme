@@ -716,7 +716,7 @@ function get_insert_sql($table,$insert_data){
     }
     $keys = "`".join("`,`", array_keys($insert_data))."`";
     $values = "'".join("','", $insert_data)."'";
-    $sql = 'insert ignore into zm_'.$table.'('.$keys.') values('.$values.');';
+    $sql = 'insert ignore into xm_'.$table.'('.$keys.') values('.$values.');';
     return $sql;
 }
 /**
@@ -746,7 +746,7 @@ function get_update_sql($table,$update_data,$rules,$add_self=array()){
         }
     }
     $where = where($rules);
-    $sql = 'update zm_'.$table.' set '.join(',', $update).' '.$where.';';
+    $sql = 'update xm_'.$table.' set '.join(',', $update).' '.$where.';';
     return $sql;
 }
 
