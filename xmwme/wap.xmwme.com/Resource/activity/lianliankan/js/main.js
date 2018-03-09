@@ -739,7 +739,43 @@ var LLKGame = function ($, win, doc) {
 
   var Action = {
     check: function () {
-      var flag = true;
+        var flag = false;
+        $.ajax({
+        dataType: 'json',
+        type: "post",
+        url: '/lian/can_play/',
+        data: {
+          is_chexk: '1',
+        },
+        async: false,
+        cache: false,
+        success: function (data) {
+            if(data.err=='1'){
+                flag = true;
+            }
+            if(data.err=='-1008'){
+              layer.open({
+                    title: data.msg,
+                    className: "popup-custom",
+                    content: data.msg,
+                    btn: ["确定"],
+                    yes: function () {
+                      window.location.href = "/my/share/";
+                    }
+                })
+            }else{
+                layer.open({
+                    title: data.msg,
+                    className: "popup-custom",
+                    content: data.msg,
+                    btn: ["确定"],
+                    yes: function () {
+                      window.location.href = "/lian/index/";
+                    }
+                })
+            }
+        }
+      });
       return flag;
     },
     send: function () {
