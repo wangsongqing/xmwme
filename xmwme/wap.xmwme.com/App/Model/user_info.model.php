@@ -81,8 +81,8 @@ class user_infoModel extends modelMiddleware{
                 throw Exception('注册失败');
             }
             //初始化积分表
-            $credit_data = array('user_id' => $last_insert_id,'credit' => 0,'use_credit' => 0,'all_credit' => 0,'created' => time(),'updated' => time(),);
-            $last_credit_id = M('credit')->add($credit_data);
+            $credit_data = array('user_id' => $last_insert_id,'red_bag' => 0.00,'use_red_bag' => 0,'all_red_bag' => 0,'created' => time(),'updated' => time(),);
+            $last_credit_id = M('redbag')->add($credit_data);
             if(!$last_credit_id){
                 throw Exception('初始化积分表失败');
             }

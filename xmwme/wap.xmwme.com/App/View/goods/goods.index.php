@@ -29,22 +29,22 @@
         <div class="container-fluid">
             <header class="head">
                 <div class="inner">
-                    <p class="name">积分</p>
+                    <p class="name">红包(元)</p>
                     <div class="text"><a href="/credit/index/"><i class="icon-bean"></i><span class="amount"><?=isset($credit['credit'])?$credit['credit']:0?></span><i class="icon-arrow"></i></a>
                     </div>
                 </div>
             </header>
             <div class="category">
                 <ul>
-                    <li><a href="/task/index/"><img src="/Resource/images/shop/voucher.png?3MjKZ6Ft"><p>赚取积分</p></a></li>
-                    <li><a href="/goods/lists/"><img src="/Resource/images/shop/gift.png?3MjKZ6Ft"><p>礼品兑换</p></a></li>
-                    <li><a href="/goods/lists/?type=4"><img src="/Resource/images/shop/game.png?3MjKZ6Ft"><p>积分游戏</p></a></li>
+                    <!--<li><a href="/game/index/"><img src="/Resource/images/shop/voucher.png?3MjKZ6Ft"><p>红包游戏</p></a></li>-->
+                    <!--<li><a href="/goods/lists/"><img src="/Resource/images/shop/gift.png?3MjKZ6Ft"><p>礼品兑换</p></a></li>-->
+                    <li><a href="/game/index/"><img src="/Resource/images/shop/game.png?3MjKZ6Ft"><p>红包游戏</p></a></li>
                 </ul>
             </div>
             <div class="item item-recommend">
                 <div class="hd">
                     <h3><i class="icon-gift"></i>热门礼品</h3>
-                    <a href="/goods/lists/" class="more">更多&gt;</a>
+                    <!--<a href="/goods/lists/" class="more">更多&gt;</a>-->
                 </div>
                 <div class="bd">
                     <div class="shop-list">
@@ -55,7 +55,7 @@
                                     <a href="/goods/detail/?id=<?=$value['id']?>">
                                         <img src="<?=$value['list_pic']?>">
                                         <p><?=$value['goods_name']?></p>
-                                        所需宝贝豆：<span class="c-red"><?=$value['credit']?></span>
+                                        所需红包：<span class="c-red"><?=$value['credit']?></span>
                                     </a>
                                 </div>
                             </li>

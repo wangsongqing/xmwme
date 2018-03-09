@@ -110,7 +110,7 @@
         <script src="<?= Resource ?>js/base.js"></script>
         <script src="<?= Resource ?>js/layer/layer.m.js"></script>
         <script src="<?= Resource ?>activity/lianliankan/js/jWebAudio.min.js"></script>
-        <script src="<?= Resource ?>activity/lianliankan/js/main.js?DO47TUtf"></script>
+        <script src="<?= Resource ?>activity/lianliankan/js/main.js?ee"></script>
         <script>
             LLKGame.init({
                 time:<?= $game_time ?>,

@@ -20,7 +20,7 @@ class GoodsAction extends actionMiddleware {
     public function index() {
         $is_login = isset($this->login_user['user_id']) ? $this->login_user['user_id'] : 0;
         if ($is_login > 0) {
-            $credit = M('credit')->find($this->login_user['user_id']);
+            $credit = M('redbag')->find($this->login_user['user_id']);
         }
         $rule['limit'] = 16;
         $rule['order']['id'] = 'desc';

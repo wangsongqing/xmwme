@@ -95,13 +95,13 @@ class LianModel extends modelMiddleware {
             if(!$startTrans) throw new Exception('开启事务失败！');
             $activity_info = M('activity')->getActivity('lian');
             $score = $num * 5;
-            $credit = ceil($score * 0.01);
+            $credit = format_money($score * 0.00075);
             $_data = array(
                 'user_id'=>$user_info['user_id'],
                 'telephone'=>$user_info['telephone'],
                 'lian_num'=>$num,
                 'score'=>$score,
-                'credit'=>$credit,
+                'red_bag'=>$credit,
                 'created'=>time(),
                 'updated'=>time(),
             );
@@ -119,6 +119,25 @@ class LianModel extends modelMiddleware {
             writeLog('用户:'.$user_info['user_id'].'连连看数据写入数据失败', 'lian.log');
         }
         return $flag;
+    }
+    
+    /**
+     * 检测用户今日可玩游戏否
+     * @param type $user_id
+     * @param type $play_type
+     */
+    public function user_can_play($user_id){
+        $time = strtotime(date('Y-m-d'));//今天时间戳
+        $ttime = strtotime("+1 day",strtotime(date('Y-m-d')));//明天时间戳
+        $rule['exact']['user_id'] = $user_id;
+        $rule['exact']['join_type'] = 0;
+        $rule['other'] = "created>={$time} AND created<$ttime";
+        $is_data = M('lian')->findOne($rule,'*',0);
+        if(!empty($is_data)) return 1;//邀请好友可玩
+        
+        $rule['exact']['join_type'] = 1;
+        $is_data = M('lian')->findOne($rule,'*',0);
+        if($play_type==1 && !empty($is_data)) return 2;//次数已经用完
     }
 }
 

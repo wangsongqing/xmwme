@@ -2,7 +2,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8">
-        <title>积分明细</title>
+        <title>红包明细</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
         <meta name="keywords" content="">
@@ -28,13 +28,13 @@
         <div class="head" style="padding:0 0 1.25rem;">
             <div class="tabs">
                 <ul>
-                    <li class="on"><a href="/credit/index/">获取积分</a></li>
-                    <li><a href="/credit/exchange/">消耗积分</a></li>
+                    <li><a href="/redbag/index/">获取红包</a></li>
+                    <li class="on"><a href="/redbag/exchange/">到账红包</a></li>
                 </ul>
             </div>
             <div class="text">
-                累计获得积分<br>
-                <p class="num"><?=isset($credit)?$credit['all_credit']:0?></p>
+                累计提现到账红包金额(元)<br>
+                <p class="num"><?=isset($num_w)?$num_w:0?></p>
             </div>	
         </div>
         <div class="profit-list">
@@ -42,11 +42,9 @@
             <ul id= 'grow_page'>
                 <?php foreach($credit_log['record'] as $v){ ?>
                 <li>
-                    <span class="l"><i class="icon-time"></i><?=date('Y-m-d H:i:s',$v['created'])?></span>
-                    <?php if(isset($v['activity_name']) && !empty($v['activity_name'])){ ?>
-                    <span class="l">，通过<?=$v['activity_name']?>获得</span>
-                    <?php } ?>
-                    <span class="c-red r">+<?=$v['credit']?>积分</span>
+                    <span class="l"><i class="icon-time"></i><?=date('Y-m-d H:i:s',$v['created'])?></span> 
+                    <span class="l" style="margin-left: 50px;">提现</span>
+                    <span class="c-red r">-<?=$v['money']?>红包</span>
                 </li>
                 <?php } ?>
             </ul>
@@ -73,7 +71,7 @@
                   canRequest = false;
                   $.ajax({
                       type: "get",
-                      url: "/credit/index/",
+                      url: "/redbag/exchange/",
                       async: false,
                       dataType: 'json',
                       data: 'ajax=1&page=' + Page,

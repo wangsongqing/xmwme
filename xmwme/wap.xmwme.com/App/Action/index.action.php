@@ -18,7 +18,7 @@ class IndexAction extends actionMiddleware
         $data = $model->findTop($rule);//banner操作
         
         //积分动态
-        $credit_model = M('credit_log');
+        $credit_model = M('redbag_log');
         $login_user_id = isset($this->login_user['user_id'])?$this->login_user['user_id']:0;
         $_rule['exact']['user_id'] = $login_user_id;
         $_rule['order']['id'] = 'desc';

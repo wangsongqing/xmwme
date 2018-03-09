@@ -44,42 +44,42 @@
                     </div>
                 </div>
                 <div class="datas">
-                    可用积分(个)
-                    <p><?=isset($credit['credit'])?$credit['credit']:0?></p>
+                    可提现红包(元)
+                    <p><?=isset($credit['red_bag'])?$credit['red_bag']:0?></p>
                 </div>
             </header>
             <div class="gains-data">
                 <ul>
-                    <li>累计获得积分(个)
-                        <p><?=isset($credit['all_credit'])?$credit['all_credit']:0?></p>
+                    <li>累计获得红包(元)
+                        <p><?=isset($credit['all_red_bag'])?$credit['all_red_bag']:0?></p>
                     </li>
-                    <li>累计消费积分(个)
-                        <p><?=isset($credit['use_credit'])?$credit['use_credit']:0?></p>
+                    <li>累计到账红包(元)
+                        <p><?=isset($withdraw)?$withdraw:0?></p>
                     </li>
                 </ul>
             </div>
             <div class="btns">
                 <ul>
                     <li>
-                        <a href="/game/index/" class="btn btn-cash">玩游戏了</a>
+                        <a href="/game/index/" class="btn btn-cash">领红包</a>
                     </li>
                     <li>
-                        <a href="/goods/index/" class="btn btn-buy">去消费了</a>
+                        <a href="/withdraw/index/" class="btn btn-buy">提现</a>
                     </li>
                 </ul>
             </div>
             <div class="items-list">
                 <ul>
                     <li>
-                        <a href="/my/myorders/">
+                        <a href="/withdraw/withdraw_order/">
                             <i class="icon icon-1"></i>
-                            <p><span>我的订单</span></p>
+                            <p><span>我的提现记录</span></p>
                         </a>
                     </li>
                     <li>
-                        <a href="/credit/index/">
+                        <a href="/redbag/index/">
                             <i class="icon icon-2"></i>
-                            <p><span>我的积分</span></p>
+                            <p><span>我的红包记录</span></p>
                         </a>
                     </li>
                     <li>

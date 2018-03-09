@@ -803,4 +803,15 @@ function hiddenPhoneMiddle($phone)
     }
     return $phone;
 }
+
+/**
+ * 格式化金钱
+ * @param $money 数目
+ * @param int $scale 有效位数
+ * @return string
+ */
+function format_money($money, $scale=2)
+{
+    return bcadd($money,0,$scale);
+}
 ?>

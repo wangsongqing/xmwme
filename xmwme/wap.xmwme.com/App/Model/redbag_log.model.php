@@ -4,12 +4,12 @@
  * 用户积分表Model
  +---------------------------------------------------------------------------------------------------------------
  */
-class credit_logModel extends modelMiddleware{
+class redbag_logModel extends modelMiddleware{
 
 /**
      * 数据表key
      */
-    public $tableKey = 'credit_log';
+    public $tableKey = 'redbag_log';
     public  $cached  = false;
 
     /**
@@ -23,7 +23,7 @@ class credit_logModel extends modelMiddleware{
      * @return object
      */
     public static function _model(){
-	$model = M('credit_log');
+	$model = M('redbag_log');
 	return $model;
     }
     
@@ -35,13 +35,13 @@ class credit_logModel extends modelMiddleware{
      * @param type $activity_id
      * @param type $goods_id
      */
-    public function add_data($user_id,$credit=0,$type=1,$activity_id,$goods_id){
+    public function add_data($user_id,$redbag=0,$type=1,$activity_id=0,$goods_id=0){
         $_data = array(
             'user_id'=>$user_id,
-            'credit'=>$credit,
+            'redbag'=>$redbag,
             'type'=>$type,
-            'activity_id'=>$activity_id,
-            'goods_id'=>$goods_id,
+            'activity_id'=>isset($activity_id)?$activity_id:0,
+            'goods_id'=>isset($goods_id)?$goods_id:0,
             'created'=>time(),
             'updated'=>time(),
         );

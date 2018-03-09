@@ -4,12 +4,12 @@
  * 用户积分表Model
  +---------------------------------------------------------------------------------------------------------------
  */
-class creditModel extends modelMiddleware{
+class redbagModel extends modelMiddleware{
 
 /**
      * 数据表key
      */
-    public $tableKey = 'credit';
+    public $tableKey = 'redbag';
     public  $cached  = false;
 
     /**
@@ -23,7 +23,7 @@ class creditModel extends modelMiddleware{
      * @return object
      */
     public static function _model(){
-	$model = M('credit');
+	$model = M('redbag');
 	return $model;
     }
     
@@ -35,7 +35,7 @@ class creditModel extends modelMiddleware{
      */
     public function credit_revision($user_id)
     {
-        $sql    = sprintf("select * from %s where `user_id` = '$user_id'", $this->getTable('credit',0) );
+        $sql    = sprintf("select * from %s where `user_id` = '$user_id'", $this->getTable('redbag',0) );
         $member = $this->getRow($sql);
 	if (empty($member)){
 	    $this->revisionKey = array("{all:all}");
@@ -64,21 +64,21 @@ class creditModel extends modelMiddleware{
             $startTrans = self::_model()->startTrans();
             if(!$startTrans) throw new Exception('开启事务失败！');
             $time = time();
-            $_sql = "UPDATE `xm_credit` SET credit=credit+{$num_credit},all_credit=all_credit+{$num_credit} WHERE user_id={$user_id}";
+            $_sql = "UPDATE `xm_redbag` SET red_bag=red_bag+{$num_credit},all_red_bag=all_red_bag+{$num_credit} WHERE user_id={$user_id}";
             $re = self::_model()->execate($_sql);
             if(!$re){throw Exception('更新积分表失败！');}
             self::_model()->credit_revision($user_id);
             $change_credit_data = array(
                 'user_id'=>$user_id,
-                'credit'=>$num_credit,
+                'redbag'=>$num_credit,
                 'type'=>1,
                 'created'=>$time,
                 'updated'=>$time,
                 'activity_id'=>$activity_id,
             );
-            $credit_log_insert = M('credit_log')->add($change_credit_data);
+            $credit_log_insert = M('redbag_log')->add($change_credit_data);
             if(!$credit_log_insert) throw new Exception('积分日志表记录失败！');
-            M('credit_log')->credit_log_revision($credit_log_insert);//刷新缓存
+            M('redbag_log')->credit_log_revision($credit_log_insert);//刷新缓存
             $commit = self::_model()->commit();
             if(!$commit) throw Exception('事务提交失败！');
             $flag = 1;

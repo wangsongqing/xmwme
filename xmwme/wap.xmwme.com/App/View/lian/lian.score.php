@@ -11,7 +11,7 @@
             <ul>
                 <li>
                     <div class="line"></div>
-                    <p><?=isset($data['get_credit'])&&$is_login==1?$data['get_credit']:'0'?></p>积分
+                    <p><?=isset($data['get_credit'])&&$is_login==1?$data['get_credit']:'0'?></p>红包
                 </li>
             </ul>
         </div>

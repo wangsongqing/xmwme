@@ -47,7 +47,7 @@
             <div class="product">
                 <i class="tag"></i>
                 <div class="text">
-                    <a href="/fixed/fcapital_income/?type=1">
+                    <a href="/lian/index/">
                         <p class="p1">连连看</p>
                         <ul>
                             <li>考考你的眼力</li>
@@ -64,13 +64,13 @@
                 <?php if($login_user_id!=0){ ?>
                 <i class="icon icon-speaker"></i>
                 <div class="rt">
-                    <a href="/credit/index/">
+                    <a href="/redbag/index/">
                         <div class="meta">
                             <p>积分最新动态</p>
                             <time><?=isset($credit_data['created'])?date('Y-m-d H:i:s',$credit_data['created']):''?></time> 
                         </div>
                         <?php if($credit_data['type']==1){ ?>
-                        <div class="text">已成功通过<?=isset($credit_data['activity_name'])?$credit_data['activity_name']:''?>获取<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</div>
+                        <div class="text">已成功通过<?=isset($credit_data['activity_name'])?$credit_data['activity_name']:''?>获取<?=isset($credit_data['redbag'])?$credit_data['redbag']:''?>元红包</div>
                         <?php }else if($credit_data['type']==2){ ?>
                         <span>成功兑换<?=isset($credit_data['goods_name'])?$credit_data['goods_name']:''?>,消耗<?=isset($credit_data['credit'])?$credit_data['credit']:''?>积分</span>
                         <?php }else{ ?>

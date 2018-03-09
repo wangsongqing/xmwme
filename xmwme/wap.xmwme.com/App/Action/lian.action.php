@@ -57,15 +57,16 @@ class LianAction extends actionMiddleware {
         extract($this->input);
         $num = isset($num) ? $num : 0;
         if ($num == 27) {$is_floop = 0;} else {$is_floop = 0;}
+        if($num>27) {echo '-1010';exit;}
         $activity_info = M('activity')->getActivity('lian');
         if(empty($activity_info)){ die('活动已经结束！'); }
         //用户未登录玩游戏需要加这些代码
-        $score['credit'] = floor($num * 5);//消除的对数*没对的得分
-        $score['get_credit'] = ceil($score['credit'] * 0.01);
+        $score['credit'] = floor($num * 5);//消除的对数*每对的得分
+        $score['get_credit'] = format_money($score['credit'] * 0.00075);
         $is_login = !empty($this->login_user)?1:0;
         if($is_login){
             $re = M('lian')->add_result($this->login_user,$num);
-            $change_credit = M('credit')->change_user_credit($score['get_credit'],$this->login_user['user_id'],$activity_info['id']);
+            $change_credit = M('redbag')->change_user_credit($score['get_credit'],$this->login_user['user_id'],$activity_info['id']);
         }
         
 	$this->display('lian/lian.score.php',array(
@@ -102,7 +103,17 @@ class LianAction extends actionMiddleware {
       * 检测用户是否可以玩游戏
       */
     public function can_play(){
-         
+        extract($this->input);
+        $user_id  = $this->login_user['user_id'];
+        
+        $play = M('lian')->user_can_play($user_id);
+        if(!empty($play) && $play==1){
+            $this->praseJson('-1008','邀请好友可再次获得游戏机会');exit;
+        }
+        if(!empty($play) && $play==2){
+            $this->praseJson('-1009','您今天的次数已经用完,请明天继续');exit;
+        }
+        $this->praseJson('1','ok');
     }
 
 }
