@@ -21,13 +21,13 @@ $tbl['user_info'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
-$tbl['credit'] = array(
-    'name'       => $prefix.'credit',
+$tbl['redbag'] = array(
+    'name'       => $prefix.'redbag',
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
-$tbl['credit_log'] = array(
-    'name'       => $prefix.'credit_log',
+$tbl['redbag_log'] = array(
+    'name'       => $prefix.'redbag_log',
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
@@ -43,6 +43,11 @@ $tbl['goods'] = array(
 );
 $tbl['orders'] = array(
     'name'       => $prefix.'orders',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
+$tbl['withdraw'] = array(
+    'name'       => $prefix.'withdraw',
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
