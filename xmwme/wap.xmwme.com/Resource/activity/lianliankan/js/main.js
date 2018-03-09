@@ -763,7 +763,7 @@ var LLKGame = function ($, win, doc) {
                       window.location.href = "/my/share/";
                     }
                 })
-            }else{
+            }else if(data.err!='1'){
                 layer.open({
                     title: data.msg,
                     className: "popup-custom",
