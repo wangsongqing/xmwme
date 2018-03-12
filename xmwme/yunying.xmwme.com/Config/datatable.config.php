@@ -18,19 +18,19 @@ $configDir = $configRoot.'/dbconfig/';
 /*manage开始*/
 $tbl['manage_user'] = array(
     'name'       => $prefix.'manage_user',
-    'dbId'       => 'xm_core',
-    'configFile' => $configDir.'xm_core.php',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
 );
 
 $tbl['manage_log'] = array(
     'name'       => $prefix.'manage_log',
-    'dbId'       => 'xm_core',
-    'configFile' => $configDir.'xm_core.php',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
 );
 $tbl['banner'] = array(
     'name'       => $prefix.'banner',
-    'dbId'       => 'xm_core',
-    'configFile' => $configDir.'xm_core.php',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
 );
 $tbl['goods'] = array(
     'name'       => $prefix.'goods',
