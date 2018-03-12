@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8">
-        <title>新萌-首页</title>
+        <title>食物百科网</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
         <meta name="keywords" content="我的钱包">
@@ -40,8 +40,8 @@
                 <!--第一组-->
                 <ul>
                     <li><a href="/index/about/"><img src="<?php echo Resource; ?>images/banner/banner150045330170342.jpg"><p>关于我们</p></a></li>
-                    <li><a href="/share/invite/"><img src="<?php echo Resource; ?>images/banner/banner150045334128994.jpg"><p>邀请好友</p></a></li>
-                    <li><a href="/index/tell/"><img src="<?php echo Resource; ?>images/banner/banner150045338951886.jpg"><p>常见问题</p></a></li>
+                    <li><a href="/my/share/"><img src="<?php echo Resource; ?>images/banner/banner150045334128994.jpg"><p>邀请好友</p></a></li>
+                    <li><a href="/story/index/"><img src="<?php echo Resource; ?>images/banner/banner150045338951886.jpg"><p>食物故事</p></a></li>
                 </ul>
             </div>
             <div class="product">

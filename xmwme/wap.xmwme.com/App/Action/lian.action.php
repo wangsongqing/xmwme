@@ -55,6 +55,7 @@ class LianAction extends actionMiddleware {
      */
     public function send() {
         extract($this->input);
+        $user_id  = $this->login_user['user_id'];
         $num = isset($num) ? $num : 0;
         if ($num == 27) {$is_floop = 0;} else {$is_floop = 0;}
         if($num>27) {echo '-1010';exit;}
@@ -65,7 +66,13 @@ class LianAction extends actionMiddleware {
         $score['get_credit'] = format_money($score['credit'] * 0.00075);
         $is_login = !empty($this->login_user)?1:0;
         if($is_login){
-            $re = M('lian')->add_result($this->login_user,$num);
+            $play = M('lian')->user_can_play($user_id);
+            if(!empty($play) && $play==3){
+                $join_type = 1;
+            }else{
+                $join_type = 0;
+            }
+            $re = M('lian')->add_result($this->login_user,$num,$join_type);
             $change_credit = M('redbag')->change_user_credit($score['get_credit'],$this->login_user['user_id'],$activity_info['id']);
         }
         

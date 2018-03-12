@@ -39,16 +39,16 @@
                 <p class="p1">您的邀请码为<br><span><?= isset($user_info) ? $user_info['form_code'] : 0 ?></span></p>
                 <p>好友注册时填写邀请码</p>
             </div>
-            <div class="item-2">
+<!--            <div class="item-2">
                 <p>您的邀请连接为<br><span><?=isset($link)?$link:''?></span></p><br>
                 <p>复制此连接发送给朋友或朋友圈</p>
-            </div>
+            </div>-->
         </div>
         <dl class="ex-text">
             <dt>奖励规则：</dt>
             <dd>
                 <ul>
-                    <li><span>1、</span><p>邀请好友成功注册并关注，您将获得现金红宝1元，邀请红包大于十元可以取现</p></li>
+                    <li><span>1、</span><p>邀请好友成功注册并关注，可以玩继续玩游戏。</p></li>
                 </ul>
             </dd>
         </dl>

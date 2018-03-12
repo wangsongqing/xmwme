@@ -82,7 +82,8 @@ class actionMiddleware extends Action {
             'game'  => array('index'),
             'shop'  => array('index'),
             'goods' => array('index','detail'),
-            'wechat'=> array('index')
+            'wechat'=> array('index'),
+            'story'=> array('index'),
         );
         //获取用户登录信息
         if (loginCheck()) {

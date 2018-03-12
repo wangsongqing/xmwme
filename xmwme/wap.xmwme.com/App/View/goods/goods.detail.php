@@ -2,7 +2,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8">
-        <title>积分兑换</title>
+        <title>商场详情</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
         <meta name="keywords" content="">
@@ -32,7 +32,7 @@
                 <div class="text">
                     <ul>
                         <li class="ti"><?=isset($data['goods_name'])?$data['goods_name']:''?></li>
-                        <li>所需积分：<span class="c-red"><span class="big"><?=isset($data['credit'])?$data['credit']:''?></span>积分</span></li>
+                        <li>所需红包：<span class="c-red"><span class="big"><?=isset($data['money'])?$data['money']:''?></span>元</span></li>
                         <li>剩余数量：<?=isset($data['store'])?$data['store']:''?></li>
                         <li>兑换数量</li>
                         <li>
@@ -47,7 +47,7 @@
             </div>
             <?php if($user_id>0){ ?>
             <div class="btns">
-                <a href="javascript:rewards.buy()" class="ui-btn btn-submit">立即兑换</a>
+                <a href="javascript:rewards.buy()" class="ui-btn btn-submit">立即购买</a>
             </div>
             <?php }else{ ?>
             <div class="btns">
@@ -65,7 +65,7 @@
         <script src="/Resource/js/plugins.js"></script>
         <script src="/Resource/js/layer/layer.m.js?d=1608151650"></script>
         <script src="/Resource/js/base.js?d=1608151650"></script>
-        <script src="/Resource/credit/js/rewards.js?2323"></script>
+        <script src="/Resource/credit/js/rewards.js?222323"></script>
         <script>
             rewards.gid = '<?=isset($data['id'])?$data['id']:0?>';
             rewards.rand = '<?=isset($salt)?$salt:0?>';

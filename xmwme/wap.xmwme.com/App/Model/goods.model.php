@@ -39,24 +39,24 @@ class GoodsModel extends modelMiddleware{
         try{
             $model_goods = self::_model();
             $model_goods->startTrans();//开启事务
-            $goods = $model_goods->find($gid);
-            $need_credit = $num * $goods['credit']; //获取此次需要的积分
-            $credit_model = M('credit'); //获取用户可用积分
+            $goods = $model_goods->find($gid,0);
+            $need_credit = $num * $goods['money']; //获取此次需要的金额
+            $credit_model = M('redbag'); //获取用户可用金额
             $credit = $credit_model->find($user_id);           
-            if($need_credit>$credit['credit']){
-                throw new Exception('你的积分不够了','-1003');
+            if($need_credit>$credit['red_bag']){
+                throw new Exception('你的金额不够了','-1003');
             }
             $credit_arr = array(
-                'credit'=>$credit['credit'] - $need_credit,
-                'use_credit'=>$credit['use_credit'] + $need_credit,
+                'red_bag'=>$credit['red_bag'] - $need_credit,
+                'use_red_bag'=>$credit['use_red_bag'] + $need_credit,
             );
             $cRule['exact']['user_id'] = $user_id;
             $cre = $credit_model->edit($credit_arr,$cRule);//积分表数据变化
-            if(!$cre){throw new Exception('积分处理失败','-1004');}
+            if(!$cre){throw new Exception('红包处理失败','-1004');}
             $credit_model->credit_revision($user_id);//刷新缓存
             
-            //添加积分变动记录表
-            $credit_log = M('credit_log')->add_data($user_id,$need_credit,'2',0,$gid);
+            //添加金额变动记录表
+            $credit_log = M('redbag_log')->add_data($user_id,$need_credit,'2',0,$gid);
             if(!$credit_log) throw new Exception('积分变动日志记录失败','-1006');
             
             //商品库存变化

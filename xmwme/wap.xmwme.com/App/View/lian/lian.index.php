@@ -100,9 +100,10 @@
             <h2>活动规则</h2>
             <ul>
             <li><span>1.</span><p>点击相同图案的两个图标，如果图标能用3根及以下的直线连起来，就成功消除；</p></li>
-            <li><span>2.</span><p>每次游戏<?= $game_time / 1000 ?>秒，每消除1对图标，得<?= $game_score ?>分；成功消除所有图标，赠送<?= $game_floop ?>倍得分；</p></li>
-            <li><span>3.</span><p>游戏结束后根据得分奖励现金红包、投资红包或宝贝豆。</p></li>
-            <li><span>4.</span><p>每日游戏次数：免费赠送1次；当日投资宝贝计划增加1次；当日邀请好友注册关注增加1次。每日限3次。</p></li>
+            <li><span>2.</span><p>每次游戏<?= $game_time / 1000 ?>秒，每消除1对图标，得<?= $game_score ?>分；</p></li>
+            <li><span>3.</span><p>游戏结束后根据得分奖励现金红包。</p></li>
+            <li><span>4.</span><p>每日游戏次数：免费赠送1次;当日邀请好友注册关注增加1次。每日限2次。</p></li>
+            <li><span>5.</span><p>如有作弊、使用外挂等现象，我们有权取消一切成绩和奖励。</p></li>
             </ul>
             </div>
         </script>
@@ -110,7 +111,7 @@
         <script src="<?= Resource ?>js/base.js"></script>
         <script src="<?= Resource ?>js/layer/layer.m.js"></script>
         <script src="<?= Resource ?>activity/lianliankan/js/jWebAudio.min.js"></script>
-        <script src="<?= Resource ?>activity/lianliankan/js/main.js?ee"></script>
+        <script src="<?= Resource ?>activity/lianliankan/js/main.js?5yttyu"></script>
         <script>
             LLKGame.init({
                 time:<?= $game_time ?>,

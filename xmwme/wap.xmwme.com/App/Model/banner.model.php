@@ -35,6 +35,8 @@ class bannerModel extends modelMiddleware
 	    $this->revisionKey = array(
 		"{all:all}",
 		"{id:$id}",
+                "{status:1}",
+                "{status:0}",
 	    );
 	}
 	 $this->revision();

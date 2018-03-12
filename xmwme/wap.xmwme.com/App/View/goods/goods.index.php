@@ -30,7 +30,7 @@
             <header class="head">
                 <div class="inner">
                     <p class="name">红包(元)</p>
-                    <div class="text"><a href="/credit/index/"><i class="icon-bean"></i><span class="amount"><?=isset($credit['credit'])?$credit['credit']:0?></span><i class="icon-arrow"></i></a>
+                    <div class="text"><a href="/redbag/index/"><i class="icon-bean"></i><span class="amount"><?=isset($credit['red_bag'])?$credit['red_bag']:0?></span><i class="icon-arrow"></i></a>
                     </div>
                 </div>
             </header>
@@ -55,7 +55,7 @@
                                     <a href="/goods/detail/?id=<?=$value['id']?>">
                                         <img src="<?=$value['list_pic']?>">
                                         <p><?=$value['goods_name']?></p>
-                                        所需红包：<span class="c-red"><?=$value['credit']?></span>
+                                        <span class="c-red"><?=$value['credit']?></span>元
                                     </a>
                                 </div>
                             </li>

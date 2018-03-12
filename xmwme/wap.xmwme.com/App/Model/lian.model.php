@@ -99,6 +99,7 @@ class LianModel extends modelMiddleware {
             $_data = array(
                 'user_id'=>$user_info['user_id'],
                 'telephone'=>$user_info['telephone'],
+                'join_type'=>$join_type,
                 'lian_num'=>$num,
                 'score'=>$score,
                 'red_bag'=>$credit,
@@ -133,11 +134,24 @@ class LianModel extends modelMiddleware {
         $rule['exact']['join_type'] = 0;
         $rule['other'] = "created>={$time} AND created<$ttime";
         $is_data = M('lian')->findOne($rule,'*',0);
-        if(!empty($is_data)) return 1;//邀请好友可玩
         
         $rule['exact']['join_type'] = 1;
-        $is_data = M('lian')->findOne($rule,'*',0);
-        if($play_type==1 && !empty($is_data)) return 2;//次数已经用完
+        $is_data_invet = M('lian')->findOne($rule,'*',0);//邀请好友的次数已经用完
+        if(!empty($is_data)){
+            if(!empty($is_data_invet)){
+                return 2;//次数已经用完了
+            }
+            //判断用户有没有邀请好友
+            $user_rule['exact']['from_user_id'] = $user_id;
+            $user_rule['other'] = "created>={$time} AND created<$ttime";
+            $invite = M('user_info')->findOne($user_rule,'*',0);
+            if(!empty($invite)){
+                return 3;
+            }
+           return 1;
+        }
+
+        
     }
 }
 
