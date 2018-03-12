@@ -33,8 +33,8 @@ $tbl['redbag_log'] = array(
 );
 $tbl['banner'] = array(
     'name'       => $prefix.'banner',
-    'dbId'       => 'xm_core',
-    'configFile' => $configDir.'xm_core.php',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
 );
 $tbl['goods'] = array(
     'name'       => $prefix.'goods',
