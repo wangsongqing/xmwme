@@ -769,9 +769,6 @@ var LLKGame = function ($, win, doc) {
                     className: "popup-custom",
                     content: data.msg,
                     btn: ["确定"],
-                    yes: function () {
-                      window.location.href = "/lian/index/";
-                    }
                 })
             }
         }

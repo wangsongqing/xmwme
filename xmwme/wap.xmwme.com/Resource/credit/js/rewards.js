@@ -57,7 +57,7 @@ var rewards = {
     buy: function() {//兑换投资
 
         layer.open({
-            content: "您是否确认使用积分兑换该商品？", //文字
+            content: "您确定要购买该商品？", //文字
             btn: ['确认', '取消'], //按钮
             yes: function() { //确定
                 if (rewards.aregister == true)
@@ -80,9 +80,9 @@ var rewards = {
                             //确定按钮跳转
                             layer.open({
                                 content: data.msg, //文字
-                                btn: ['赚取积分', '关闭'], //按钮
+                                btn: ['赚取红包', '关闭'], //按钮
                                 yes: function() {
-                                    window.location.href = '/goods/index/';
+                                    window.location.href = '/game/index/';
                                 },
                                 no: function() {
                                     window.location.reload();
