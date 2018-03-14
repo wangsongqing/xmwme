@@ -34,6 +34,72 @@ class LoginAction extends actionMiddleware {
             'invite_code'=>$form_key
         ));
     }
+    
+    /**
+     * 忘记密码
+     */
+    public function forget(){
+        extract($this->input);
+        if($isPost){
+           if(isset($step) && $step==1){
+               $telephone = isset($telephone)?$telephone:0;
+               $this->display('login/login.forget_pwd.php',array(
+                   'telephone'=>$telephone
+               ));//修改密码页面
+           }
+           
+           if(isset($step) && $step==2){
+               $password = isset($password)?$password:0;
+               $telephone = isset($telephone)?$telephone:0;
+               if(!$password){$this->praseJson('-1002', '密码不能为空');}
+               if(!$telephone){$this->praseJson('-1003', '手机号不能为空');}
+               $rule['exact']['telephone'] = $telephone;
+               $user = M('user_info')->findOne($rule);
+               if(!$user){$this->praseJson('-1004', '用户不存在，请先注册');}
+               $salt = saltRound();//生成随机salt
+               $password = md5(md5($password).$salt);
+               $_data = array(
+                   'password'=>$password,
+                   'salt'=>$salt,
+               );
+               $user_re = M('user_info')->edit($_data,$rule);
+               if($user_re){
+                   M('user_info')->user_info_revision($user['user_id']);//刷新缓存
+                   $this->praseJson('success', '修改成功,请重新登录','/login/');
+               }else{
+                   $this->praseJson('-1006', '修改密码失败');
+               }
+               
+           }
+        }
+        $this->display('login/login.forget.php');
+    }
+    
+    /**
+     * 验证短信验证吗是否正确
+     */
+    public function validyzm(){
+        extract($this->input);
+        if($isPost){
+            $yzm = isset($yzm)?$yzm:'-1';
+            $telephone = isset($telephone)?$telephone:'';
+            $get_m_yzm = getVar('forget_confirm_code'.$telephone);//忘记密码找回密码的验证码
+            if($yzm!=$get_m_yzm){
+                $this->praseJson('fail', '短信验证码错误');
+            }
+        }
+    }
+    
+    /**
+     * 验证手机号是否存在
+     */
+    public function ajaxphoneExsit($telephone=0){
+        $rule['exact']['telephone'] = $telephone;
+        $user_re = M('user_info')->findOne($rule);
+        if(empty($user_re)){
+            return '-1';
+        }
+    }
 
     public function password($phone) {
         extract($this->input);
@@ -184,43 +250,26 @@ class LoginAction extends actionMiddleware {
         
         $ip = getIp();
         
-        $markArr = array('1'=>'register_confirm', '2'=>'forget_confirm','3'=>'forget_pay_pwd','5'=>'new_telephone_confirm');
+        $markArr = array('1'=>'register_confirm', '2'=>'forget_confirm');
         $mark    = isset($markArr[$mark]) ? $markArr[$mark] : -1;
         if ($mark == -1) die(json_encode(array('err'=>1,'msg'=>'业务参数错误！')));
-        
+        if ($type==1 && $mark=='forget_confirm') {
+            $is_exe = $this->ajaxphoneExsit($telephone);
+            if($is_exe=='-1') die(json_encode(array('err'=>1,'msg'=>'该手机号码不存在！请先注册！')));
+        }
         //配置要发送的短信类型
         $sendConfig = array(
             'register_confirm'=> array(
                 'key'=>'register_confirm_code'.$telephone,//存储验证码key
                 'num'=>5,//指定时间内发送次数限制
                 'timeout'=>600,//验证码有效期
-                'tpl'=>'验证码{code}，请在10分钟内完成输入，欢迎注册宝宝钱包!',//短信模版
             ),
             'forget_confirm'=> array(
                 'key'=>'forget_confirm_code'.$telephone,//存储验证码key
                 'num'=>5,//指定时间内发送次数限制
                 'timeout'=>600,//验证码有效期
-                'tpl'=>'验证码{code}，您正在找回宝宝钱包登录密码，需要进行验证。请勿泄露您的验证码！如非本人操作，请联系客服。',//短信模版
-            ),
-            'forget_pay_pwd'=> array(
-                'key'=>'forget_pay_pwd'.$telephone,//存储验证码key
-                'num'=>5,//指定时间内发送次数限制
-                'timeout'=>600,//验证码有效期
-                'tpl'=>'验证码为：{code}，您正在宝宝钱包向恒丰银行存管平台发起交易密码找回, 该验证码10分钟内有效，为了您的资金安全，请妥善保管您的验证码。',//短信模版
-            ),
-            'new_telephone_confirm'=>array(//修改手机号向新手机发送短信
-                'key'=>'new_telephone_confirm'.$telephone,//存储验证码key
-                'num'=>5,//指定时间内发送次数限制
-                'timeout'=>600,//验证码有效期
-                'tpl'=>'验证码{code}，您正在修改注册手机号码，为确保账户安全，打死都不能告诉别人哦！如非本人操作，请忽略。',//短信模版
             )
         );
-        
-        //随机生成6位数字验证码,并保存memcache
-        //$code = rand(111111,999999);
-        $code = '123456';
-        //短信模版
-        $msg = str_replace('{code}', $code, $sendConfig[$mark]['tpl']);
         
         //60秒内不允许重复发送
         $last_time = getVar('last_time_'.$mark.'_'.$telephone);
@@ -240,15 +289,15 @@ class LoginAction extends actionMiddleware {
         
 
         //发送验证码
-        if ($type == 1){
-            if($mark == 'withdraw_confirm' || $mark == 'forget_pay_pwd'){
-                //$send_result = BB::getApi('sms')->sendMsg( $telephone, $mark, array('code'=>$code), $this->login_user['user_id']);
-            }else{
-                //$send_result = BB::getApi('sms')->sendText($telephone, $mark, $msg);       //发送短信验证码
-            }
-        }elseif($type == 2){
-            //$send_result = BB::getApi('sms')->sendText($telephone, 'yuying', $code);       //发送语音验证码
+        $code = rand(111111,999999);
+        if ($type==1 && $mark=='forget_confirm') {
+            $smsType = 'SMS_127160413';//忘记密码
+        }else{
+            $smsType = 'SMS_127160332';//注册短信
         }
+        
+        $send_result = SmsSendText($telephone, $code, $smsType);       //发送短信验证码
+
         $send_result = 1;
         if($send_result == 1)
         {
