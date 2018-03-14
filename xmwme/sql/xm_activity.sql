@@ -37,10 +37,6 @@ CREATE TABLE `xm_activity` (
   KEY `status` (`status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='活动表';
 
-/*Data for the table `xm_activity` */
-
-insert  into `xm_activity`(`id`,`akey`,`activity_name`,`start_time`,`end_time`,`url`,`status`,`img_url`,`rule`,`created`,`updated`) values (1,'lian','连连看',1517414400,1521475200,'/lian/',1,'http://yunying.xmwme.org//Resource/uplodes/20180205102506841.jpg',NULL,1517613787,1519113254),(2,'hula1','呼啦',1519833600,1520179200,'wap.xmwme.com/hula',0,'http://yunying.xmwme.org//Resource/uplodes/20180203170411816.jpg',NULL,1517646990,1517797438);
-
 /*Table structure for table `xm_activity_log` */
 
 DROP TABLE IF EXISTS `xm_activity_log`;
@@ -52,11 +48,7 @@ CREATE TABLE `xm_activity_log` (
   `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `activity_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '活动id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='活动参与记录表';
-
-/*Data for the table `xm_activity_log` */
-
-insert  into `xm_activity_log`(`id`,`user_id`,`created`,`updated`,`activity_id`) values (1,3,1520404327,1520404327,1),(2,3,1520560415,1520560415,1);
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='活动参与记录表';
 
 /*Table structure for table `xm_lian` */
 
@@ -79,11 +71,7 @@ CREATE TABLE `xm_lian` (
   KEY `created` (`created`),
   KEY `join_type` (`join_type`),
   KEY `score` (`score`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='连连看游戏参与记录表';
-
-/*Data for the table `xm_lian` */
-
-insert  into `xm_lian`(`id`,`user_id`,`telephone`,`lian_num`,`is_floop`,`score`,`nick`,`red_bag`,`join_type`,`created`,`updated`) values (1,3,'18201197923',18,0,90,'','0.07',0,1520404327,1520404327),(2,3,'18201197923',18,0,90,'','0.06',0,1520560415,1520560415);
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='连连看游戏参与记录表';
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
