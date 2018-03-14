@@ -47,6 +47,11 @@ $tbl['user_info'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
+$tbl['withdraw'] = array(
+    'name'       => $prefix.'withdraw',
+    'dbId'       => 'xm_core',
+    'configFile' => $configDir.'xm_core.php',
+);
 /*xm_activity 库 start*/
 $tbl['activity'] = array(
     'name'       => $prefix.'activity',
