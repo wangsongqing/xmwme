@@ -53,11 +53,11 @@ abstract class Model extends Object {
         $this->createDbObject();
         $tbl = $this->com('dt')->tbl;
         if (!isset($tbl[$key])) {
-            SpringException::throwException("key: $key 对应的数据表不存在!");
+            RunException::throwException("key: $key 对应的数据表不存在!");
         }
 
         if (!isset($tbl[$key]['dbId']) || !isset($tbl[$key]['name']) || !isset($tbl[$key]['configFile'])) {
-            SpringException::throwException("key: $key 对应的数据表配置节点错误!");
+            RunException::throwException("key: $key 对应的数据表配置节点错误!");
         }
         
         $tblName = $tbl[$key]['name'];
@@ -76,7 +76,7 @@ abstract class Model extends Object {
             $this->table = $tblName;
             return $this->table;
         }
-        SpringException::throwException("key: $key 对应的数据表 " . $tbl[$key]['name'] . $slice . "不存在!");
+        RunException::throwException("key: $key 对应的数据表 " . $tbl[$key]['name'] . $slice . "不存在!");
     }
 
     /**

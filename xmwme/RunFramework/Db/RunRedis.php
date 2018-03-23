@@ -40,7 +40,7 @@ class RedisQ
 		{
 			if( !file_exists($this->configFile) ) 
 			{
-				SpringException::throwException("缓存配置文件：".$this->configFile."不存在!");
+				RunException::throwException("缓存配置文件：".$this->configFile."不存在!");
 			}
 			require($this->configFile);
 			$this->q = new Redis();
