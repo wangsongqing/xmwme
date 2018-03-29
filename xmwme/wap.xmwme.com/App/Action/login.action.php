@@ -297,9 +297,7 @@ class LoginAction extends actionMiddleware {
         }
         
         $send_result = SmsSendText($telephone, $code, $smsType);       //发送短信验证码
-
-        $send_result = 1;
-        if($send_result == 1)
+        if($send_result->Code == 'OK')
         {
             //设置验证码
             setVar($sendConfig[$mark]['key'], $code, $sendConfig[$mark]['timeout']);
