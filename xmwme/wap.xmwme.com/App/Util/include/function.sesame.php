@@ -874,6 +874,9 @@ function SmsSendText($telephone, $code, $TemplateCode){
     } catch (Exception $e) {
         writeLog('用户：'.$telephone.'发送验证码失败，失败原因：'.$e->getMessage(), 'sms.log');
     }
+    if($content->Code!='OK'){
+        writeLog(var_export($content),'return_sms_error.txt');
+    }
     return $content;
 }
 ?>
