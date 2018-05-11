@@ -40,4 +40,3 @@ function updateAuth($key, $value)
         setAuth($user, 360000);
     }
 }
-
