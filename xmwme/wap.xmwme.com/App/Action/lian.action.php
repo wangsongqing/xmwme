@@ -37,7 +37,7 @@ class LianAction extends actionMiddleware {
          
         if(empty($activity_info)) die ('活动已经结束');
         $data = M('lian')->get_lian_top($activity_info['start_time'], $activity_info['end_time'], 0, 3);
-        $game_time = '50'; //游戏时间
+        $game_time = '30'; //游戏时间
         $game_score = '5'; //每消除一对得分
         $game_floop = '1'; //得分是否翻倍
         $this->display('lian/lian.index.php', array(
@@ -55,7 +55,7 @@ class LianAction extends actionMiddleware {
      */
     public function send() {
         extract($this->input);
-        $user_id  = $this->login_user['user_id'];
+        $user_id  = isset($this->login_user['user_id'])?$this->login_user['user_id']:0;
         $num = isset($num) ? $num : 0;
         if ($num == 27) {$is_floop = 0;} else {$is_floop = 0;}
         if($num>27) {echo '-1010';exit;}
@@ -64,8 +64,8 @@ class LianAction extends actionMiddleware {
         //用户未登录玩游戏需要加这些代码
         $score['credit'] = floor($num * 5);//消除的对数*每对的得分
         $score['get_credit'] = format_money($score['credit'] * 0.00075);
-        $is_login = !empty($this->login_user)?1:0;
-        if($is_login){
+        if($score['get_credit']=='0.00') $score['get_credit'] = 0.01;//if get_credit eq 0.00 and default 0.01
+        if($user_id>0){
             $play = M('lian')->user_can_play($user_id);
             if(!empty($play) && $play==3){
                 $join_type = 1;
@@ -79,7 +79,7 @@ class LianAction extends actionMiddleware {
 	$this->display('lian/lian.score.php',array(
             'data'=>$score,
             'is_floop'=>$is_floop,
-            'is_login'=>$is_login
+            'is_login'=>$user_id
         ));
     }
     
@@ -111,8 +111,10 @@ class LianAction extends actionMiddleware {
       */
     public function can_play(){
         extract($this->input);
-        $user_id  = $this->login_user['user_id'];
-        
+        $user_id  = isset($this->login_user['user_id'])?$this->login_user['user_id']:0;
+        if(!$user_id){
+            $this->praseJson('1','ok');//不登陆也可以玩，只是没有成绩
+        }
         $play = M('lian')->user_can_play($user_id);
         if(!empty($play) && $play==1){
             $this->praseJson('-1008','邀请好友可再次获得游戏机会');exit;

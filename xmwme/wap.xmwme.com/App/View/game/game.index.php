@@ -2,11 +2,11 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8">
-        <title>宝贝游戏</title>
+        <title>玩游戏喽！</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
-        <meta name="keywords" content="宝宝理财,儿童理财,亲子理财,家庭理财">
-        <meta name="description" content="宝宝钱包是一款针对育儿用户的智能投顾工具，通过这个工具用户能方便快捷的进行投资，实现育儿资金的增值保值。宝宝钱包由获得软银中国资本注资的上海易贷网金融信息服务有限公司运营。">
+        <meta name="keywords" content="玩游戏喽">
+        <meta name="description" content="玩游戏喽是一个趣味小游戏平台，你可以玩游戏领红包哦！">
         <link href="/Resource/css/common.css?xEl2SF0q" type="text/css" rel="stylesheet">
         <link href="/Resource/css/pages.css?xEl2SF0q" type="text/css" rel="stylesheet">
         <script>(function(c) {

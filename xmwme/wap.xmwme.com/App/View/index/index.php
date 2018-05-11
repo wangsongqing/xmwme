@@ -3,11 +3,11 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8">
-        <title>食物百科网</title>
+        <title>玩游戏喽！</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
-        <meta name="keywords" content="我的钱包">
-        <meta name="description" content="我的钱包">
+        <meta name="keywords" content="玩游戏喽">
+        <meta name="description" content="玩游戏喽">
         <link href="<?php echo Resource;?>css/common.css?xEl2SF0q" type="text/css" rel="stylesheet">
         <link href="<?php echo Resource;?>css/pages.css?xEl2SF0q" type="text/css" rel="stylesheet">
         <script>(function(c) {

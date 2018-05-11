@@ -11,13 +11,17 @@
             <ul>
                 <li>
                     <div class="line"></div>
-                    <p><?=isset($data['get_credit'])&&$is_login==1?$data['get_credit']:'0'?></p>红包
+                    <p><?=isset($data['get_credit'])?$data['get_credit']:'0'?></p>红包
                 </li>
             </ul>
         </div>
     </div>
 </div>
 <div class="btns">
-    <a href="" class="btn-view"></a>
+    <?php if($is_login>0){?>
+        <a href="<?=Root?>my/index/" class="btn-view"></a>
+    <?php }else{ ?>
+        <a href="<?=Root?>login/index/" class="btn-view"></a>
+    <?php } ?>
     <a href="javascript:;" class="btn-replay" id="btn_replay"></a>
 </div>
