@@ -1189,8 +1189,5 @@ function SmsSendText($telephone, $code, $TemplateCode){
     }
     return $content;
 }
-?>
-    
-
 
 
