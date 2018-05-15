@@ -35,6 +35,7 @@ class IndexAction extends actionMiddleware
                 $credit_data['goods_name'] = $goods['goods_name'];
             }
         }
+        M('come_wx_num')->changeNum();//统计微信访问次数
 	$this->display('index/index.php',array(
             'data'=>$data,
             'credit_data'=>$credit_data,
