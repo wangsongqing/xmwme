@@ -67,3 +67,8 @@ $tbl['lian'] = array(
     'dbId'       => 'xm_activity',
     'configFile' => $configDir.'xm_activity.php',
 );
+$tbl['come_wx_num'] = array(
+    'name'       => $prefix.'come_wx_num',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
+);
