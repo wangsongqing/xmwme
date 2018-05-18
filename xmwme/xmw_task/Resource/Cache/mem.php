@@ -7,6 +7,6 @@ $object['import']['0'] = "../RunFramework/Util/ICache.php";
 
 $object['property']['expire'] = "1800";
 $object['property']['compressed'] = "1";
-$object['property']['configFile'] = "Config/memcache.config.php";
+$object['property']['configFile'] = "../Config/memcache.config.php";
 
 ?>
