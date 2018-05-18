@@ -21,20 +21,20 @@ $tbl['user_info'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
-$tbl['credit'] = array(
-    'name'       => $prefix.'credit',
+$tbl['redbag'] = array(
+    'name'       => $prefix.'redbag',
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
-$tbl['credit_log'] = array(
-    'name'       => $prefix.'credit_log',
+$tbl['redbag_log'] = array(
+    'name'       => $prefix.'redbag_log',
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
 $tbl['banner'] = array(
     'name'       => $prefix.'banner',
-    'dbId'       => 'xm_core',
-    'configFile' => $configDir.'xm_core.php',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
 );
 $tbl['goods'] = array(
     'name'       => $prefix.'goods',
@@ -46,8 +46,8 @@ $tbl['orders'] = array(
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
-$tbl['manage_log'] = array(
-    'name'       => $prefix.'manage_log',
+$tbl['withdraw'] = array(
+    'name'       => $prefix.'withdraw',
     'dbId'       => 'xm_core',
     'configFile' => $configDir.'xm_core.php',
 );
@@ -66,4 +66,15 @@ $tbl['lian'] = array(
     'name'       => $prefix.'lian',
     'dbId'       => 'xm_activity',
     'configFile' => $configDir.'xm_activity.php',
+);
+$tbl['come_wx_num'] = array(
+    'name'       => $prefix.'come_wx_num',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
+);
+
+$tbl['manage_log'] = array(
+    'name'       => $prefix.'manage_log',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
 );
