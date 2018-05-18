@@ -13,7 +13,7 @@ function R($key=''){
     if ($cache == null)
     {
         $cache = new RedisCrud($key);
-        $cache->configFile = 'Config/redis.config.php';
+        $cache->configFile = '../Config/redis.config.php';
     }
     return $cache;
 }
@@ -86,7 +86,7 @@ function getCacheObj(){
         $cache->prefix = 'run_';
         $cache->expire = 18000;
         $cache->compressed = true;
-        $cache->configFile = 'Config/memcache.config.php';
+        $cache->configFile = '../Config/memcache.config.php';
     }
     return $cache;
 }

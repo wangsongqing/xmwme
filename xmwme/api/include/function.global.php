@@ -9,7 +9,7 @@
 *	);
 */
 function actionModels(){
-    $file = Config.'/datatable.config.php';
+    $file = '../Config/datatable.config.php';
     if(file_exists($file)){
 	require $file;
 	$_arr = array();
