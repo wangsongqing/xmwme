@@ -79,7 +79,7 @@ $objects[] = array(
 'className' => 'TableManager',
 'initMethod' => 'load',
 'property'   => array(
-	'configFile' => 'Config/datatable.config.php'
+	'configFile' => '../Config/datatable.config.php'
 ));
 
 //Memcache
@@ -92,7 +92,7 @@ $objects[] = array(
     'property'  => array(
         'expire'     => 1800,
         'compressed' => true,
-        'configFile' =>'Config/memcache.config.php'
+        'configFile' =>'../Config/memcache.config.php'
     ));
 
 
