@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.5.53 : Database - xm_base
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -134,3 +135,14 @@ CREATE TABLE `xm_story` (
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+DROP TABLE IF EXISTS `xm_come_wx_num`;
+
+CREATE TABLE `xm_come_wx_num` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `num` int(10) unsigned NOT NULL DEFAULT '0',
+  `ip` char(20) DEFAULT '' COMMENT 'ip',
+  `created` varchar(30) NOT NULL DEFAULT '' COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8
+
