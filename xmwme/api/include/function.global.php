@@ -27,7 +27,7 @@ function actionModels(){
  */
 function M($action=''){
     if(empty($action)){return false;}
-    $model = SystemParams::getDB($action);
+    $model = Run::Model($action);
     return $model;
 }
 
@@ -360,65 +360,6 @@ function check_password($password)
     return true;
 }
 
-
-/**
- * 注册和取出系统对象以及中间变量
- */ 
-class SystemParams {
-        
-        private static $parmas = array () ;
-        
-        public static function set($key, $value){
-            SystemParams::$parmas[$key] = $value ;    
-        }
-        
-        public static function get($key){  
-            if(isset( SystemParams::$parmas[$key])){  
-                return SystemParams::$parmas[$key]  ; 
-            }   
-        } 
-        
-        /**
-         * 获取Model对象
-         * @param unknown $apiName
-         */
-        public static function getDB($table){
-//	    var_dump($table);exit;
-            return SystemParams::get('OB')->import($table);
-        }
-        
-        /**
-         * 获取ObApi对象
-         * @param unknown $apiName
-         */
-        public static function getObApi(){
-            $arguments = func_get_args();
-            $apiName = array_shift($arguments);
-            loadOB($apiName) ; 
-            $class = new ReflectionClass($apiName);
-            return $class->newInstanceArgs($arguments);//返回类的实例
-        }
-        
-    }
-
-
-function loadOB($obName) {
-    
-    include_once(dirname(__FILE__). '/OB.class.php') ;
-    
-    try{
-        
-        if(file_exists(dirname(__FILE__).'/'.$obName.'.class.php')){ 
-            include_once(dirname(__FILE__).'/'.$obName.'.class.php') ;    
-        } 
-        else{
-            throw new Exception($obName .' class error ');
-        }
-    }
-    catch(Exception $e){
-         exit($e) ;
-    }
-}
 
 /**
  * 随机生成字符串 字段salt需要
