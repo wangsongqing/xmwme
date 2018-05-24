@@ -6,5 +6,6 @@ $groups = array (
   'activity' => array ('convert' => 'activity','permition' => array ('index' => array ('convert' => '活动管理'))),
   'goods' => array ('convert' => 'goods','permition' => array ('index' => array ('convert' => '商品管理'))),
   'orders' => array ('convert' => 'orders','permition' => array ('index' => array ('convert' => '订单管理'))),
+  'blog' => array ('convert' => 'blog','permition' => array ('index' => array ('convert' => '博客管理'))),
 );
 ?>
