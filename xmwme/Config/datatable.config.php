@@ -48,6 +48,11 @@ $tbl['manage_user'] = array(
     'dbId'       => 'xm_base',
     'configFile' => $configDir.'xm_base.php',
 );
+$tbl['blog'] = array(
+    'name'       => $prefix.'blog',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
+);
 /*base库结束*/
 
 
