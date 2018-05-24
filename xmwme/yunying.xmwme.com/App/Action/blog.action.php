@@ -63,6 +63,7 @@ class BlogAction extends actionMiddleware
     }
     
     public function delete(){
+        extract($this->input);
         $id = isset($id)?$id:0;
         $_rule['exact']['id'] = $id;
         $result = Run::Model('blog')->del($_rule);
