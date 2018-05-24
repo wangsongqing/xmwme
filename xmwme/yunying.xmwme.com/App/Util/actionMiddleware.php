@@ -191,10 +191,10 @@ class actionMiddleware extends Action {
         $mc = getCookie('mc');
         $mca = !empty($mc) ? explode('|', $mc) : array();
         //当前操作菜单栏目
-        setFileVar("mca", $mc);
-        setFileVar("htmlmenu", $htmlmenu);
-        setFileVar("subnav", $subnav); 
-        setFileVar("headermenu", $headermenu);
+        $this->set("mca", $mc);
+        $this->set("htmlmenu", $htmlmenu);
+        $this->set("subnav", $subnav); 
+        $this->set("headermenu", $headermenu);
     }
 
 }
