@@ -21,7 +21,7 @@ class IndexAction extends actionMiddleware
     {	
 	extract($this->input);
 	$isSearch = isset($isSearch)?$isSearch:'';
-        $_rule = array();
+        $_rule['order']['id'] = 'desc';
 	$data = Run::Model('blog')->findTop($_rule,'*',0);
 	$this->display('index/index.php',array('data'=>$data,'class'=>$this->calss));
     }
