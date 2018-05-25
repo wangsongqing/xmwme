@@ -53,6 +53,11 @@ $tbl['blog'] = array(
     'dbId'       => 'xm_base',
     'configFile' => $configDir.'xm_base.php',
 );
+$tbl['commit'] = array(
+    'name'       => $prefix.'commit',
+    'dbId'       => 'xm_base',
+    'configFile' => $configDir.'xm_base.php',
+);
 /*base库结束*/
 
 
