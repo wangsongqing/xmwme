@@ -87,7 +87,7 @@ img {
 	width: 25px;
 	height: 25px;
 	border: none;
-	background-image: url(images/search_icon.png);
+	background-image: url('../images/search_icon.png');
 	position: absolute;
 	top: 3px;
 	right: 3px;
