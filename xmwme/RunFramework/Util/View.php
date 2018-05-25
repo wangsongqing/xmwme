@@ -26,8 +26,8 @@ class View
 			    foreach($arr as $key=>$val){
 				$this->tplVar[$key] = $val;
 			    }
-			    extract($this->tplVar);
 			}
+                        extract($this->tplVar);
 			require_once($file);
 		}
 	}
