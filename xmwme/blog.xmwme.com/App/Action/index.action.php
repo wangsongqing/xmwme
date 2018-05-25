@@ -30,6 +30,11 @@ class IndexAction extends actionMiddleware
         extract($this->input);
         $id = isset($id)?$id:'';
         $data = Run::Model('blog')->find($id);
+        $_rule['exact']['blog_id'] = $id;
+        $_rule['limit'] = 30;
+        $_rule['order']['id'] = 'desc';
+        $commit_data = Run::Model('commit')->findTop($_rule,'*',0);
+        $data['commit'] = $commit_data;
         $this->display('index/detail.php',array(
             'data'=>$data,
             'class'=>$this->calss
@@ -49,7 +54,28 @@ class IndexAction extends actionMiddleware
         $data = Run::Model('blog')->findTop($_rule,'*',0);
         $this->display('index/index.php',array('data'=>$data,'class'=>$this->calss));
     }
-
-
+    
+    /**
+     * 评论action
+     */
+    public function commit(){
+        extract($this->input);
+        $username = isset($username)?$username:'';
+        $mail = isset($mail)?$mail:'';
+        $id = isset($id)?$id:'';//博客id
+        $_arr = array(
+            'username'=>$username,
+            'mail'=>$mail,
+            'blog_id'=>$id,
+            'content'=>$comment,
+            'created'=>time(),
+        );
+        $insert_id = Run::Model('commit')->add($_arr);
+        if($insert_id){
+            Run::Model('commit')->commit_revision($insert_id);//刷新缓存
+            $data = Run::Model('commit')->find($insert_id);
+            $this->display('index/commit.php', array('data'=>$data));
+        }
+    }
 }
 ?>
