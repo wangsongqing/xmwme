@@ -71,5 +71,38 @@ class BlogAction extends actionMiddleware
             $this->redirect('删除成功', Root.'blog/index/');
         }
     }
+    
+    //编辑器上传功能
+    public function uploadimage(){
+        require './'.Resource.'UEditor/php/Uploader.class.php';
+        $js_config_json = './'.Resource.'UEditor/php/config.json';
+        $CONFIG = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents($js_config_json)), true);
+        $action = $_GET['action'];
+        
+        $base64 = "upload";
+        switch ($action) {
+            case 'config':
+                $result =  json_encode($CONFIG);
+                break;
+
+            /* 上传图片 */
+            case 'uploadimage':
+                 $config = array(
+                    "pathFormat" => $CONFIG['imagePathFormat'],
+                    "maxSize" => $CONFIG['imageMaxSize'],
+                    "allowFiles" => $CONFIG['imageAllowFiles']
+                );
+                $fieldName = $CONFIG['imageFieldName'];
+                $up = new Uploader($fieldName, $config, $base64); //生成上传实例对象并完成上传 
+                $result = json_encode($up->getFileInfo());//返回数据
+                break;
+            default:
+                $result = json_encode(array(
+                    'state'=> '请求地址出错'
+                ));
+                break;
+            }
+            echo $result;/* 输出结果 */
+        }
 }
 
