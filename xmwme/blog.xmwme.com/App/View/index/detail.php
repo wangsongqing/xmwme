@@ -1,3 +1,4 @@
+<?php $title = $data['title']; $scontent = $data['scontent'];?>
 <?php include View . '/public/header.php'; ?>
 <div class="container">
     <div class="article-list">

@@ -1,3 +1,7 @@
+<?php 
+$title = '松松的博客 | 技术&amp;思想&amp;生活';
+$scontent = 'PHP|Mysql|Linux|Nginx|Memcache|Redis';
+?>
 <?php include View.'/public/header.php'; ?>
         <!-- main container -->
         <div class="container" style="margin-left: 340px;">
