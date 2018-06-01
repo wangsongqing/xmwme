@@ -25,7 +25,7 @@ class BlogAction extends actionMiddleware
                 'title'=>isset($title)?$title:'',
                 'class'=>isset($class)?$class:'',
                 'content'=>isset($_POST['content'])?$_POST['content']:'',
-                'scontent'=>isset($_POST['content'])?mb_substr($_POST['content'],0,1000,'utf-8'):'',
+                'scontent'=>isset($_POST['scontent'])?$_POST['scontent']:'',
                 'created'=>time(),
                 'updated'=>time(),
             );
