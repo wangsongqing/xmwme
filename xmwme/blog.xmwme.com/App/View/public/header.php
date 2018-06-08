@@ -9,7 +9,7 @@
         <meta name="apple-touch-fullscreen" content="YES">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0">
-        <meta name="keywords" content="<?=$title?>">
+        <meta name="keywords" content="<?=$title?>，松松_博客，PHP技术，Mysql优化，Nosql">
         <meta name="description" content="<?=$scontent?>">
         <link href="<?= Resource ?>css/tip-twitter.css" rel="stylesheet">
         <link href="<?= Resource ?>css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
