@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0">
         <meta name="keywords" content="<?=$title?>，松松_博客，PHP技术，Mysql优化，Nosql">
         <meta name="description" content="<?=$scontent?>">
-        <link href="<?= Resource ?>css/tip-twitter.css" rel="stylesheet">
+        <link href="<?= Resource ?>css/tip-twitter.css?222" rel="stylesheet">
         <link href="<?= Resource ?>css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="<?= Resource ?>css/tomorrow.css">
         <link rel="stylesheet" href="<?= Resource ?>css/star7th.css">
@@ -39,10 +39,10 @@
             }
         </style>
         <link rel="stylesheet" id="wp-lightbox-2.min.css-css" href="<?= Resource ?>css/lightbox.min.css" type="text/css" media="all">
-        <link rel="stylesheet" id="style-css" href="<?= Resource ?>css/style.css" type="text/css" media="">
+        <link rel="stylesheet" id="style-css" href="<?= Resource ?>css/style.css?332" type="text/css" media="">
         <link rel="stylesheet" id="skincolor-css" href="<?= Resource ?>css/skin-red.css" type="text/css" media="">
         <link rel="stylesheet" id="mediaelement-css" href="<?= Resource ?>css/mediaelementplayer.min.css" type="text/css" media="all">
-        <link rel="stylesheet" id="wp-mediaelement-css" href="<?= Resource ?>wp-mediaelement.css" type="text/css" media="all">
+        <!--<link rel="stylesheet" id="wp-mediaelement-css" href="<?= Resource ?>wp-mediaelement.css" type="text/css" media="all">-->
         <script type="text/javascript" src="<?= Resource ?>js/jquery.js"></script>
         <script type="text/javascript" src="<?= Resource ?>js/jquery-migrate.min.js"></script>
         <style type="text/css" media="screen">
