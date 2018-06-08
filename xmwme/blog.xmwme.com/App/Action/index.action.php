@@ -22,7 +22,6 @@ class IndexAction extends actionMiddleware
 	extract($this->input);
 	$isSearch = isset($isSearch)?$isSearch:'';
         $ajax = isset($ajax) ? intval($ajax) : 0;
-	$page = isset($page) ? intval($page) : 0;
         $_rule['order']['id'] = 'desc';
         $_rule['limit'] = '5';
         $data = Run::Model('blog')->findAll($_rule);
