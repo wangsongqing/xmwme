@@ -111,7 +111,7 @@ img {
 	width: 260px;
 	height: 260px;
 	position: relative;
-	background: url(images/circular_shadow.png) center top no-repeat;
+	/*background: url(images/circular_shadow.png) center top no-repeat;*/
 }
 .face-img {
 	width: 130px;
