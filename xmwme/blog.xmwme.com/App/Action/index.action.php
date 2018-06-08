@@ -21,8 +21,15 @@ class IndexAction extends actionMiddleware
     {	
 	extract($this->input);
 	$isSearch = isset($isSearch)?$isSearch:'';
+        $ajax = isset($ajax) ? intval($ajax) : 0;
+	$page = isset($page) ? intval($page) : 0;
         $_rule['order']['id'] = 'desc';
-	$data = Run::Model('blog')->findTop($_rule,'*',0);
+        $_rule['limit'] = '5';
+        $data = Run::Model('blog')->findAll($_rule);
+        if($ajax==1){
+            $html = $this->fetch('index/ajax.page.php', array('data'=>$data,'class'=>$this->calss));
+            $this->praseJson('1','suss','',$html);
+        }
 	$this->display('index/index.php',array('data'=>$data,'class'=>$this->calss));
     }
     
