@@ -907,11 +907,17 @@ function terminal()
 /**
  * 随机生成字符串
  * @param $length
+ * @param $type 1:数字字母 2纯字母
  * @return null|string
  */
-function getRandChar($length){
+function getRandChar($length,$type = 1){
     $str = null;
-    $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+    if($type==1){
+        $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+    }else if($type==2){
+         $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    }
+   
     $max = strlen($strPol)-1;
     for($i=0;$i<$length;$i++){
         $str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
