@@ -51,15 +51,24 @@ class IndexAction extends actionMiddleware
     public function blogDate(){
         extract($this->input);
         $date = isset($date)?$date:'';
+        $ajax = isset($ajax)?$ajax:'';
         $firstday = date('Y-m-01', strtotime($date));//当前月的第一天的时间戳
         $lastday = date('Y-m-d', strtotime("$firstday +1 month -1 day"));//当前月的最后一天的时间戳
         $firstday = strtotime($firstday);
         $lastday = strtotime($lastday) + 86400;
         $_rule['other'] = "created>{$firstday} AND created<{$lastday}";
-        $_rule['limit'] = 20;
+        $_rule['limit'] = 5;
         $_rule['order']['id'] = 'desc';
         $data = Run::Model('blog')->findAll($_rule,'*',0);
-        $this->display('index/index.php',array('data'=>$data,'class'=>$this->calss));
+        if($ajax==1){
+            $html = $this->fetch('index/ajax.page.php', array('data'=>$data,'class'=>$this->calss));
+            $this->praseJson('1','suss','',$html);
+        }
+        $this->display('index/blogdate.php',array(
+            'data'=>$data,
+            'class'=>$this->calss,
+            '_date'=>$date
+        ));
     }
     
     /**
