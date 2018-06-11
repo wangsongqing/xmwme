@@ -57,6 +57,7 @@ class IndexAction extends actionMiddleware
         $lastday = strtotime($lastday) + 86400;
         $_rule['other'] = "created>{$firstday} AND created<{$lastday}";
         $_rule['limit'] = 20;
+        $_rule['order']['id'] = 'desc';
         $data = Run::Model('blog')->findAll($_rule,'*',0);
         $this->display('index/index.php',array('data'=>$data,'class'=>$this->calss));
     }
