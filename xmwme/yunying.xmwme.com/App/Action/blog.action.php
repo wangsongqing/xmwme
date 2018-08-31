@@ -7,10 +7,13 @@ class BlogAction extends actionMiddleware
 {   
     
     public $calss = array(
-                '1'=>'编程技术',
-                '2'=>'生活感悟',
+                '1'=>'PHP',
+                '2'=>'Python',
+                '3'=>'Mysql',
+                '4'=>'Java',
+                '5'=>'生活感悟',
             );
-    public function index(){
+    public function index(){        
         $data = Run::Model('blog')->findAll();
         $this->display('blog/blog.index.php',array(
             'data'=>$data,
@@ -34,7 +37,9 @@ class BlogAction extends actionMiddleware
                 $this->redirect('添加成功',Root.'blog/index/');
             }
         }
-        $this->display('blog/blog.add.php');
+        $this->display('blog/blog.add.php',array(
+            'type'=>$this->calss
+        ));
     }
     
     public function edit(){
@@ -59,6 +64,7 @@ class BlogAction extends actionMiddleware
         $this->display('blog/blog.edit.php',array(
             'data'=>$data,
             'id'=>$id,
+            'type'=>$this->calss
         ));
     }
     

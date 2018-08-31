@@ -23,8 +23,9 @@
                         <p>
                             <select name="class" id="status" class="sbox32" >
                                 <option value="">请选择</option>
-                                <option value="1">编程技术</option>
-                                <option value="2">生活感悟</option>
+                                <?php foreach($type as $k=>$v){ ?>
+                                <option value="<?=isset($k)?$k:''?>"><?=isset($v)?$v:''?></option>
+                                <?php  } ?>
                             </select>
                         </p>
                     </li>

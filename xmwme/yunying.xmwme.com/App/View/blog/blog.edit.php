@@ -24,8 +24,9 @@
                         <p>
                             <select name="class" id="status" class="sbox32" >
                                 <option value="">请选择</option>
-                                <option value="1" <?php if(isset($data['class']) && $data['class']==1){echo 'selected';} ?>>编程技术</option>
-                                <option value="2" <?php if(isset($data['class']) && $data['class']==2){echo 'selected';} ?>>生活感悟</option>
+                                <?php foreach($type as $k=>$v){ ?>
+                                <option value="<?=isset($k)?$k:''?>" <?php if(isset($data['class']) && $data['class']==$k){echo 'selected';} ?>><?=isset($v)?$v:''?></option>
+                                <?php } ?>
                             </select>
                         </p>
                     </li>
