@@ -76,7 +76,7 @@
             <div id="categories"><i class="fa fa-bars"></i>
                 <select>
                     <option value="松松的博客">请选择</option>
-                    <option value="<?=Root?>index/index/">编程技术</option>
+                    <option value="<?=Root?>index/index/">PHP</option>
                     <option value="<?=Root?>index/index/">生活感悟</option>
                 </select>
             </div>
@@ -107,8 +107,9 @@
             <div class="nav">
                 <ul>
                     <div class="menu-2-container"><ul id="menu-2" class="menu"><li id="menu-item-1316" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1316"><a href="/index/index/">首页</a></li>
-                            <li id="menu-item-1319" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1319"><a href="<?=Root?>index/index/">编程技术</a></li>
-                            <li id="menu-item-1320" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1320"><a href="<?=Root?>index/index/">生活感悟</a></li>
+                            <?php foreach($blog_type as $k=>$v){ ?>
+                            <li id="menu-item-1319" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1319"><a href="<?=Root?>index/index/?type=<?=$k?>"><?=$v?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </ul>

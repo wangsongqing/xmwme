@@ -13,7 +13,10 @@ class actionMiddleware extends Action {
         '用户管理' => array('index','log'),
         '数据管理' => array('banner','activity','goods','orders'),
     );
-
+    
+    //博客分类
+    public $calss = array('1'=>'PHP','2'=>'Python','3'=>'Mysql','4'=>'Java','5'=>'生活感悟');
+    
     /**
      * 控制器所依赖模型 -- 定义后台所有使用到的Model引用
      * @access 	public
@@ -144,6 +147,7 @@ class actionMiddleware extends Action {
         $sql = "SELECT id,FROM_UNIXTIME(a.created,'%Y-%m') AS NF,COUNT(*) AS num FROM `xm_blog` a GROUP BY NF";
         $data = Run::Model('blog')->queryAll($sql);
         $this->set('blog_date',$data);
+        $this->set('blog_type',$this->calss);
     }
 
 }

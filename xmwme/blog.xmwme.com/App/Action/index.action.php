@@ -10,10 +10,6 @@
  */
 class IndexAction extends actionMiddleware
 {   
-    public $calss = array(
-                '1'=>'编程技术',
-                '2'=>'生活感悟',
-            );
     /**
      * 博客列表
      */
@@ -22,14 +18,20 @@ class IndexAction extends actionMiddleware
 	extract($this->input);
 	$isSearch = isset($isSearch)?$isSearch:'';
         $ajax = isset($ajax) ? intval($ajax) : 0;
+        $type = isset($type) ? $type: '';
         $_rule['order']['id'] = 'desc';
         $_rule['limit'] = '5';
+        !empty($type) && $_rule['exact']['class'] = $type;
         $data = Run::Model('blog')->findAll($_rule);
         if($ajax==1){
             $html = $this->fetch('index/ajax.page.php', array('data'=>$data,'class'=>$this->calss));
             $this->praseJson('1','suss','',$html);
         }
-	$this->display('index/index.php',array('data'=>$data,'class'=>$this->calss));
+	$this->display('index/index.php',array(
+            'data'=>$data,
+            'class'=>$this->calss,
+            'type'=>$type
+        ));
     }
     
     public function detail(){
