@@ -1,4 +1,5 @@
 <?php
+//wsq
 set_time_limit(0);                                     //设置程序运行超时间
 ob_start();                                            //打开磁盘缓冲
 require_once('Config/apppath.config.php');             //初始化应用程序路径  
