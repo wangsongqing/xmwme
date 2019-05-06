@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>用户管理系统</title>
+    <link href="<?php echo Resource;?>css/property-system.css?343439" rel="stylesheet">
+    <link href="<?php echo Resource?>css/operate-system.css?44549" rel="stylesheet">
+    <script src="<?php echo Resource?>js/jquery-1.4.2.js"></script>
+    <script src="<?php echo Resource?>js/html5.js"></script>
+    <script src="<?php echo Resource?>js/public.js?234"></script>
+</head>
+<body>
+<!-- header start -->
+<?php $user = getAuth('all');?>
+<header id="header">
+    <section class="header-top">
+        <div class="wraper">
+            <p></p>
+            <aside><i><a href="<?php echo Root;?>logout/">退出</a></i><em><?=$user['admin_name']?></em><span>欢迎您</span></aside>
+        </div>
+    </section>
+    <section class="header-nav-wrap">
+        <aside>
+            <h1><a href="#"><b>用户管理</b></a></h1>
+            <i></i>
+            <h2>用户管理系统</h2>
+        </aside>
+        <nav>
+            <ul><div style="float:right;width:auto;">
+                <?php foreach ($headermenu as $key => $value) {?>
+                <li><a href="<?=$value?>"><?=$key?></a></li>
+                <?php }?>
+            </div></ul>
+        </nav>
+    </section>
+</header>
+<!-- header end -->

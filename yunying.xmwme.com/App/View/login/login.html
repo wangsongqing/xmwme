@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="Copyright" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>管理系统登录</title>
+    <link rel="stylesheet" href="<?=Resource?>css/operate-system.css">
+    <link rel="stylesheet" href="<?=Resource?>css/system-hack.css">
+    <script src="<?=Resource?>js/html5.js"></script>
+    <script src="<?=Resource?>js/jquery.js"></script>
+    <script src="<?=Resource?>js/rsa.js"></script>
+    <script src="<?=Resource?>js/run_encryption.js"></script>
+    <script src="<?=Resource?>js/user.js?<?php echo rand(); ?>"></script>
+
+</head>
+<body>
+<!-- header start -->
+<header id="header">
+    <section class="header-top">
+        <div class="wraper">
+            <p></p>
+            <aside><i><a href="#">登陆</a></i><span>欢迎您，</span></aside>
+        </div>
+    </section>
+    <section class="header-nav-wrap">
+        <aside>
+           
+            <i></i>
+            <h2>管理系统</h2>
+        </aside>
+    </section>
+</header>
+<!-- header end -->
+<!-- main start -->
+<main class="clearfix login-wraper">
+    <aside class="login-adver">
+
+    </aside>
+    <fieldset class="form-list-32 form-list-32-login">
+        <legend>个人信息</legend>
+        <form  name="myform" method="post" id="validateRegister">
+            <h2><i></i>登录<b></b></h2>
+            <ul>
+                <li><h6>账号 :</h6><aside><input name="account" class="tbox40" type="text" id="account" autocomplete= "false" value="请输入您的账号"  onclick="if(this.value=='请输入您的账号'){this.value='';}"  onblur="if(this.value==''){this.value='请输入您的账号';}"></aside></li>
+                <li><h6>密码 :</h6><aside><input name="password" class="tbox40" type="password" id="password" value=""></aside></li>
+                <li class="last">
+                    <input type="submit" onclick="return user.authLogin();" value="登录"></li>
+            </ul>
+        </form>
+    </fieldset>
+</main>
+<!-- main end -->
+
+<!-- footer start -->
+<footer id="footer">
+
+    <section class="footer-copyright">
+       <p>All Rights Reserved. </p>
+        <div>
+            <a><img src="<?=Resource?>images/manage-system/temp/p1.png" width="80" height="30"></a>
+            <a><img src="<?=Resource?>images/manage-system/temp/p2.png" width="80" height="30"></a>
+            <a><img src="<?=Resource?>images/manage-system/temp/p3.png" width="80" height="30"></a>
+			<a><img src="<?=Resource?>images/manage-system/temp/p4.png" width="80" height="30"></a>
+			<a><img src="<?=Resource?>images/manage-system/temp/p5.png" width="80" height="30"></a>
+        </div>
+    </section>
+</footer>
+<!-- footer end -->
+</body>
+</html>

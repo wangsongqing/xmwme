@@ -1,0 +1,39 @@
+/* ============================================== selectbox  ============================================== */
+.sbox30,.sbox32{width:150px;
+	font-size:12px;font-family:Microsoft YaHei;color:#333;border:1px solid #ddd;
+	padding-left:5px;
+}
+.sbox30{height:30px;padding:5px 5px\0;}
+.sbox32{height:32px;padding:6px 5px\0;}
+.sbox32-1{width:162px;}
+.sbox32-2{width:60px;}
+.sbox32-3{width:212px;}
+.sbox32-4{width:85px;}
+.sbox30,.sbox32{height:auto\9;}
+/* =============== ie8 hack =============== */
+@media \0 screen {
+	.sbox30{padding-top:5px;padding-bottom:4px;}
+	.sbox32{padding-top:6px;padding-bottom:5px;}
+}
+/* ============================================== textbox ============================================== */
+.tbox30,.tbox40{width:200px;border:1px solid #ccc;font:14px/18px Microsoft YaHei;padding:0 5px;color:#666;}
+.tbox30{height:30px;line-height:30px \9;}
+.tbox30-1{width:115px;}
+.tbox30-2{width:220px;}
+.tbox30-3{width:249px;}
+.tbox30-4{width:194px;}
+.tbox30-5{width:90px;}
+.tbox30-6{width:150px;}
+.tbox30-7{width:130px;}
+.tbox40{height:40px;line-height:40px \9;}
+/* ============================================== IE6 hack ============================================== */
+*html{zoom:'expression(function(ele){ele.style.zoom="1";document.execCommand("BackgroundImageCache",false,true);}(this))';}
+/* ========================================================== Safari hack ========================================================== */
+/* ============================================== selectbox ============================================== */
+.sbox30{[;margin-top:4px;}
+.sbox32{margin-top:5px;}
+/* ============================================== textbox  ============================================== */
+.tbox30,.tbox40{line-height:0;}
+/* ===============IE6、IE7 hack =============== */
+.tbox30{*line-height:30px;}
+.tbox40{*line-height:40px;}

@@ -1,0 +1,33 @@
+【2019-05-06 09:22:47】		exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'xm_base'' in F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php:71
+Stack trace:
+#0 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php(71): PDO->__construct('mysql:host=127....', 'root', 'root')
+#1 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php(183): RunDbPdo->connect()
+#2 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\modelMiddleware.php(227): RunDbPdo->getRows('SELECT id,FROM_...')
+#3 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\actionMiddleware.php(148): modelMiddleware->queryAll('SELECT id,FROM_...')
+#4 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\actionMiddleware.php(91): actionMiddleware->get_blog_date()
+#5 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\Action.php(87): actionMiddleware->before()
+#6 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\App.php(88): Action->call('index')
+#7 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\index.php(18): App->execute()
+#8 {main}		请求的地址: http://blog.xmwme.org/
+【2019-05-06 09:27:40】		exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'xm_base.xm_blog' doesn't exist' in F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php:187
+Stack trace:
+#0 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php(187): PDOStatement->execute()
+#1 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\modelMiddleware.php(227): RunDbPdo->getRows('SELECT id,FROM_...')
+#2 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\actionMiddleware.php(148): modelMiddleware->queryAll('SELECT id,FROM_...')
+#3 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\actionMiddleware.php(91): actionMiddleware->get_blog_date()
+#4 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\Action.php(87): actionMiddleware->before()
+#5 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\App.php(88): Action->call('index')
+#6 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\index.php(18): App->execute()
+#7 {main}		请求的地址: http://blog.xmwme.org/
+【2019-05-06 09:35:27】		exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'xm_base.xm_commit' doesn't exist' in F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php:187
+Stack trace:
+#0 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Db\RunDbPdo.php(187): PDOStatement->execute()
+#1 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\Model.php(259): RunDbPdo->getRows('select * from x...')
+#2 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Util\modelMiddleware.php(86): Model->getRows('select * from x...', '{blog_id:9}')
+#3 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\App\Action\index.action.php(44): modelMiddleware->findTop(Array, '*', 0)
+#4 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\Action.php(99): IndexAction->detail()
+#5 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\RunFramework\Core\App.php(88): Action->call('detail')
+#6 F:\phpStudy\PHPTutorial\WWW\xmwme\xmwme\blog.xmwme.com\index.php(18): App->execute()
+#7 {main}		请求的地址: http://blog.xmwme.org/index/detail/?id=9
+【2019-05-06 09:36:38】		控制器 Resource 未找到!		请求的地址: http://blog.xmwme.org/Resource/css/images/blank-link.gif
+【2019-05-06 09:36:38】		错误号: 8 <br>描  述: Undefined index: title <br>所在文件: detail.php<br>所在行数: 第 1 行<br>		请求的地址: http://blog.xmwme.org/index/detail/wp-admin/images/wpspin_light.gif
