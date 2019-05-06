@@ -114,6 +114,7 @@ class Dispatcher implements IDispatcher {
         if ($mod != $this->module)
             $this->module = ucfirst($mod) . 'Action';  //限制action类名
 
+
             
 //新增(2009.12.08)
         if ($mod == $this->module) {
@@ -130,7 +131,7 @@ class Dispatcher implements IDispatcher {
             $file = null;
         } else {
             if ($mod != 'Exception' && $mod != 'favicon.ico') {
-                RunException::writeLog("控制器 $mod 未找到!", date('Y-m-d').'_'.'error.log');
+                RunException::writeLog("控制器 $mod 未找到!", date('Y-m-d') . '_' . 'error.log');
             }
             $mod = substr($this->exceptionModule, 0, strlen($this->exceptionModule) - 6);
             $file = $this->actionPath . '/' . strtolower($mod) . '.action' . '.php';

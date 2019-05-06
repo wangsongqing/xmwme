@@ -59,19 +59,19 @@ abstract class Model extends Object {
         if (!isset($tbl[$key]['dbId']) || !isset($tbl[$key]['name']) || !isset($tbl[$key]['configFile'])) {
             RunException::throwException("key: $key 对应的数据表配置节点错误!");
         }
-        
+
         $tblName = $tbl[$key]['name'];
         $this->db->configFile = $tbl[$key]['configFile'];
         $dbId = $tbl[$key]['dbId'];
-        if ($this->db->dbId == null){
+        if ($this->db->dbId == null) {
             $this->db->dbId = $dbId;
-        }else{
-            if ($this->db->dbId != $dbId){
+        } else {
+            if ($this->db->dbId != $dbId) {
                 $this->db->dbId = $dbId;
                 $this->db->close();
             }
         }
-        
+
         if ($slice == 0) {
             $this->table = $tblName;
             return $this->table;
