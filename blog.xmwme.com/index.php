@@ -1,25 +1,25 @@
 <?php
-set_time_limit(0);                                     //ÉèÖÃ³ÌÐòÔËÐÐ³¬Ê±¼ä
-ob_start();                                            //´ò¿ª´ÅÅÌ»º³å
-require_once('Config/apppath.config.php');             //³õÊ¼»¯Ó¦ÓÃ³ÌÐòÂ·¾¶  
-header("Content-type: text/html; charset=utf-8");      //Ö¸¶¨±àÂë
-ini_set("date.timezone", "Asia/Shanghai");             //ÉèÖÃÊ±¼äÇøÓò
-require_once(Lib . '/Core/App.php');                     //ÔØÈë×°ÅäÆ÷
-$app = new App();                                      //ÊµÀý»¯Ò»¸ö¶ÔÏó
-$app->path = Lib;                           //Ö¸¶¨¿ò¼ÜÂ·¾¶ 
-$app->isCached = IsCached;                      //ÊÇ·ñ»º´æ¶ÔÏó×ÊÔ´
-$app->cacheDir = CacheDir;                      //¶ÔÏó×ÊÔ´»º´æÄ¿Â¼
-$app->rootPath = Root;                          //Ö¸¶¨¸ùÂ·¾¶
-$app->module = Module;                        //Ö¸¶¨Ä¬ÈÏ¿ØÖÆÆ÷
-$app->exceptionModule = ExceptionModule;               //Ö¸¶¨·¢ÉúÒì³£Ê±µÄ¿ØÖÆÆ÷(ÈçÕÒ²»µ½ÇëÇóµÄ¿ØÖÆÆ÷)   
-$app->init();               //³õÊ¼»¯¿ò¼Ü
+set_time_limit(0);                                     //è®¾ç½®ç¨‹åºè¿è¡Œè¶…æ—¶é—´
+ob_start();                                            //æ‰“å¼€ç£ç›˜ç¼“å†²
+require_once('Config/apppath.config.php');             //åˆå§‹åŒ–åº”ç”¨ç¨‹åºè·¯å¾„  
+header("Content-type: text/html; charset=utf-8");      //æŒ‡å®šç¼–ç 
+ini_set("date.timezone", "Asia/Shanghai");             //è®¾ç½®æ—¶é—´åŒºåŸŸ
+require_once(Lib . '/Core/App.php');                     //è½½å…¥è£…é…å™¨
+$app = new App();                                      //å®žä¾‹åŒ–ä¸€ä¸ªå¯¹è±¡
+$app->path = Lib;                           //æŒ‡å®šæ¡†æž¶è·¯å¾„ 
+$app->isCached = IsCached;                      //æ˜¯å¦ç¼“å­˜å¯¹è±¡èµ„æº
+$app->cacheDir = CacheDir;                      //å¯¹è±¡èµ„æºç¼“å­˜ç›®å½•
+$app->rootPath = Root;                          //æŒ‡å®šæ ¹è·¯å¾„
+$app->module = Module;                        //æŒ‡å®šé»˜è®¤æŽ§åˆ¶å™¨
+$app->exceptionModule = ExceptionModule;               //æŒ‡å®šå‘ç”Ÿå¼‚å¸¸æ—¶çš„æŽ§åˆ¶å™¨(å¦‚æ‰¾ä¸åˆ°è¯·æ±‚çš„æŽ§åˆ¶å™¨)   
+$app->init();               //åˆå§‹åŒ–æ¡†æž¶
 require_once(App . "/Util/actionMiddleware.php");
 require_once(App . "/Util/modelMiddleware.php");
 $content = $app->execute();
 
-//ÒÔÏÂ´úÂë×÷ÓÃ:µ±action return Êý¾ÝµÄÊ±ºòÒ²¿ÉÒÔÊä³ö;Ê¹¿ò¼Ü¸ü¼ÓµÄÁé»î£¬·½±ã×öÒ»·þÎñ¡¢APIµÈ
+//ä»¥ä¸‹ä»£ç ä½œç”¨:å½“action return æ•°æ®çš„æ—¶å€™ä¹Ÿå¯ä»¥è¾“å‡º;ä½¿æ¡†æž¶æ›´åŠ çš„çµæ´»ï¼Œæ–¹ä¾¿åšä¸€æœåŠ¡ã€APIç­‰
 if ($content != null) {
     echo $content;
 }
-$app = null;                                           //Ïú»Ù¶ÔÏó
+$app = null;                                           //é”€æ¯å¯¹è±¡
 ?>
