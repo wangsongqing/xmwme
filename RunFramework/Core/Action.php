@@ -96,7 +96,10 @@ abstract class Action extends Object {
                 print $data;
             }
         } else {
-            $this->$action();
+            $view_data = $this->$action();
+            if($view_data!=null){
+                return $view_data;
+            }
         }
         if ($this->debug && isset($this->com('dbHook')->sqlLog)) {
             print $this->com('dbHook')->sqlLog;

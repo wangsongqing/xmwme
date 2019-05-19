@@ -72,21 +72,24 @@ class App {
 
         //构造控制器实例并初始化
         require_once($moduleFile);
-        if (!class_exists($module)){
+        if (!class_exists($module)) {
             RunException::throwException("控制器 $module 未找到!");
         }
         $instance = new $module();
         $instance->com = $this->com;
         $instance->input = $input;
-        if (isset($instance->models)){
+        if (isset($instance->models)) {
             $this->mf->models = $instance->models;
         }
         $this->mf->input = $input;
         $instance->mf = $this->mf;
 
         //呼叫控制器执行操作
-        $instance->call($action);
+        $call_data = $instance->call($action);
         $moduleFile = $module = $action = $instance = null;
+        if ($call_data != null) {
+            return $call_data;
+        }
     }
 
     //+------------------------------------------------------------------------------------------------------
