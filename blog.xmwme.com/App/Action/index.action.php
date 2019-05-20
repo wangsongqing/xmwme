@@ -1,6 +1,6 @@
 <?php
 /**
- * @author wangsongqing <jimmywsq@163.com>
+ * @author wangsongqing <1105235512@qq.com>
  * @time 2017-05
  +------------------------------------------
  * 简单的增删改操作
@@ -14,7 +14,7 @@ class IndexAction extends actionMiddleware
      * 博客列表
      */
     public function index()
-    {	
+    {	        
 	extract($this->input);
 	$isSearch = isset($isSearch)?$isSearch:'';
         $ajax = isset($ajax) ? intval($ajax) : 0;

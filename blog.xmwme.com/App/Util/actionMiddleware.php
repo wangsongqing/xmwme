@@ -1,7 +1,7 @@
 <?php
 /**
  * actionMiddleware  action中间件用于公共事务及数据处理；
- * @author Jimmy Wang <jimmywsq@163.com>
+ * @author Jimmy Wang <1105235512@qq.com>
  * @version      	V1.0
  * @time        	17-06
  */
