@@ -8,7 +8,7 @@
  * @version 1.0
  +------------------------------------------------------------------------------
  */
-class RedisCrud extends RedisQ{
+class RedisCrud extends RunRedis{
     
     public function __construct($key=''){
 	$this->key = $key;
