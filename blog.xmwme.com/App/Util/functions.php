@@ -3,5 +3,7 @@
 require_once('../api/include/function.cookie.php');
 require_once('../api/include/function.global.php');
 require_once('../api/include/function.cache.php');
+require_once('../api/include/FacadeMem.php');
+require_once('../api/include/FacadeRedis.php');
 require_once('include/function.auth.php');
 ?>
