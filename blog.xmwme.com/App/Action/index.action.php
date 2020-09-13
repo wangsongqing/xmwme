@@ -81,6 +81,7 @@ class IndexAction extends actionMiddleware
         $username = isset($username)?$username:'';
         $mail = isset($mail)?$mail:'';
         $id = isset($id)?$id:'';//博客id
+        $comment = $comment ?? 0;
         $_arr = array(
             'username'=>$username,
             'mail'=>$mail,
